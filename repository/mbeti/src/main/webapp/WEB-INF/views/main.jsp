@@ -7,49 +7,41 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 페이지</title>
-<!-- css 가져오기 -->
 <link rel="stylesheet" type="text/css"	href="/resources/semantic.min.css">
-
-<style type="text/css">
-body {
-	background-color: #DADADA;
-}
-
-body>.grid {
-	height: 100%;
-}
-
-.image {
-	margin-top: -100px;
-}
-
-.column {
-	max-width: 1000px;
-}
-
-.view_btn {
-	cursor: pointer;
-}
-</style>
 </head>
 
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+	<!-- header  -->
+	<jsp:include page="header_main.jsp"></jsp:include>
+	<!-- header  -->
+	
+	<!-- main -->
 
-	<div class="ui middle aligned center aligned grid">
-		<div class="column">
-			<h2 class="ui teal image header">메인페이지입니다</h2>
-			<div class="ui large form">
-				<div class="ui error message"></div>
-
+	<div class="main-wrap">
+		<div class="layout">
+			<div class="main-txt">			
+				<div class="title-box">
+					<strong class="title-b">나에게 어울리는</strong>
+					<strong class="title-b"><span>직업</span>이 뭘까?</strong>
+					<span class="title-s"><span class="font-s">jam</span>검색으로 나의 성향과 알맞는 직업을 찾아보자!</span>
+					<div class="btn-box">
+						<a href="#n" class="btn-jam">나의 직업 잼하러 가기</a>
+					</div>
+				</div>				
 			</div>
+			<div class="main-img">
+				<img src="/resources/images/main_img01.png">	
+			</div>	
 		</div>
+		
 	</div>
 
-
-		    <script src="resources/jquery3.3.1.min.js"></script>
+	<!-- main -->
+	
+	
+    <script src="resources/jquery3.3.1.min.js"></script>
     <script src="resources/semantic.min.js"></script>
-    	<script src="/resources/js/bootstrap.js"></script>
+   	<script src="/resources/js/bootstrap.js"></script>
 </body>
 
 </html>
