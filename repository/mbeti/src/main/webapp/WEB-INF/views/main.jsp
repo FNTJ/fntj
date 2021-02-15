@@ -1,19 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html>
-
-<head>
-<meta charset="UTF-8">
-<title>jambox</title>
-<link rel="icon" type="image/png"  href="/resources/images/common/favicon.png"/>
-<link rel="stylesheet" type="text/css"	href="/resources/semantic.min.css">
-</head>
-
-<body>
-	<!-- header  -->
-	<jsp:include page="header_m.jsp"></jsp:include>
+	
+	<jsp:include page="header.jsp"></jsp:include>
 	<!-- header  -->
 	
 	<!-- main -->
@@ -36,12 +24,8 @@
 		</div>		
 	</div>
 
-	<!-- main -->	
-	
-    <!-- <script src="resources/jquery3.3.1.min.js"></script>
-    <script src="resources/semantic.min.js"></script>
-   	<script src="/resources/js/bootstrap.js"></script> -->
+	<!-- main -->
+
 
 </body>
-
 </html>
