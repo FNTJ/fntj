@@ -1,0 +1,32 @@
+[
+	{
+	  "mbti": "INTJ",
+	  "name": "인티제 ~",
+	  "content":"hello"
+	},
+	{
+	  "mbti": "INTP",
+	  "name": "인티피 ~",
+	  "content":"hello"
+	},
+	{
+	  "mbti": "INFJ",
+	  "name": "인프제 ~",
+	  "content":"hello"
+	},
+	{
+	  "mbti": "INFP",
+	  "name": "인프피 ~",
+	  "content":"hello"
+	},
+	{
+	  "mbti": "ISTJ",
+	  "name": "아이에스티제 ~",
+	  "content":"hello"
+	},
+	{
+	  "mbti": "ISFJ",
+	  "name": "아이에스프피 ~",
+	  "content":"hello"
+	}
+]

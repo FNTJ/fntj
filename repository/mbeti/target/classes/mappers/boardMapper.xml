@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+<!-- =======================게시물 작성 쿼리 ============================== -->	
+<!-- 	<insert id="insert">
+	   INSERT INTO tbl_notice (writer, title, content)
+		VALUES (#{writer}, #{title}, #{content})
+   </insert> -->
+   
+   <insert id="insert" parameterType="com.mbeti.domain.BoardVO">
+	    INSERT INTO tbl_notice(  bno 
+	   					       , title 
+	   					       , content 
+	   					       , writer  )
+	                  VALUES(    #{bno}
+	                 		   , #{title}
+	                 		   , #{content}
+	                 		   , #{writer}  )
+    </insert>
+<!-- =======================게시물 리스트(조회) 쿼리=========================== -->	
+	<select id="list" resultType="com.mbeti.domain.BoardVO">
+		SELECT bno, title, content, writer, date,
+		(SELECT COUNT(*) AS rno FROM tbl_reply WHERE tbl_reply.bno = tbl_notice.bno) as replycnt
+		FROM tbl_notice
+		ORDER BY bno DESC, date DESC ;
+	</select>
+<!-- =======================게시물 상세조회 쿼리========================= -->
+	<select id="read" parameterType="int" resultType="com.mbeti.domain.BoardVO">
+	SELECT	BNO
+		  , TITLE
+		  , CONTENT
+		  , WRITER
+		  , DATE
+	 FROM tbl_notice
+	 WHERE BNO = #{bno}
+	</select>
+<!-- ======================게시물 수정 쿼리========================= -->
+	<update id="update" parameterType="com.mbeti.domain.BoardVO">
+		UPDATE tbl_notice
+		   SET TITLE    =   #{title},
+		   	   CONTENT  =   #{content}
+		 WHERE BNO = #{bno} 
+	</update>
+<!-- ====================게시물 삭제 쿼리=========================== -->
+	<delete id="delete" parameterType="int">
+		DELETE 
+		  FROM tbl_notice
+		 WHERE BNO = #{bno}
+	</delete>
+<!-- ====================게시물 페이징 쿼리1============================= 
+	<select id="listPage" resultType="com.mbeti.domain.BoardVO" parameterType="com.mbeti.domain.Criteria">
+		SELECT  BNO, TITLE, CONTENT, WRITER, DATE
+		FROM ( 
+			SELECT BNO, 
+				   TITLE, 
+				   CONTENT, 
+				   WRITER, 
+				   DATE, 
+				   ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
+			 FROM tbl_notice 
+						   ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BNO DESC
+	</select>
+====================게시물 페이징 쿼리2=============================
+	<select id="listCount" resultType="int">
+	<![CDATA[
+		SELECT COUNT(BNO)
+		  FROM tbl_notice
+		 WHERE BNO > 0
+	]]>
+	</select>
+====================게시물 검색 쿼리1========================== -->
+	<select id="listPage" resultType="com.mbeti.domain.BoardVO" parameterType="com.mbeti.domain.SearchCriteria">
+		SELECT  BNO, 
+		        TITLE, 
+		        CONTENT,
+		        WRITER, 
+		        DATE,
+		        HIT,
+		        replycnt
+		 FROM ( 
+		        SELECT BNO, 
+		               TITLE, 
+		               CONTENT, 
+		               WRITER, 
+		               DATE,
+		               HIT,
+		               replycnt, 
+		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
+		         FROM tbl_notice
+		         WHERE 1=1 
+		         	<include refid="search"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BNO DESC
+	</select>
+<!-- ====================게시물 검색 쿼리2============================ -->
+	<select id="listCount" parameterType="com.mbeti.domain.SearchCriteria" resultType="int">
+		SELECT COUNT(BNO)
+		   FROM tbl_notice
+		   WHERE 1=1
+		<include refid="search"></include>	
+		   AND BNO > 0
+	</select>
+<!-- ===================게시물 검색 쿼리3=========================== -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND TITLE LIKE CONCAT ('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND CONTENT LIKE CONCAT  ('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND WRITER LIKE CONCAT  ('%',#{keyword},'%')</if>
+			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE CONCAT ('%',#{keyword},'%')) or (CONTENT LIKE CONCAT('%',#{keyword},'%'))</if>
+		</if>
+	</sql>
+<!-- ========================== 파일업로드 ======================== -->
+	 <insert id="insertFile" parameterType="hashMap">
+		INSERT INTO tbl_file(
+			fno,
+			bno,
+			org_fname,
+			stored_fname,
+			fsize
+		)VALUES(
+			#{fno},
+			((select max(bno) from tbl_notice)),
+			#{org_fname},
+			#{stored_fname},
+			#{fsize}
+		)
+    </insert>
+<!-- ============================================================= -->
+	<!-- 첨부파일 조회 -->
+	<select id="selectFileList" parameterType="int" resultType="hashMap">
+		SELECT fno,
+			   org_fname,
+			   ROUND(fsize/1024,1) AS fsize
+		  FROM tbl_file
+		 WHERE bno = #{bno}
+		   AND del = 'N'
+		   ORDER BY fno ASC
+	</select>
+	
+	<!-- 첨부파일 다운 -->
+	<select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+		SELECT 
+			stored_fname,
+			org_fname
+		FROM tbl_file
+		WHERE fno = #{fno}
+	</select>
+	
+	<!-- 첨부파일 수정 -->
+	<update id="updateFile" parameterType="hashMap">
+    	UPDATE tbl_file SET
+    	del = 'Y'
+    	WHERE fno = #{fno}
+    </update>
+    
+	<!-- 게시판 조회수 -->
+    <update id="boardHit" parameterType="int">
+    	UPDATE tbl_notice SET
+    	HIT = HIT+1
+    	WHERE BNO = #{bno}
+    </update>
+	
+	<!-- 게시판 댓글수 -->
+	<update id="updateReplyCnt"> 
+	UPDATE tbl_notice SET replycnt = replycnt + #{amount} 
+	WHERE bno = #{bno}
+	</update>
+
+	
+	
+	
+	
+</mapper>
