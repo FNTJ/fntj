@@ -6,13 +6,14 @@
 
 <head>
 <meta charset="UTF-8">
-<title>게시판 페이지</title>
+<title>jambox</title>
+<link rel="icon" type="image/png"  href="/resources/images/common/favicon.png"/>
 <link rel="stylesheet" type="text/css"	href="/resources/semantic.min.css">
 </head>
 
 <body>
 	<!-- header  -->
-	<jsp:include page="header_main.jsp"></jsp:include>
+	<jsp:include page="header_m.jsp"></jsp:include>
 	<!-- header  -->
 	
 	<!-- main -->
@@ -30,14 +31,12 @@
 				</div>				
 			</div>
 			<div class="main-img">
-				<img src="/resources/images/main_img01.png">	
+				<img src="/resources/images/main/main_img01.png">	
 			</div>	
-		</div>
-		
+		</div>		
 	</div>
 
-	<!-- main -->
-	
+	<!-- main -->	
 	
     <script src="resources/jquery3.3.1.min.js"></script>
     <script src="resources/semantic.min.js"></script>
