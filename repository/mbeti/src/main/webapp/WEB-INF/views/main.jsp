@@ -38,9 +38,10 @@
 
 	<!-- main -->	
 	
-    <script src="resources/jquery3.3.1.min.js"></script>
+    <!-- <script src="resources/jquery3.3.1.min.js"></script>
     <script src="resources/semantic.min.js"></script>
-   	<script src="/resources/js/bootstrap.js"></script>
+   	<script src="/resources/js/bootstrap.js"></script> -->
+
 </body>
 
 </html>

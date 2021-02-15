@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/resources/css/common.css">
 <link rel="stylesheet" href="/resources/css/main.css">
 
-<nav class="header">
+<div class="header">
 	<div class="top-left">
 		<a href="#n" class="mbti-btn">mbti</a>
 	</div>
@@ -24,22 +24,40 @@
 			</ul>
 		</div>
 		<div class="menu">
-			<a href="" class="menu-btn">
-				<span></span>
-			</a>
+			
+			<a href="#n" class="menu-btn"><span></span></a>
 			<div class="menu-box">
-				<a href="#n" class="close-btn">close</a>			
-				<ul class="nav navbar-nav">
-					<li ><a href="main">main</a></li>
-					<li><a href="notice">notice</a></li>
-					<li><a href="list">community</a></li>
+				<a href="#n" class="close-btn">
+					<i class='bx bx-x'></i>
+				</a>			
+				<ul class="nav">
+					<li><a href="about">About</a></li>
+					<li><a href="search"><span>jam</span> Search</a></li>
+					<li><a href="/notice/notice">Notice</a></li>
+					<li><a href="/notice/list">Community</a></li>
 				</ul>
-				<a href="#n" class="mypage-btn">mypage</a>
+				<div class="mypage">
+					<a href="#n" class="mypage-btn"><i class='bx bx-user-circle' ></i>mypage</a>
+				</div>				
 			</div>
 		</div>
 	</div>
-</nav>
+</div>
 
-	
+<script src="/resources/jquery3.3.1.min.js"></script>
 <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 <script src="/resources/js/bootstrap.js"></script>
+<script>
+	$(document).ready(function() {
+		var menubtn = $(".menu .menu-btn");
+		var closebtn = $(".menu .menu-box .close-btn");
+		menubtn.on("click", function(){
+			$("body").toggleClass("on");
+		});
+		closebtn.on("click", function(){
+			$("body").toggleClass("on");
+		});		
+	});	
+</script>
+
+	
