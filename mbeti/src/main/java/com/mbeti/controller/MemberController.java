@@ -135,6 +135,11 @@ public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes 
 	}
 	
 	
+	// 회원프로필
+	@RequestMapping(value = "/user/memberProfile", method = RequestMethod.GET)
+	public String memberProfile() {
+		return "/user/memberProfile";
+	}
 	
 	
 	
