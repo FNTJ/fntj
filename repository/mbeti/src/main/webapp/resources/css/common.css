@@ -1,10 +1,15 @@
 @charset "utf-8";
 
-body{font-family: 'Noto Sans KR', sans-serif;}
-a:hover, a:focus, a:visited{font-style:normal;text-decoration:none;background:none !important;}
+body, *{font-family: 'Noto Sans KR', sans-serif;}
+a:hover, a:focus, a:visited{font-style:normal;text-decoration:none;background:none;}
 em{font-style:normal;}
+button{border:none;text-shadow:none;box-shadow:none;}
+.btn, .btn:hover, .btn:focus{padding:10px 14px;margin:3px;font-family:'Noto Sans KR';font-weight:400;border:none;text-shadow:none;}
+.btn-success, .btn-success:hover, .btn-success:focus{background:#ff665b;}
+.btn-danger, .btn-danger:hover, .btn-danger:focus{background:#739af0;}
+.btn-primary, .btn-primary:hover, .btn-primary:focus{border:2px solid #ff665b;background:#fff;color:#ff665b;}
 
-.layout{max-width:1280px;margin:0 auto;}
+.layout{max-width:1200px;margin:0 auto;}
 
 /* header  */
 .header{position: absolute;left:0;top: 40px;width:100%;z-index:9999;}
@@ -16,6 +21,8 @@ em{font-style:normal;}
 .header .navbox .nav{}
 .header .navbox .nav li{display:inline-block;}
 .header .navbox .nav li a{color:#000;font-size: 20px;font-weight: 600;letter-spacing: -0.5px;}
+.header .navbox .nav li a:hover,
+.header .navbox .nav li a:focus{background-color:none;}
 .header .navbox .nav li a span{font-family:'Pacifico';font-size:23px;}
 .header .top-right{position:absolute;right:4%;top: 0;}
 .header .top-right .login{display: inline-block;margin-right: 15px;vertical-align: middle;}
@@ -33,6 +40,8 @@ em{font-style:normal;}
 .header .top-right .menu .menu-box .mypage .mypage-btn .bx{font-size:30px;vertical-align: middle;margin-right: 5px;}
 .header .top-right .menu .menu-box .nav li{display:block;}
 .header .top-right .menu .menu-box .nav li a{padding:0;color:#fff;font-size: 65px;font-weight: 800;}
+.header .top-right .menu .menu-box .nav li a:hover,
+.header .top-right .menu .menu-box .nav li a:focus{background:none;}
 .header .top-right .menu .menu-box .nav li a span{font-family: Pacifico;}
 
 
@@ -43,6 +52,8 @@ body.on .header .top-right .menu .menu-box{display:inline-block;}
 
 /* contents  */
 .contents{position:relative;padding:200px 0 100px;line-height:1.4;}
+.h2{position:relative; display:block;margin-bottom:70px;padding-bottom:20px;border-bottom:2px solid #000;font-size: 25px;color: #000;font-weight: 600;}
+
 
 
 /* footer  */

@@ -1,8 +1,41 @@
 @charset "utf-8";
 
+.form-group{margin-bottom:20px;}
+.form-group select{width: 65%;border: 0;height: 40px;margin-right:10px;border-bottom: 2px solid #ddd;}
+.form-group select:focus{border: 0;height: 40px;border-bottom: 2px solid #000;} 
+.form-control{height:40px;border:none;border-bottom:2px solid #dadada;background: transparent;box-shadow: none;border-radius: 0;transition:0.5;}
+.form-control:focus{border-color:none !important;border-bottom:2px solid #000;box-shadow:none;}
+.form-control::placeholder{font-family:'Noto Sans KR';color:#ddd;font-size:16px;font-weight:200;}
+.form-btn{margin-top: 70px;padding-top: 30px;border-top: 2px solid #ddd;text-align: center;}
+
+
+/* login */
+.login-box{max-width:900px;margin:0 auto;}
+.login-box .tit-box{position: relative;margin-bottom: 50px;}
+.login-box .tit-box:before{display:inline-block;position:absolute;right:0;top: 60%;width: 70%;height: 1px;background: #000;content:'';}
+.login-box .tit-box strong{margin-right: 10px;font-family:'Pacifico';color:#000;font-size: 50px;}
+.login-box .tit-box span{font-size: 25px;font-weight: 800;}
+.login-box .item-box{}
+.login-box .item-box .item{position: relative;display:inline-block;vertical-align:top;width: 45%;}
+.login-box .item-box .login-item{margin-right: 7%;}
+.login-box .item-box .login-item:before{display:inline-block;position:absolute;right:-10%;top:0;width:1px;height:100%;/* background:#ddd; */content:'';}
+.login-box .item-box .login-item .formbox label{font-size:20px;margin-bottom:6px;}
+.login-box .item-box .login-item .formbox input{margin-bottom:15px;}
+.login-box .item-box .login-item .formbox .loginbtn{margin-top:15px;padding: 20px;width: 100%;background:#ff665b;color: #fff;font-size: 20px;font-weight: 500;}
+.login-box .item-box .regis-item{width: 47%;padding:50px 0;margin: 30px 0;text-align:center;background: #f9f9f9;}
+.login-box .item-box .regis-item span{display:block;font-size:16px;}
+.login-box .item-box .regis-item span em{font-family:'Pacifico';font-size:20px;}
+.login-box .item-box .regis-item .regisbtn{display:block;width: 80%;margin-top:20px;padding: 17px;border: 2px solid #000;font-size:17px;font-weight:600;background: #fff;margin-left: 10%;}
+
+
+/* register */
+.register{max-width: 700px;margin:0 auto;padding-left: 150px;}
+.register label{display:inline-block;vertical-align: middle;width: 15%;font-size: 17px;}
+.register .form-control{display:inline-block;vertical-align: middle;width: 65%;}
+.register #userBirthday{padding:0 10px;width:65%;border:1px solid #ddd;}
+
 
 /* about */
-
 .about .cont-tit .title{display:block; font-family:'Pacifico';color:#000;}
 .about .cont01{}
 .about .cont01 .cont-tit .title{margin-bottom:20px;font-size: 70px;}
@@ -12,13 +45,17 @@
 .about .cont02 .cont-tit .title{font-size:60px;}
 .about .cont02 .cont-item{margin: 50px 0;}
 .about .cont02 .cont-item ul{font-size:0;text-align:center;margin: 0;padding: 0;}
-.about .cont02 .cont-item ul li{display:inline-block;width: calc(33.3% - 80px);height: 320px;margin: 0 40px;vertical-align: top;padding: 20px;background:#fff;border-radius:30px;box-shadow: 0 0 20px rgb(0 0 0 / 5%);}
+.about .cont02 .cont-item ul li{position:relative; display:inline-block;width: calc(33.3% - 80px);height: 320px;margin: 0 40px;vertical-align: top;padding: 20px;background:#fff;border-radius:30px;box-shadow: 0 0 20px rgb(0 0 0 / 5%);}
+.about .cont02 .cont-item ul li:before{display:inline-block;position:absolute;right: -54px;top: calc(50% - 18px);content: "\eb43";font-size: 30px;font-family:'boxicons'!important;color: #ddd;}
+.about .cont02 .cont-item ul li:last-child:before{display:none;}    
 .about .cont02 .cont-item ul li .num{display:block; font-size:50px;font-family:'Pacifico';color:#ddd;}
 .about .cont02 .cont-item ul li .tit{display:block;font-size:20px;}
 .about .cont02 .cont-item ul li .txt{display:block;font-size:17px;}
 .about .cont02 .cont-item ul li img{position: relative;left: calc(50% - 150px);bottom: -20px;}
-
-
+.about .cont03{margin: 150px 0 100px;text-align:center;}
+.about .cont03 .jamsearch-btn{display:inline-block;padding:20px 40px;border-radius: 50px;color:#fff;font-size: 22px;background-image: linear-gradient(45deg, #ff5528, #ff7f5d);background-size: 100% 1100%;font-weight: 700;letter-spacing: -1px;background-position: 0% 0%;transition:0.5s;}
+.about .cont03 .jamsearch-btn:hover{background-position: 0% 100%;}
+.about .cont03 .jamsearch-btn .jamicon{display:inline-block;width: 25px;height: 25px;margin-left: 10px;margin-top:-3px;background: url(/resources/images/content/about_img05.png)center no-repeat;background-size:100%;vertical-align: middle;}
 
 
 
