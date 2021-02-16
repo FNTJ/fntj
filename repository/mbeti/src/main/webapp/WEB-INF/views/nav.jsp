@@ -1,18 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<style type="text/css">
-	li {list-style: none; display:inline; padding: 6px;}
-</style>
-<ul>
-	<li><a href="/notice/list">목록</a></li>
-	<li><a href="/notice/writeView">글 작성</a></li>
-	<li>
-		<c:if test="${member != null}"><a href="/notice/logout">로그아웃</a></c:if>
-		<c:if test="${member == null}"><a href="/">로그인</a></c:if>
-	</li>
-	<li>
+	
+<div class="board-nav">
+
+	<div class="member-g">
 		<c:if test="${member != null}">
 			<p>${member.userName}님 안녕하세요.</p>
 		</c:if>
-	</li>
-</ul>
+	</div>
+	
+	<button href="/notice/list" class="btn btn-danger">목록</button>
+	<c:if test="${member != null}">
+		<button href="/notice/writeView" class="btn btn-success">글작성</button>
+	</c:if>
+	<%-- <li><button href="/notice/writeView" class="btn btn-success">글작성</button></li>
+	<li>
+		<c:if test="${member != null}"><button href="/notice/logout" class="btn btn-primary">로그아웃</button></c:if>
+		<c:if test="${member == null}"><button href="/login" class="btn btn-primary">로그인</button></c:if>
+	</li> --%>
+	
+</div>
