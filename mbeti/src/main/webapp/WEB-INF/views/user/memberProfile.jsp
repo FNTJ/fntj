@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html>
+
+<script>
+	$(".userEdit").on("click", function(){
+	 location.href = "/user/memberUpdateView";
+	})
+</script>
+			
 	<head>
 		<!-- 합쳐지고 최소화된 최신 CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -9,54 +15,44 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	 	
 	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<title>회원가입</title>
-	</head>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				location.href = "/";
-			})
-			
-			$("#diverge").on("click", function(){
-				location.href = "/user/memberDeleteView";
-			})
+		<jsp:include page="../header.jsp"></jsp:include>
 		
-			$("#submit").on("click", function(){
-				if($("#userPassword").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#userPassword").focus();
-					return false;
-				}
-				if($("#userName").val()==""){
-					alert("성명을 입력해주세요.");
-					$("#userName").focus();
-					return false;
-				}
-			});
-			
-				
-			
-		})
-	</script>
-	<body>
-		<section id="container">
+	</head>
+
+		<div class="contents">
+			<%@include file="../nav.jsp" %>
 			<form action="/user/memberUpdate" method="post">
+			<div class="form-group has-feedback">
+					<label class="control-label" for="userID">MBTI</label>
+					<input class="form-control" type="text" id="mb" name="mb" value="${member.mb}" readonly="readonly"/>
+				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userID">아이디</label>
 					<input class="form-control" type="text" id="userID" name="userID" value="${member.userID}" readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userName">성명</label>
-					<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}"/>
+					<label class="control-label" for="userName">닉네임</label>
+					<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}"  readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">
-					<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
+					<label class="control-label" for="userEmail">이메일</label>
+					<input class="form-control" type="text" id="userEmail" name="userEmail" value="${member.userEmail}"  readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="userBirthday">생일</label>
+					<input class="form-control" type="text" id="userBirthday" name="userBirthday" value="${member.userEmail}"  readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="regdate">회원가입일</label>
+					<input class="form-control" type="text" id="regdate" name="regdate" value="${member.regdate}"  readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<button class="userEdit btn btn-success">회원정보수정</button>
 					<button class="cencle btn btn-danger" type="button">취소</button>
 				</div>
 			</form>
-		</section>
+			</div>
+
 		
-	</body>
 	
-</html>
+<jsp:include page="../footer.jsp"></jsp:include>
