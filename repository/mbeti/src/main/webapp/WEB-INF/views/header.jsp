@@ -39,7 +39,7 @@
 		<ul class="nav">
 			<li><a href="/about">About</a></li>
 			<li><a href="/search"><span>jam</span> search</a></li>
-			<li><a href="/notice/notice">Notice</a></li>
+			<li><a href="/notice/list">Notice</a></li>
 			<li><a href="/freeBoard/list">Community</a></li>
 		</ul>
 	</div>
