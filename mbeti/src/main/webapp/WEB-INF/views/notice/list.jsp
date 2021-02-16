@@ -7,17 +7,17 @@
 	<!-- //contents  -->
 	<div class="contents">
 		<div class="layout">
-		<h2 class="h2">공지사항</small></h2>
+		<h2 class="h2">공지사항</h2>
 		
-			<%@include file="../nav.jsp" %>
+			
 			
 			<form role="form" method="get">
 			
 				<!-- search  -->
-				<div class="search row">
-					<div class="col-xs-2 col-sm-2">
+				<div class="search">
+					<div class="sbox col-xs-2 col-sm-2">
 						<select name="searchType" class="form-control">
-							<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+							<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>선택하세요</option>
 							<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 							<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 							<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
@@ -25,14 +25,10 @@
 						</select>
 					</div>
 					 
-					<div class="col-xs-10 col-sm-10">
-						<div class="input-group">
-							<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}" class="form-control"/>
-							<span class="input-group-btn">
-								<button id="searchBtn" type="button" class="btn btn-default">검색</button> 	
-							</span>
-						</div>
+					<div class="sbox col-xs-10 col-sm-4">
+						<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}" class="form-control" placeholder="검색어를 입력하세요."/>
 					</div>
+					<button id="searchBtn" type="button" class="searchbtn"><i class='bx bx-search' ></i></button> 
 					 
 					<script>
 						 $(function(){
@@ -44,7 +40,7 @@
 				</div>
 				<!-- search//  -->
 				
-				<table class="table table-hover">
+				<table class="table table-board table-hover">
 					<colgroup>
 						<col style="width:10%">
 						<col style="width:50%">
@@ -66,7 +62,7 @@
 					<c:forEach items="${list}" var = "list">
 						<tr>
 							<td><c:out value="${list.bno}" /></td>
-							<td>
+							<td class="title">
 								<a href="/notice/readView?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">
 								<c:out value="${list.title}" />
 								<c:if test="${list.replycnt > 0}">
@@ -82,7 +78,9 @@
 					
 				</table>
 				
-				<div class="col-md-offset-3">
+				<%@include file="../nav.jsp" %>
+				
+				<div class="paging-box">
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
 							<li><a href="/notice/list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>

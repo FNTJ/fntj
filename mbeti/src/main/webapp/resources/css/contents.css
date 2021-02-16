@@ -36,10 +36,26 @@
 .register #userBirthday{padding:0 10px;width:65%;border:1px solid #ddd;}
 
 
+/* board */
+.search{position: relative;text-align:right;padding:0 0 30px;}
+.search .sbox{float:none;display:inline-block;}
+.search .searchbtn{background:none;font-size: 25px;display: inline-block;position: absolute;right: 15px;top: 5px;color: #000;}
+
+.table-board{text-align:center;}
+.table-board th{text-align:center;}
+.table-board .title{text-align:left;}
+
+.paging-box{text-align:center;}
+
 /* search */
-.search .search-txtbox{display:inline-block;width:30%;}
-.search .form-group{}
-.search .form-group select{height:50px;font-size:18px;}
+.search-cont option{line-height:2;}
+.search-cont .mbtibox{margin-bottom:30px;}
+.search-cont .search-txtbox{display:inline-block;width:23%;margin-right:5%;}
+.search-cont .search-txtbox .search-tit{display:block;margin-bottom:5px;font-size:35px;letter-spacing:-1px;font-weight:800;}
+.search-cont .search-txtbox .seaerch-txt{display:block;font-size:15px;}
+.search-cont .search-item{display:inline-block;width:67%;}
+.search-cont .form-group{}
+.search-cont .form-group select{height:50px;font-size:18px;}
 
 
 /* about */

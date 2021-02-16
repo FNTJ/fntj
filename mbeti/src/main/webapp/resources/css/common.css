@@ -5,6 +5,8 @@ a:hover, a:focus, a:visited{font-style:normal;text-decoration:none;background:no
 em{font-style:normal;}
 button{border:none;text-shadow:none;box-shadow:none;}
 li{list-style: none;}
+::selection{background-color:transparent;}
+input:-internal-autofill-selected{background:transparent !important;}
 .btn, .btn:hover, .btn:focus{padding:10px 14px;margin:3px;font-family:'Noto Sans KR';font-weight:400;border:none;text-shadow:none;box-sizing: border-box;height: 40px;font-size: 14px;line-height: 1;}
 .btn-success, .btn-success:hover, .btn-success:focus{background:#ff665b;}
 .btn-danger, .btn-danger:hover, .btn-danger:focus{background:#739af0;}
