@@ -59,7 +59,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<ul class="dropdown-menu">
-						<li><a href="/user/memberUpdateView">회원정보관리</a></li>
+						<li><a href="/user/memberProfile">회원정보관리</a></li>
 						<li><a href="/user/logout">로그아웃</a></li>
 					</ul>
 				</li>
