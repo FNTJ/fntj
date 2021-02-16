@@ -14,11 +14,13 @@
 	request.setCharacterEncoding("UTF-8");
 	
 	String mbti = request.getParameter("mbti");
+	String keyword = request.getParameter("keyword");
 %>
 	
 	
 	<div>
 		<span><%=mbti%></span>
+		<span><%=keyword%></span>
 		<div class="searchRe">
 			Ajax 들어올 곳 
 		</div>
