@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<script>
-	$(".userEdit").on("click", function(){
-	 location.href = "/user/memberUpdateView";
-	})
-</script>
 			
 	<head>
 		<!-- 합쳐지고 최소화된 최신 CSS -->
@@ -21,7 +15,7 @@
 
 		<div class="contents">
 			<%@include file="../nav.jsp" %>
-			<form action="/user/memberUpdate" method="post">
+			<form action="/user/memberUpdateView">
 			<div class="form-group has-feedback">
 					<label class="control-label" for="userID">MBTI</label>
 					<input class="form-control" type="text" id="mb" name="mb" value="${member.mb}" readonly="readonly"/>
@@ -44,14 +38,16 @@
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="regdate">회원가입일</label>
-					<input class="form-control" type="text" id="regdate" name="regdate" value="${member.regdate}"  readonly="readonly"/>
+					
+					<input class="form-control" type="text" id="regdate" name="regdate" value="<fmt:formatDate value="${member.regdate}" pattern="yyyy년 MM월 dd일" />"readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">
-					<button class="userEdit btn btn-success">회원정보수정</button>
+					<button class="userEdit btn btn-success">회원정보변경</button>
 					<button class="cencle btn btn-danger" type="button">취소</button>
 				</div>
 			</form>
-			</div>
+					<button class="btn btn-success" onClick="location.href='/user/memberBoard'">내가 작성한 글</button>
+		</div>
 
 		
 	
