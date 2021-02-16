@@ -37,7 +37,7 @@
 		<ul class="nav navbar-nav">
 			<li ><a href="/main">메인</a></li>
 			<li><a href="/notice/list">공지사항</a></li>
-			<li class="active"><a href="/notice/notice">자유게시판</a></li>
+			<li class="active"><a href="/freeBoard/list">자유게시판</a></li>
 		</ul>
 		
 		<c:if test="${member == null}">
