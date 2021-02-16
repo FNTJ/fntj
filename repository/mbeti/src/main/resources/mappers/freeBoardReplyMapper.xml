@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freeBoardReplyMapper">
+
+<!-- 댓글 조회 -->
+	<select id="fbReadReply" resultType="com.mbeti.domain.FreeBoardReplyVO">
+    	SELECT
+    		  RNO, CONTENT, WRITER, REGDATE
+    	 FROM tbl_fbreply
+    	WHERE BNO = #{bno}
+	</select>
+
+<!-- 댓글 작성 -->
+	<insert id="fbWriteReply">
+	INSERT INTO tbl_fbreply(
+		  BNO
+		, RNO
+		, CONTENT
+		, WRITER
+	)
+	VALUES(    
+		  #{bno}
+		, rno
+		, #{content}
+		, #{writer}	)
+	</insert>
+
+<!-- 댓글 수정 -->
+	<update id="fbUpdateReply" parameterType="com.mbeti.domain.FreeBoardReplyVO">
+		UPDATE tbl_fbreply SET CONTENT = #{content}
+		WHERE RNO = #{rno}
+	</update>
+
+<!-- 댓글 삭제 -->
+	<delete id="fbDeleteReply" parameterType="com.mbeti.domain.FreeBoardReplyVO">
+		DELETE FROM tbl_fbreply
+		WHERE RNO = #{rno}
+	</delete>
+	
+<!-- 선택된 댓글 조회 -->
+	<select id="fbSelectReply" resultType="com.mbeti.domain.FreeBoardReplyVO">
+		SELECT
+				BNO
+			  , RNO
+			  , CONTENT
+			  , WRITER
+			  , REGDATE
+		  FROM tbl_fbreply
+		 WHERE RNO = #{rno}
+	</select>
+
+<!-- 댓글 수 -->
+	<select id="fbGetArticleNo" resultType="int"> 
+	SELECT BNO 
+	FROM tbl_fbreply 
+	WHERE RNO = #{RNO} 
+	</select>
+
+
+
+
+
+</mapper>

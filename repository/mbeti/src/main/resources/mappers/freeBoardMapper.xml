@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freeBoardMapper">
+
+ 	<!-- 게시판 글 작성 -->
+<!--    <insert id="fbInsert">
+	   INSERT INTO tbl_freeboard(category, title, content, writer)
+       VALUES(#{category}, #{title}, #{content}, #{writer}  )
+   </insert> -->
+   
+   <insert id="fbInsert" parameterType="com.mbeti.domain.FreeBoardVO">
+	    INSERT INTO tbl_freeboard(  bno 
+	    					   , category
+	   					       , title 
+	   					       , content 
+	   					       , writer  )
+	                  VALUES(    #{bno}
+	                           , #{category}
+	                 		   , #{title}
+	                 		   , #{content}
+	                 		   , #{writer}  )
+    </insert>
+	
+	<!-- 게시판 목록 출력 -->
+	<select id="fbList" resultType="com.mbeti.domain.FreeBoardVO">
+		SELECT bno, category, title, content, writer, date,
+		(SELECT COUNT(*) AS rno FROM tbl_fbreply WHERE tbl_fbreply.bno = tbl_freeboard.bno) as replycnt
+		FROM tbl_freeboard
+		ORDER BY bno DESC, date DESC ;
+	</select>
+	
+	<!-- 게시판 글 조회 -->
+	<select id="fbRead" parameterType="int" resultType="com.mbeti.domain.FreeBoardVO">
+		SELECT	bno, category, title, content, writer, date
+		 FROM tbl_freeboard
+		 WHERE bno = #{bno}
+	</select>
+	
+	<!-- 게시물 수정 쿼리 -->
+	<update id="fbUpdate" parameterType="com.mbeti.domain.FreeBoardVO">
+		UPDATE tbl_freeboard
+		   SET category    =   #{category},
+		       title    =   #{title},
+		   	   content  =   #{content}
+		 WHERE bno = #{bno} 
+	</update>
+	
+	<!-- 게시물 삭제 쿼리 -->
+	<delete id="fbDelete" parameterType="int">
+		DELETE 
+		  FROM tbl_freeboard
+		 WHERE bno = #{bno}
+	</delete>
+	
+	<!-- 게시물 검색 쿼리1 -->
+	<select id="fbListPage" resultType="com.mbeti.domain.FreeBoardVO" parameterType="com.mbeti.domain.SearchCriteria">
+		SELECT  BNO, 
+				category,
+		        TITLE, 
+		        CONTENT,
+		        WRITER, 
+		        DATE,
+		        HIT,
+		        replycnt
+		 FROM ( 
+		        SELECT BNO, 
+		        	   category,
+		               TITLE, 
+		               CONTENT, 
+		               WRITER, 
+		               DATE,
+		               HIT,
+		               replycnt,
+		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
+		         FROM tbl_freeboard
+		         WHERE 1=1 
+		         	<include refid="search"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY BNO DESC
+	</select>
+	
+	<!-- 게시물 검색 쿼리2 -->
+	<select id="fbListCount" parameterType="com.mbeti.domain.SearchCriteria" resultType="int">
+		SELECT COUNT(BNO)
+		   FROM tbl_freeboard
+		   WHERE 1=1
+		<include refid="search"></include>	
+		   AND BNO > 0
+	</select>
+	
+	<!-- 게시물 검색 쿼리3 -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND TITLE LIKE CONCAT ('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND CONTENT LIKE CONCAT  ('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND WRITER LIKE CONCAT  ('%',#{keyword},'%')</if>
+			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE CONCAT ('%',#{keyword},'%')) or (CONTENT LIKE CONCAT('%',#{keyword},'%'))</if>
+		</if>
+	</sql>
+	
+	<!--  파일업로드  -->
+	 <insert id="fbInsertFile" parameterType="hashMap">
+		INSERT INTO tbl_fbfile(
+			fno,
+			bno,
+			org_fname,
+			stored_fname,
+			fsize
+		)VALUES(
+			#{fno},
+			((select max(bno) from tbl_freeboard)),
+			#{org_fname},
+			#{stored_fname},
+			#{fsize}
+		)
+    </insert>
+	
+	<!-- 첨부파일 조회 -->
+	<select id="fbSelectFileList" parameterType="int" resultType="hashMap">
+		SELECT fno,
+			   org_fname,
+			   ROUND(fsize/1024,1) AS fsize
+		  FROM tbl_fbfile
+		 WHERE bno = #{bno}
+		   AND del = 'N'
+		   ORDER BY fno ASC
+	</select>
+	
+	<!-- 첨부파일 다운 -->
+	<select id="fbSelectFileInfo" parameterType="hashMap" resultType="hashMap">
+		SELECT 
+			stored_fname,
+			org_fname
+		FROM tbl_fbfile
+		WHERE fno = #{fno}
+	</select>
+	
+	<!-- 첨부파일 수정 -->
+	<update id="fbUpdateFile" parameterType="hashMap">
+    	UPDATE tbl_fbfile SET
+    	del = 'Y'
+    	WHERE fno = #{fno}
+    </update>
+	
+	<!-- 게시판 조회수 -->
+    <update id="fbBoardHit" parameterType="int">
+    	UPDATE tbl_freeboard SET
+    	HIT = HIT+1
+    	WHERE BNO = #{bno}
+    </update>
+	
+	<!-- 게시판 댓글수 -->
+	<update id="fbUpdateReplyCnt"> 
+	UPDATE tbl_freeboard SET replycnt = replycnt + #{amount} 
+	WHERE bno = #{bno}
+	</update>
+	
+	
+	
+	
+	
+</mapper>
