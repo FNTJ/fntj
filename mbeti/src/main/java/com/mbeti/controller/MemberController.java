@@ -7,12 +7,17 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mbeti.domain.MemberVO;
+import com.mbeti.domain.PageMaker;
+import com.mbeti.domain.SearchCriteria;
+import com.mbeti.service.BoardService;
 import com.mbeti.service.MemberService;
 
 @Controller
@@ -20,6 +25,9 @@ import com.mbeti.service.MemberService;
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
+	@Inject
+	BoardService boardService;
 	
 	@Inject
 	MemberService service;
@@ -141,7 +149,22 @@ public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes 
 		return "/user/memberProfile";
 	}
 	
-	
+	// 회원작성글
+		@RequestMapping(value = "/user/memberBoard", method = RequestMethod.GET)
+		public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
+			logger.info("list");
+			
+			model.addAttribute("list", boardService.list(scri));
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(boardService.listCount(scri));
+			
+			model.addAttribute("pageMaker", pageMaker);
+			
+			return "/user/memberBoard";
+			
+		}
 	
 	
 	
