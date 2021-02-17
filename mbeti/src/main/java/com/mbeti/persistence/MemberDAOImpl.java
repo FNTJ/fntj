@@ -51,7 +51,7 @@ public class MemberDAOImpl implements MemberDAO{
 		return result;
 	}
 	
-	// 아이디 중복 체크
+	// 닉네임 중복 체크
 		@Override
 		public int nameChk(MemberVO vo) throws Exception {
 			int result = sql.selectOne("memberMapper.nameChk", vo);
