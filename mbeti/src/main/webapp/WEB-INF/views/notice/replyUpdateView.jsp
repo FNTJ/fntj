@@ -51,7 +51,8 @@
 						<tbody>
 							<tr>
 								<td>
-									<label for="content">댓글 내용</label><input type="text" id="content" name="content" value="${replyUpdate.content}"/>
+									<label for="content">댓글 내용</label>
+									<input type="text" id="content" name="content" value="${replyUpdate.content}"/>
 								</td>
 							</tr>	
 							

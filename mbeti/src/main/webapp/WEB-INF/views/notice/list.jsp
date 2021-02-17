@@ -78,7 +78,11 @@
 					
 				</table>
 				
-				<%@include file="../nav.jsp" %>
+				<div class="board-nav right">
+					<c:if test="${member != null}">						
+						<a href="/notice/writeView" class="btn btn-success">글작성</a>
+					</c:if>
+				</div>
 				
 				<div class="paging-box">
 					<ul class="pagination">

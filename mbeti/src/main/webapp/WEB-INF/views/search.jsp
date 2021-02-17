@@ -16,7 +16,7 @@
 				 		</div>
 				 		<div class="search-item">
 						 	<div class="form-group col-sm-4">				 						 		
-							 	<select name="mbti" onchange="categoryChange(this)" class="form-control">
+							 	<select name="mbti" id="mbtibox" onchange="categoryChange(this)" class="form-control">							 	
 						            <option value="">MBTI</option>
 						            <option value="INTJ">INTJ</option>
 						            <option value="INTP">INTP</option>
@@ -49,20 +49,29 @@
 				 			<span class="seaerch-txt">본인이 관심있어하는 직종의 키워드를 선택해주세요.</span>
 				 		</div>	
 				 		<div class="search-item">
-					 		<div class="form-group col-xs-2 col-sm-2">			            			 		
-					            <select name="keyword" id="select_key" class="form-control">
-					            	<option value="">---------</option>
-					            </select>
+					 		<div class="form-group col-sm-12">
+					 			<input type="radio" id="chk01" name="chk_info" value="IT/컴퓨터">
+					 				<label for="chk01">IT/컴퓨터</label>
+								<input type="radio" id="chk02" name="chk_info" value="서비스">
+									<label for="chk02">서비스</label>
+								<input type="radio" id="chk03" name="chk_info" value="교육">
+									<label for="chk03">교육</label>
+								<input type="radio" id="chk04" name="chk_info" value="영업">
+									<label for="chk04">영업</label>	
 				            </div>
 			            </div>
 			 		</div>
-				 	<input type="submit" value="검색" class="btn btn-success">		 	
+			 		<div class="submitbox">
+				 		<input type="submit" value="Let's jam!" class="btn btn-success">
+				 	</div>		 	
 				 </form>
 			 </div>
 			
 		</div><!-- //layout  -->
 	</div><!-- //contents  -->
-	
+
+
+
 <script>
 	/* 동적 select */
     function categoryChange(e) {

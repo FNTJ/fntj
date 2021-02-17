@@ -1,140 +1,104 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<html>
-	<head>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	 	
-	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	
-	 	<title>게시판</title>
-	</head>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			var formObj = $("form[name='writeForm']");
-			$(".write_btn").on("click", function(){
-				if(fn_valiChk()){
-					return false;
-				}
-				formObj.attr("action", "/freeBoard/write");
-				formObj.attr("method", "post");
-				formObj.submit();
-			});
-			fn_addFile();
-			
-			$("#submit").on("click", function(){
-				if($("#category").val()=="----"){
-					alert("카테고리를 선택해주세요.");
-					$("#category").focus();
-					return false;
-					
-				}
-			});
-		})
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	
+<jsp:include page="../header.jsp"></jsp:include>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var formObj = $("form[name='writeForm']");
+		$(".write_btn").on("click", function(){
+			if(fn_valiChk()){
+				return false;
+			}
+			formObj.attr("action", "/freeBoard/write");
+			formObj.attr("method", "post");
+			formObj.submit();
+		});
+		fn_addFile();
 		
-		function fn_valiChk(){
-			var regForm = $("form[name='writeForm'] .chk").length;
-			for(var i = 0; i<regForm; i++){
-				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
-					alert($(".chk").eq(i).attr("title"));
-					return true;
-				}
+	})
+	
+	function fn_valiChk(){
+		var regForm = $("form[name='writeForm'] .chk").length;
+		for(var i = 0; i<regForm; i++){
+			if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
+				alert($(".chk").eq(i).attr("title"));
+				return true;
 			}
 		}
-		
-		function fn_addFile(){
-			var fileIndex = 1;
-			//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
-			$(".fileAdd_btn").on("click", function(){
-				$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
-			});
-			$(document).on("click","#fileDelBtn", function(){
-				$(this).parent().remove();
-				
-			});
-		}
-	</script>
-	<body>
+	}
 	
-		<div id="root">
-			<header>
-				<h1> 게시판</h1>
-			</header>
-			<hr />
-			 
-			<div>
-				<%@include file="../nav.jsp" %>
-			</div>
-			<hr />
+	function fn_addFile(){
+		var fileIndex = 1;
+		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+		$(".fileAdd_btn").on("click", function(){
+			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+		});
+		$(document).on("click","#fileDelBtn", function(){
+			$(this).parent().remove();
 			
-			<section id="container">
+		});
+	}
+</script>
+	
+		<!-- //contents  -->
+		<div class="contents">
+			<div class="layout">
+			<h2 class="h2">커뮤니티 글작성</h2>
+			
 				<form name="writeForm" method="post" action="/freeBoard/write" enctype="multipart/form-data">
-					<table>
-						<tbody>
-							<c:if test="${member.userID != null}">
-								<tr>
-									<td>
-										<label for="category">카테고리</label>
-										<SELECT id="category" name="category" SIZE=1 >
-									        <OPTION VALUE=---- SELECTED>----</OPTION>
-									        <OPTION VALUE=INTJ>INTJ</OPTION>
-									        <OPTION VALUE=INTP>INTP</OPTION>
-									        <OPTION VALUE=ENTJ>ENTJ</OPTION>
-									        <OPTION VALUE=ENTP>ENTP</OPTION>
-									        <OPTION VALUE=INFJ>INFJ</OPTION>
-									        <OPTION VALUE=INFP>INFP</OPTION>
-									        <OPTION VALUE=ENFJ>ENFJ</OPTION>
-									        <OPTION VALUE=ENFP>ENFP</OPTION>
-									        <OPTION VALUE=ISTJ>ISTJ</OPTION>
-									        <OPTION VALUE=ISFJ>ISFJ</OPTION>
-									        <OPTION VALUE=ESTJ>ESTJ</OPTION>
-									        <OPTION VALUE=ESFJ>ESFJ</OPTION>
-									        <OPTION VALUE=ISTP>ISTP</OPTION>
-									        <OPTION VALUE=ISFP>ISFP</OPTION>
-									        <OPTION VALUE=ESTP>ESTP</OPTION>
-									        <OPTION VALUE=ESFP>ESFP</OPTION>
-							    		</SELECT>
-									</td>
-								</tr>	
-								<tr>
-									<td>
-										<label for="title">제목</label><input type="text" id="title" name="title" class="chk" title="제목을 입력하세요."/>
-									</td>
-								</tr>	
-								<tr>
-									<td>
-										<label for="content">내용</label><textarea id="content" name="content" class="chk" title="내용을 입력하세요."></textarea>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label for="writer">작성자</label><input type="text" id="writer" name="writer" class="chk" title="작성자를 입력하세요." value="${member.userName}" />
-									</td>
-								</tr>
-								<tr>
-								<tr>
-									<td id="fileIndex">
-									</td>
-								</tr>
-								<tr>
-									<td>						
-										<button class="write_btn" type="submit" id="submit">작성</button>	
-										<button class="fileAdd_btn" type="button">파일추가</button>	
-									</td>
-								</tr>	
-							</c:if>
-							<c:if test="${member.userID == null}">
-								<p>로그인 후에 작성하실 수 있습니다.</p>
-							</c:if>
-							
-						</tbody>			
-					</table>
+				
+					<div class="form-group">
+						<label for="category">카테고리</label>
+						<select id="category" name="category" class="chk form-control" title="카테고리를 선택해주세요.">
+				            <option value="">MBTI를 선택하세요</option>
+				            <option value="INTJ">INTJ</option>
+				            <option value="INTP">INTP</option>
+				            <option value="ENTJ">ENTJ</option>
+				            <option value="ENTP">ENTP</option>
+				            <option value="INFJ">INFJ</option>
+				            <option value="INFP">INFP</option>
+				            <option value="ENFJ">ENFJ</option>
+				            <option value="ENFP">ENFP</option>
+				            <option value="ISTJ">ISTJ</option>
+				            <option value="ISFJ">ISFJ</option>
+				            <option value="ESTJ">ESTJ</option>
+				            <option value="ESFJ">ESFJ</option>
+				            <option value="ISTP">ISTP</option>
+				            <option value="ISFP">ISFP</option>
+				            <option value="ESTP">ESTP</option>
+				            <option value="ESFP">ESFP</option>		            
+			            </select>
+					</div>
+					<div class="form-group">
+						<label for="title">제목</label>
+						<input type="text" id="title" name="title" class="chk form-control" placeholder="제목을 입력하세요." title="제목을 입력하세요."/>
+					</div>
+					<div class="form-group">
+						<label for="content">내용</label>
+						<textarea id="content" name="content" class="chk" placeholder="내용을 입력하세요." title="내용을 입력하세요." style="resize: none;"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="writer">작성자</label>
+						<input type="text" id="writer" name="writer" class="chk" title="작성자를 입력하세요." value="${member.userName}" />
+					</div>
+					<div class="form-group">
+						<label for="fileIndex">파일추가</label>
+						<div id="fileIndex" class="formcontrol">
+							<button class="fileAdd_btn btn btn-basic" type="button">파일추가</button>
+							<span></span>
+						</div>						
+					</div>
+					<div class="form-group form-btn">
+						<a href="/freeBosard/list" class="btn btn-danger">목록</a>
+						<button class="btn btn-success write_btn" type="submit">작성</button>
+					</div>
+					
 				</form>
 				
-			</section>
-			<hr />
-		</div>
-	</body>
-</html>
+			
+			</div><!-- //layout  -->
+		</div><!-- //contents  -->
+
+<jsp:include page="../footer.jsp"></jsp:include>

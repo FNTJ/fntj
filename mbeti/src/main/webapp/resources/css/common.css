@@ -5,12 +5,18 @@ a:hover, a:focus, a:visited{font-style:normal;text-decoration:none;background:no
 em{font-style:normal;}
 button{border:none;text-shadow:none;box-shadow:none;}
 li{list-style: none;}
+ol,ul{padding:0;}
 ::selection{background-color:transparent;}
 input:-internal-autofill-selected{background:transparent !important;}
-.btn, .btn:hover, .btn:focus{padding:10px 14px;margin:3px;font-family:'Noto Sans KR';font-weight:400;border:none;text-shadow:none;box-sizing: border-box;height: 40px;font-size: 14px;line-height: 1;}
+.btn, .btn:hover, .btn:focus{padding:10px 14px;margin:3px;font-family:'Noto Sans KR';font-weight:400;border:none;text-shadow:none;box-sizing: border-box;height: 40px;font-size: 14px;line-height:1;}
+.btn-sm, .btn-sm:hover, .btn-sm:focus{padding:7px;height:30px;font-size:13px;}
 .btn-success, .btn-success:hover, .btn-success:focus{background:#ff665b;}
 .btn-danger, .btn-danger:hover, .btn-danger:focus{background:#739af0;}
 .btn-primary, .btn-primary:hover, .btn-primary:focus{border:2px solid #ff665b;background:#fff;color:#ff665b;}
+
+.center{text-align:center;}
+.right{text-align:right;}
+.left{text-align:left;}
 
 .layout{max-width:1200px;margin:0 auto;}
 
@@ -25,7 +31,7 @@ input:-internal-autofill-selected{background:transparent !important;}
 .header .navbox .nav li{display:inline-block;}
 .header .navbox .nav li a{color:#000;font-size: 20px;font-weight: 600;letter-spacing: -0.5px;}
 .header .navbox .nav li a:hover,
-.header .navbox .nav li a:focus{background-color:none;}
+.header .navbox .nav li a:focus{background-color:transparent;}
 .header .navbox .nav li a span{font-family:'Pacifico';font-size:23px;}
 .header .top-right{position:absolute;right:4%;top: 0;}
 .header .top-right .login{display: inline-block;margin-right: 15px;vertical-align: middle;}

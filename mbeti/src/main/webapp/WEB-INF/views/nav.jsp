@@ -3,15 +3,15 @@
 	
 <div class="board-nav">
 
-	<div class="member-g">
+	<%-- <div class="member-g">
 		<c:if test="${member != null}">
 			<p>${member.userName}님 안녕하세요.</p>
 		</c:if>
-	</div>
+	</div> --%>
 	
-	<button href="/notice/list" class="btn btn-danger">목록</button>
+	<!-- <a href="/notice/list" class="btn btn-danger">목록</a> -->
 	<c:if test="${member != null}">
-		<button href="/notice/writeView" class="btn btn-success">글작성</button>
+		<a href="/notice/writeView" class="btn btn-success">글작성</a>
 	</c:if>
 	<%-- <li><button href="/notice/writeView" class="btn btn-success">글작성</button></li>
 	<li>

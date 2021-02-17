@@ -1,11 +1,17 @@
 @charset "utf-8";
 
 .form-group{margin-bottom:20px;}
+.form-group label{display:inline-block;vertical-align: middle;width: 15%;font-size: 17px;}
 .form-group select{border: 0;height: 40px;margin-right:10px;border-bottom: 2px solid #ddd;}
-.form-group select:focus{border: 0;height: 40px;border-bottom: 2px solid #000;} 
+.form-group select:focus{border: 0;height: 40px;border-bottom: 2px solid #000;}
+.form-group textarea{width:65%;min-height:150px;padding:10px;vertical-align:top;border:2px solid #ddd;}
+.form-group #writer{border:none;}
+.form-group .textview{padding:20px 0; border-top:1px solid #ddd;} 
+.form-group .form-control{display:inline-block;vertical-align: middle;width: 65%;}
 .form-control{height:40px;border:none;border-bottom:2px solid #dadada;background: transparent;box-shadow: none;border-radius: 0;transition:0.5;}
 .form-control:focus{border-color:none !important;border-bottom:2px solid #000;box-shadow:none;}
 .form-control::placeholder{font-family:'Noto Sans KR';color:#ddd;font-size:16px;font-weight:200;}
+.formcontrol{display:inline-block; width:65%;}
 .form-btn{margin-top: 70px;padding-top: 30px;border-top: 2px solid #ddd;text-align: center;}
 
 
@@ -30,8 +36,6 @@
 
 /* register */
 .register{max-width: 700px;margin:0 auto;padding-left: 150px;}
-.register label{display:inline-block;vertical-align: middle;width: 15%;font-size: 17px;}
-.register .form-control{display:inline-block;vertical-align: middle;width: 65%;}
 .register .form-group select{width: 65%;}
 .register #userBirthday{padding:0 10px;width:65%;border:1px solid #ddd;}
 
@@ -47,6 +51,20 @@
 
 .paging-box{text-align:center;}
 
+.board-tit{position:relative;}
+.board-tit .wdate{position:absolute;right:0;top:65px;text-align:right;}
+.board-tit .wdate span{position:relative;display:inline-block;margin-left:10px;color:##7d7d7d;font-size:15px;}
+.board-tit .wdate span .bx{color:#adadad;font-size:16px;margin-right:5px;}
+.board-tit .category{position:absolute;left: 0px;top: 65px;}
+.board-tit .category span{display:inline-block;padding: 5px 10px;border-radius:5px;background: #3f51b5;color: #fff;}
+
+#reply{padding:30px;margin:50px 0;background:#f9f9f9;}
+#reply .replyList li{padding:10px 0;margin-bottom:10px;border-bottom:1px solid #ddd;}
+#reply .replyList li:last-child{border:none;}
+#reply .btn-box{float:right;}
+#reply .replyForm{padding:10px;background:#fff;}
+#reply .reply-write{display:inline-block;width:100%;}
+
 /* search */
 .search-cont option{line-height:2;}
 .search-cont .mbtibox{margin-bottom:30px;}
@@ -55,7 +73,13 @@
 .search-cont .search-txtbox .seaerch-txt{display:block;font-size:15px;}
 .search-cont .search-item{display:inline-block;width:67%;}
 .search-cont .form-group{}
-.search-cont .form-group select{height:50px;font-size:18px;}
+.search-cont .form-group select{height:50px;width:100%;font-size:18px;font-weight:700;color:#000;}
+.search-cont .submitbox{width: 67%;margin-left: 29%;margin-top: 60px;}
+.search-cont .submitbox .btn{width:100%;min-height: 100px;font-size: 30px;border-radius: 20px;font-family:'Pacifico';}
+.search-cont .search-item input[type="radio"]{display:none;}
+.search-cont .search-item input[type="radio"] + label{display:inline-block;padding: 15px 20px;border-radius:50px;cursor:pointer;border:2px solid #ff665b;text-align: center;line-height: 1;margin-right: 10px;width: auto;}
+.search-cont .search-item input[type="radio"]:checked + label{background:#ff665b;color:#fff;border-color: #fff;}
+.search-cont .search-item input[type="radio"]:checked + label:before{display:inline-block;content:"\ec85";font-family:'boxicons'!important;font-size: 25px;font-weight: 500;vertical-align: middle;margin-right: 5px;}
 
 
 /* about */
