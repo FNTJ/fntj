@@ -49,6 +49,28 @@
 		<section id="container">
 			<form action="/user/memberUpdate" method="post">
 				<div class="form-group has-feedback">
+						<label class="control-label" for="mb">MBTI</label>
+						<SELECT id="mb" name="mb" SIZE=1 >
+					        <OPTION value="${member.mb}" >변경안함</OPTION>
+					        <OPTION VALUE=INTJ>INTJ</OPTION>
+					        <OPTION VALUE=INTP>INTP</OPTION>
+					        <OPTION VALUE=ENTJ>ENTJ</OPTION>
+					        <OPTION VALUE=ENTP>ENTP</OPTION>
+					        <OPTION VALUE=INFJ>INFJ</OPTION>
+					        <OPTION VALUE=INFP>INFP</OPTION>
+					        <OPTION VALUE=ENFJ>ENFJ</OPTION>
+					        <OPTION VALUE=ENFP>ENFP</OPTION>
+					        <OPTION VALUE=ISTJ>ISTJ</OPTION>
+					        <OPTION VALUE=ISFJ>ISFJ</OPTION>
+					        <OPTION VALUE=ESTJ>ESTJ</OPTION>
+					        <OPTION VALUE=ESFJ>ESFJ</OPTION>
+					        <OPTION VALUE=ISTP>ISTP</OPTION>
+					        <OPTION VALUE=ISFP>ISFP</OPTION>
+					        <OPTION VALUE=ESTP>ESTP</OPTION>
+					        <OPTION VALUE=ESFP>ESFP</OPTION>
+			    		</SELECT>
+					</div>
+				<div class="form-group has-feedback">
 					<label class="control-label" for="userID">아이디</label>
 					<input class="form-control" type="text" id="userID" name="userID" value="${member.userID}" readonly="readonly"/>
 				</div>

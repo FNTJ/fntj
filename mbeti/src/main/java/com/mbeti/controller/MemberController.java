@@ -18,6 +18,7 @@ import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.PageMaker;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.service.BoardService;
+import com.mbeti.service.FreeBoardService;
 import com.mbeti.service.MemberService;
 
 @Controller
@@ -31,6 +32,9 @@ public class MemberController {
 	
 	@Inject
 	MemberService service;
+	
+	@Inject
+	FreeBoardService fbservice;
 	
 	
 // 회원가입 get
@@ -47,15 +51,24 @@ public int idChk(MemberVO vo) throws Exception {
 	return result;
 }
 
+//닉네임 중복 체크
+@ResponseBody
+@RequestMapping(value="/user/nameChk", method = RequestMethod.POST)
+public int nameChk(MemberVO vo) throws Exception {
+	int result = service.nameChk(vo);
+	return result;
+}
+
 // 회원가입 post
 @RequestMapping(value = "/user/register", method = RequestMethod.POST)
 public String postRegister(MemberVO vo) throws Exception {
 	logger.info("post register");
 	int result = service.idChk(vo);
+	int result2 = service.nameChk(vo);
 	try {
-		if(result == 1) {
+		if(result == 1 || result2 == 1) {
 			return "/user/register";
-		}else if(result == 0) {
+		}else if(result == 0 || result2 == 0) {
 			service.register(vo);
 		}
 		// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
@@ -149,22 +162,42 @@ public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes 
 		return "/user/memberProfile";
 	}
 	
-	// 회원작성글
-		@RequestMapping(value = "/user/memberBoard", method = RequestMethod.GET)
-		public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
-			logger.info("list");
-			
-			model.addAttribute("list", boardService.list(scri));
-			
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(scri);
-			pageMaker.setTotalCount(boardService.listCount(scri));
-			
-			model.addAttribute("pageMaker", pageMaker);
-			
-			return "/user/memberBoard";
-			
-		}
+	/*
+	 * // 회원작성글 // 공지사항
+	 * 
+	 * @RequestMapping(value = "/user/memberBoard", method = RequestMethod.GET)
+	 * public String list(Model model, @ModelAttribute("scri") SearchCriteria scri)
+	 * throws Exception{ logger.info("list");
+	 * 
+	 * model.addAttribute("list", boardService.list(scri));
+	 * 
+	 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(scri);
+	 * pageMaker.setTotalCount(boardService.listCount(scri));
+	 * 
+	 * model.addAttribute("pageMaker", pageMaker);
+	 * 
+	 * return "/user/memberBoard";
+	 * 
+	 * }
+	 */
+	
+	// 회원작성글 // 커뮤니티
+	@RequestMapping(value = "/user/memberBoard", method = RequestMethod.GET)
+	public String list(Model model,@ModelAttribute("scri") SearchCriteria scri) throws Exception{
+		logger.info("fbList");
+		
+		model.addAttribute("fbList",fbservice.fbList(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(fbservice.listCount(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		
+		return "/user/memberBoard";
+		
+	}
 	
 	
 	

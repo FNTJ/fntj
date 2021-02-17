@@ -16,7 +16,7 @@
 		<div class="contents">
 			<%@include file="../nav.jsp" %>
 			<form action="/user/memberUpdateView">
-			<div class="form-group has-feedback">
+				<div class="form-group has-feedback">
 					<label class="control-label" for="userID">MBTI</label>
 					<input class="form-control" type="text" id="mb" name="mb" value="${member.mb}" readonly="readonly"/>
 				</div>
@@ -34,7 +34,27 @@
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userBirthday">생일</label>
-					<input class="form-control" type="text" id="userBirthday" name="userBirthday" value="${member.userEmail}"  readonly="readonly"/>
+					<input class="form-control" type="text" id="userBirthday" name="userBirthday" value="${member.userBirthday}"  readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="keyword1">키워드1</label>
+					<input class="form-control" type="text" id="keyword1" name="keyword1" value="${member.keyword1}" readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="keyword1">키워드2</label>
+					<input class="form-control" type="text" id="keyword2" name="keyword2" value="${member.keyword2}" readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="keyword1">키워드3</label>
+					<input class="form-control" type="text" id="keyword3" name="keyword3" value="${member.keyword3}" readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="keyword1">키워드4</label>
+					<input class="form-control" type="text" id="keyword4" name="keyword4" value="${member.keyword4}" readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="keyword1">키워드5</label>
+					<input class="form-control" type="text" id="keyword5" name="keyword5" value="${member.keyword5}" readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="regdate">회원가입일</label>
