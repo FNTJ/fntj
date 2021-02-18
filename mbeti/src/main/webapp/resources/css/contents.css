@@ -1,7 +1,7 @@
 @charset "utf-8";
 
-.form-group{margin-bottom:20px;}
-.form-group label{display:inline-block;vertical-align: middle;width: 15%;font-size: 17px;}
+.form-group{position:relative;/* padding-left:200px;  */margin-bottom:20px;}
+.form-group label{/* position:absolute;left:0;top:7px;  */display:inline-block;vertical-align: middle;width: 15%;font-size: 17px;}
 .form-group select{border: 0;height: 40px;margin-right:10px;border-bottom: 2px solid #ddd;}
 .form-group select:focus{border: 0;height: 40px;border-bottom: 2px solid #000;}
 .form-group textarea{width:65%;min-height:150px;padding:10px;vertical-align:top;border:2px solid #ddd;}
@@ -13,7 +13,7 @@
 .form-control::placeholder{font-family:'Noto Sans KR';color:#ddd;font-size:16px;font-weight:200;}
 .formcontrol{display:inline-block; width:65%;}
 .form-btn{margin-top: 70px;padding-top: 30px;border-top: 2px solid #ddd;text-align: center;}
-
+.form-width{padding:0;}
 
 /* login */
 .login-box{max-width:900px;margin:0 auto;}
@@ -47,7 +47,11 @@
 
 .table-board{text-align:center;}
 .table-board th{text-align:center;}
-.table-board .title{text-align:left;}
+.table-board .mbticate span{display:inline-block;min-width:50px;padding:3px 8px;border-radius:5px;color:#fff;}
+.table-board .mbticate[class*="IN"] span{background:#5a8ce6;}
+.table-board .mbticate[class*="IS"] span{background:#48b14d;}
+.table-board .mbticate[class*="EN"] span{background:#f44336;}
+.table-board .mbticate[class*="ES"] span{background:#ff9800;}
 
 .paging-box{text-align:center;}
 
@@ -56,7 +60,16 @@
 .board-tit .wdate span{position:relative;display:inline-block;margin-left:10px;color:##7d7d7d;font-size:15px;}
 .board-tit .wdate span .bx{color:#adadad;font-size:16px;margin-right:5px;}
 .board-tit .category{position:absolute;left: 0px;top: 65px;}
-.board-tit .category span{display:inline-block;padding: 5px 10px;border-radius:5px;background: #3f51b5;color: #fff;}
+.board-tit .category span{display:inline-block;padding: 5px 10px;border-radius:5px;color: #fff;}
+.board-tit .category span[class*="IN"]{background:#5a8ce6;}
+.board-tit .category span[class*="IS"]{background:#48b14d;}
+.board-tit .category span[class*="EN"]{background:#f44336;}
+.board-tit .category span[class*="ES"]{background:#ff9800;}
+.filewrap{display:inline-block;position:relative;}
+
+.fileAdd_btn{vertical-align:top;}
+.uploadbox{display:inline-block;width:80%;margin-left:30px;}
+.uploadbox .fileinput{display:inline-block;width:80%;}
 
 #reply{padding:30px;margin:50px 0;background:#f9f9f9;}
 #reply .replyList li{padding:10px 0;margin-bottom:10px;border-bottom:1px solid #ddd;}
