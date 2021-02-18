@@ -54,6 +54,7 @@
 .table-board .mbticate[class*="ES"] span{background:#ff9800;}
 
 .paging-box{text-align:center;}
+.paging-box .pagination li.info a{background:#337abe;color:#fff;}
 
 .board-tit{position:relative;}
 .board-tit .wdate{position:absolute;right:0;top:65px;text-align:right;}

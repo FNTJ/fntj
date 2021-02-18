@@ -1,22 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	
-<div class="board-nav">
+<%-- Context : <%= request.getContextPath() %><br>
+			URL : <%= request.getRequestURL() %><br>
+			Path : <%= request.getServletPath() %> --%>
+			
+<%-- <%
+	String usrl = request.getRequestURI(); 
+	String usrrl = request.getContextPath();
+	String usrrrl = request.getServletPath();
+%> --%>	
+<div class="pathwrap">
 
-	<%-- <div class="member-g">
-		<c:if test="${member != null}">
-			<p>${member.userName}님 안녕하세요.</p>
-		</c:if>
-	</div> --%>
+	<ul class="pathnav">
+		<li class="home">
+			<a href="/"><i class='bx bx-home-alt'></i></a>
+		</li>
+		<li class="sc"></li>
+	</ul>
 	
-	<!-- <a href="/notice/list" class="btn btn-danger">목록</a> -->
-	<c:if test="${member != null}">
-		<a href="/notice/writeView" class="btn btn-success">글작성</a>
-	</c:if>
-	<%-- <li><button href="/notice/writeView" class="btn btn-success">글작성</button></li>
-	<li>
-		<c:if test="${member != null}"><button href="/notice/logout" class="btn btn-primary">로그아웃</button></c:if>
-		<c:if test="${member == null}"><button href="/login" class="btn btn-primary">로그인</button></c:if>
-	</li> --%>
+	<script>	 
+	    var tempPageName = window.location.href;
+	    var strPageName = tempPageName.split("/");
+	    var pageName = strPageName[strPageName.length-2].split("?")[0];
+	    //var pname = strPageName[strPageName.length-1].split("?")[0];				
+		$(".pathnav .sc").append(pageName);	
+	</script>	
 	
 </div>

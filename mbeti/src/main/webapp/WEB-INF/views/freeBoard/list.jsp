@@ -8,7 +8,7 @@
 	<div class="contents">
 		<div class="layout">
 			<h2 class="h2">커뮤니티</h2>
-				
+			<jsp:include page="../nav.jsp"></jsp:include>	
 				<form role="form" method="get">
 					
 					<!-- search  -->

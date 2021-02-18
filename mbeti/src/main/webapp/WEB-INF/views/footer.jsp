@@ -2,7 +2,7 @@
 
 	<div class="footer">
 		<div class="layout">
-			<p>2021&copy; teamA FNTJ <br>with Kimtaeyeoun Sungyeounju Leehojin</p>
+			<p>2021&copy; teamA FNTJ <br>with Kimtaeyeon Sungyeounju Leehojin</p>
 		</div>
 	</div>
    	

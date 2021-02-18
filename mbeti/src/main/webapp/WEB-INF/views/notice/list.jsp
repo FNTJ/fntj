@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-	
+
+
+
 <jsp:include page="../header.jsp"></jsp:include>
 	
 	<!-- //contents  -->
 	<div class="contents">
 		<div class="layout">
 		<h2 class="h2">공지사항</h2>
-		
-			
-			
+			<jsp:include page="../nav.jsp"></jsp:include>
 			<form role="form" method="get">
 			
 				<!-- search  -->
