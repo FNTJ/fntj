@@ -62,8 +62,8 @@
 						<c:forEach items="${fbList}" var = "fbList">
 							<tr>
 								<td><c:out value="${fbList.bno}" /></td>
-								<td><c:out value="${fbList.category}" /></td>
-								<td>
+								<td class="mbticate ${fbList.category}"><span><c:out value="${fbList.category}" /></span></td>
+								<td class="left">
 									<a href="/freeBoard/readView?bno=${fbList.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">									
 									<c:out value="${fbList.title}" />
 									<c:if test="${fbList.replycnt > 0}">

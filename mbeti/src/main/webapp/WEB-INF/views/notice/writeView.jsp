@@ -30,7 +30,7 @@
 		var fileIndex = 1;
 		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' class='btn btn-basic' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+			$("#fileIndex").append("<div class='uploadbox'><input type='file' class='fileinput' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' class='btn btn-sm btn-basic' id='fileDelBtn'>"+"삭제"+"</button></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();
@@ -46,25 +46,26 @@
 		<div class="layout">
 		<h2 class="h2">공지사항 글작성</h2>
 	
-	
-				<form name="writeForm" method="post" action="/notice/write" enctype="multipart/form-data">
+				<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
+				
+				<form name="writeForm" method="post" action="/notice/write" enctype="multipart/form-data" onsubmit="return FormSubmit(this);">
 					<div class="form-group">
 						<label for="title">제목</label>
 						<input type="text" id="title" name="title" class="chk form-control" placeholder="제목을 입력하세요." title="제목을 입력하세요."/>
 					</div>
 					<div class="form-group">
 						<label for="content">내용</label>
-						<textarea id="content" name="content" class="chk" placeholder="내용을 입력하세요." title="내용을 입력하세요." style="resize: none;"></textarea>
+						<textarea id="content" name="content" class="chkc ckeditor" placeholder="내용을 입력하세요." title="내용을 입력하세요." style="resize: none;"></textarea>
+						
 					</div>
 					<div class="form-group">
 						<label for="writer">작성자</label>
 						<input type="text" id="writer" name="writer" class="chk" title="작성자를 입력하세요." value="${member.userName}" />
 					</div>
 					<div class="form-group">
-						<label for="fileIndex">파일추가</label>
+						<label for="fileIndex">파일추가</label>							
+						<button class="fileAdd_btn btn btn-basic" type="button">파일추가</button>
 						<div id="fileIndex" class="formcontrol">
-							<button class="fileAdd_btn btn btn-basic" type="button">파일추가</button>
-							<span></span>
 						</div>						
 					</div>
 					<div class="form-group form-btn">
@@ -77,3 +78,16 @@
 	</div><!-- //contents  -->
 
 <jsp:include page="../footer.jsp"></jsp:include>
+<script type="text/javascript">
+						CKEDITOR.replace('content');
+						//CKEDITOR.instances.content.updateElement();
+						
+						/* $("form").on("submit", function(e){
+						    $('textarea.ckeditor').each(function () {
+						       var $textarea = $(this);
+						       $textarea.val(CKEDITOR.instances[$textarea.attr('name')].getData());
+						    });
+						}); */
+						 //CKEDITOR.instances.content.updateElement();
+						 //CKEDITOR.instances.content.getData();
+						</script>

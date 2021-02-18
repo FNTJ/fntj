@@ -47,7 +47,7 @@
 		var fileIndex = 1;
 		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+			$("#fileIndex").append("<div class='uploadbox'><input type='file' class='fileinput' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' class='btn btn-sm btn-basic' id='fileDelBtn'>"+"삭제"+"</button></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();
@@ -116,13 +116,15 @@
 					</div>
 					<div class="form-group">
 						<label for="fileIndex">파일</label>
-						<c:forEach var="file" items="${file}" varStatus="var">
+						<button type="button" class="fileAdd_btn btn btn-basic">파일추가</button>
 						<div id="fileIndex" class="formcontrol">
-							<button type="button" class="fileAdd_btn btn btn-basic">파일추가</button>
+						</div>
+						<c:forEach var="file" items="${file}" varStatus="var">						
+						<div id="filereup" class="formcontrol">							
 							<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.fno }">
 							<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
-							<a href="#" id="fileName" onclick="return false;">${file.org_fname}</a>(${file.fsize}kb)
-							<button id="fileDel" onclick="fn_del('${file.fno}','FILE_NO_${var.index}');" type="button" class=" btn btn-primary">삭제</button><br>
+							<a href="#" id="fileName" onclick="return false;">${file.org_fname}</a>(${file.fsize}KB)
+							<button id="fileDel" onclick="fn_del('${file.fno}','FILE_NO_${var.index}');" type="button" class=" btn btn-sm btn-basic">삭제</button><br>
 						</div>
 						</c:forEach>					
 					</div>

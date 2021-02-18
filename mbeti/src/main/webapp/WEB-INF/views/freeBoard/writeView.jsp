@@ -33,7 +33,7 @@
 		var fileIndex = 1;
 		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+			$("#fileIndex").append("<div class='uploadbox'><input type='file' class='fileinput' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' class='btn btn-sm btn-basic' id='fileDelBtn'>"+"삭제"+"</button></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();
@@ -85,9 +85,8 @@
 					</div>
 					<div class="form-group">
 						<label for="fileIndex">파일추가</label>
+						<button class="fileAdd_btn btn btn-basic" type="button">파일추가</button>
 						<div id="fileIndex" class="formcontrol">
-							<button class="fileAdd_btn btn btn-basic" type="button">파일추가</button>
-							<span></span>
 						</div>						
 					</div>
 					<div class="form-group form-btn">

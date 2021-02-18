@@ -3,8 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
 <jsp:include page="../header.jsp"></jsp:include>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
 <script type="text/javascript">
 	$(document).ready(function(){
 		var formObj = $("form[name='readForm']");
@@ -80,8 +79,6 @@
 	
 	
 </script>
-
-
 	<!-- //contents  -->
 	<div class="contents">
 		<div class="layout">
@@ -101,15 +98,17 @@
 				<span class="writer"><i class='bx bx-pencil' ></i>${member.userName}</span>
 			</div> 
 		</div>
-						
-		<span>파일 목록</span>
-		<div class="form-group">
-			<c:forEach var="file" items="${file}">
-				<a href="#" onclick="fn_fileDown('${file.fno}'); return false;">${file.org_fname}</a>(${file.fsize})<br>
-			</c:forEach>
-		</div>				
+		
+		<div class="filewrap">	
+			<span>파일 목록</span>
+			<div class="form-group">
+				<c:forEach var="file" items="${file}">
+					<a href="#" onclick="fn_fileDown('${file.fno}'); return false;">${file.org_fname}</a>(${file.fsize}KB)<br>
+				</c:forEach>
+			</div>				
+		</div>
 			
-		<div class="form-group">
+		<div class="form-group form-width">
 			<div class="textview"><c:out value="${read.content}" /></div>				
 		</div>
 							

@@ -105,21 +105,23 @@
 				</div> 
 			</div>
 			
-			<span>파일 목록</span>
-			<div class="form-group">
-				<c:forEach var="file" items="${file}">
-					<a href="#" onclick="fn_fileDown('${file.fno}'); return false;">${file.org_fname}</a>(${file.fsize})<br>
-				</c:forEach>
-			</div>	
+			<div class="filewrap">
+				<span>파일 목록</span>
+				<div class="form-group">
+					<c:forEach var="file" items="${file}">
+						<a href="#" onclick="fn_fileDown('${file.fno}'); return false;">${file.org_fname}</a>(${file.fsize}KB)<br>
+					</c:forEach>
+				</div>	
+			</div>
 			
-			<div class="form-group">
+			<div class="form-group form-width">
 				<div class="textview"><c:out value="${fbRead.content}" /></div>				
 			</div>
 			
 			<div class="form-group form-btn">
 				<button type="button" class="list_btn btn btn-danger">목록</button>
 				<!-- 본인이 작성한 글만 수정/삭제 가능 -->
-				<c:if test="${member.userName == read.writer}"> 
+				<c:if test="${member.userName == fbRead.writer}"> 
 					<button type="button" class="update_btn btn btn-success">수정</button>
 					<button type="button" class="delete_btn btn btn-primary">삭제</button>
 				</c:if>					

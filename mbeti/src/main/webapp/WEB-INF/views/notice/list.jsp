@@ -62,7 +62,7 @@
 					<c:forEach items="${list}" var = "list">
 						<tr>
 							<td><c:out value="${list.bno}" /></td>
-							<td class="title">
+							<td class="left">
 								<a href="/notice/readView?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">
 								<c:out value="${list.title}" />
 								<c:if test="${list.replycnt > 0}">
