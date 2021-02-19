@@ -338,9 +338,11 @@
 		              		</ul>
 			            </div>			            
 		            </div>
-		            <div class="form-group">
+		            <div class="form-group fa">
 		            	<label class="control-label" for="keyword2">키워드입력</label>
 		             	<input class="form-control" type="text" id="keyword2" name="keyword2" placeholder="추가하고싶은 키워드를 입력하세요"/>
+		             	<input class="form-control" type="text" id="keyword4" name="keyword4" placeholder="추가하고싶은 키워드를 입력하세요"/>
+		             	<input class="form-control" type="text" id="keyword5" name="keyword5" placeholder="추가하고싶은 키워드를 입력하세요"/>
                  	</div>
 	           </div>
 	           
