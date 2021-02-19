@@ -83,7 +83,7 @@
 						<a href="/login" class="mypage-btn"><i class='bx bx-user-circle' ></i>login</a>
 					</c:if>
 					<c:if test="${member != null}">
-						<a href="/user/memberUpdateView" class="mypage-btn"><i class='bx bx-user-circle' ></i>mypage</a>
+						<a href="/user/memberProfile" class="mypage-btn"><i class='bx bx-user-circle' ></i>mypage</a>
 					</c:if>
 					
 				</div>				
