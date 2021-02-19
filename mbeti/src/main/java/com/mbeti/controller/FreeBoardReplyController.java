@@ -40,6 +40,7 @@ public String replyWrite(FreeBoardReplyVO vo, SearchCriteria scri, RedirectAttri
 	rttr.addAttribute("page", scri.getPage());
 	rttr.addAttribute("perPageNum", scri.getPerPageNum());
 	rttr.addAttribute("searchType", scri.getSearchType());
+	rttr.addAttribute("category", scri.getCategory());
 	rttr.addAttribute("keyword", scri.getKeyword());
 	
 	return "redirect:/freeBoard/readView";

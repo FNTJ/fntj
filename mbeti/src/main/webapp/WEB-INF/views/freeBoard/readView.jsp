@@ -37,9 +37,10 @@
 		// 목록
 		$(".list_btn").on("click", function(){
 		
-		location.href = "/freeBoard/list?page=${scri.page}"
+		location.href = 
+		"/freeBoard/list?page=${scri.page}"
 		+"&perPageNum=${scri.perPageNum}"
-		+"&searchType=${scri.searchType}&keyword=${scri.keyword}";
+		+"&searchType=${scri.searchType}&category=${scri.category}&keyword=${scri.keyword}";
 		})
 		
 		// 댓글 작성
@@ -55,6 +56,7 @@
 							+ "&page=${scri.page}"
 							+ "&perPageNum=${scri.perPageNum}"
 							+ "&searchType=${scri.searchType}"
+							+ "&category=${scri.category}"
 							+ "&keyword=${scri.keyword}"
 							+ "&rno="+$(this).attr("data-rno");
 		});
@@ -65,6 +67,7 @@
 				+ "&page=${scri.page}"
 				+ "&perPageNum=${scri.perPageNum}"
 				+ "&searchType=${scri.searchType}"
+				+ "&category=${scri.category}"
 				+ "&keyword=${scri.keyword}"
 				+ "&rno="+$(this).attr("data-rno");
 		});
@@ -90,6 +93,7 @@
 				<input type="hidden" id="page" name="page" value="${scri.page}"> 
 		  	    <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
 			    <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+			    <input type="hidden" id="category" name="category" value="${scri.category}"> 
 			    <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 				<input type="hidden" id="fno" name="fno" value="">
 			</form>
