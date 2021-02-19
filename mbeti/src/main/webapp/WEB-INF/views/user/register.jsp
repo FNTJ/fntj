@@ -236,16 +236,16 @@
                </div>
                <div class="form-group">
                   <label class="control-label" for="userID">아이디</label>
-                  <input class="form-control" type="text" id="userID" name="userID"  maxlength="30" placeholder="아이디를 입력하세요"/>
+                  <input class="form-control" type="text" id="userID" name="userID"  maxlength="30" placeholder="* 아이디는 4~12자의 대소문자와 숫자로만 입력 가능합니다"/>
                   <button class="idChk btn btn-primary" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                </div>
                <div class="form-group">
                   <label class="control-label" for="userPassword">비밀번호</label>
-                  <input class="form-control" type="password" id="userPassword" name="userPassword" maxlength="30" placeholder="비밀번호를 입력하세요"/>
+                  <input class="form-control" type="password" id="userPassword" name="userPassword" maxlength="30" placeholder="* 비밀번호는 8~16자의 문자를 입력해주세요"/>
                </div>
                <div class="form-group">
                   <label class="control-label" for="userPassword2">비밀번호확인</label>
-                  <input class="form-control" type="password" id="userPassword2" name="userPassword2" maxlength="30"/>
+                  <input class="form-control" type="password" id="userPassword2" name="userPassword2" maxlength="30" placeholder="비밀번호를 확인해주세요"/>
                </div>
                <div class="form-group">
                   <label class="control-label" for="userName">닉네임</label>

@@ -46,6 +46,7 @@
 		<div class="contents">
 			<div class="layout">
 			<h2 class="h2">커뮤니티 글작성</h2>
+			<jsp:include page="../nav.jsp"></jsp:include>
 			
 				<form name="writeForm" method="post" action="/freeBoard/write" enctype="multipart/form-data">
 				

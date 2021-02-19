@@ -21,6 +21,7 @@
 				   + "&page=${scri.page}"
 				   + "&perPageNum=${scri.perPageNum}"
 				   + "&searchType=${scri.searchType}"
+				   + "&category=${scri.category}"
 				   + "&keyword=${scri.keyword}";
 		})
 		
@@ -69,6 +70,7 @@
 		<div class="contents">
 			<div class="layout">
 				<h2 class="h2">공지사항 글 수정</h2>	
+				<jsp:include page="../nav.jsp"></jsp:include>
 		
 				<form name="updateForm" role="form" method="post" action="/freeBoard/update" enctype="multipart/form-data">
 					<input type="hidden" name="bno" value="${fbUpdate.bno}" readonly="readonly"/>
@@ -134,7 +136,7 @@
 					</div>					
 					<div class="form-group form-btn">
 						<button type="submit" class="cancel_btn btn btn-basic">취소</button>
-						<a href="/notice/list" class="btn btn-danger">목록</a>
+						<a href="/freeBoard/list" class="btn btn-danger">목록</a>
 						<button type="submit" class="update_btn btn btn-success">저장</button>
 					</div>
 				</form>

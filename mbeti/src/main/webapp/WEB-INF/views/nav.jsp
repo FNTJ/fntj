@@ -16,14 +16,16 @@
 			<a href="/"><i class='bx bx-home-alt'></i></a>
 		</li>
 		<li class="sc"></li>
+		<li class="sr"></li>
 	</ul>
 	
 	<script>	 
 	    var tempPageName = window.location.href;
 	    var strPageName = tempPageName.split("/");
 	    var pageName = strPageName[strPageName.length-2].split("?")[0];
-	    //var pname = strPageName[strPageName.length-1].split("?")[0];				
-		$(".pathnav .sc").append(pageName);	
+	    var pname = strPageName[strPageName.length-1].split("?")[0];				
+		$(".pathnav .sc").append(pageName);
+		$(".pathnav .sr").append(pname);
 	</script>	
 	
 </div>

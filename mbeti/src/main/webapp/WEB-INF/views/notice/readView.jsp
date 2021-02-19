@@ -93,6 +93,9 @@
 		</form>	
 		<div class="board-tit">
 			<h2 class="h2">${read.title}</h2> <!-- 제목 -->
+			<jsp:include page="../nav.jsp"></jsp:include>
+			
+			
 			<div class="wdate"> <!-- 작성자/작성일자 -->
 				<span class="date"><i class='bx bx-calendar'></i><fmt:formatDate value="${read.date}" pattern="yyyy-MM-dd HH:mm" /></span>
 				<span class="writer"><i class='bx bx-pencil' ></i>${member.userName}</span>

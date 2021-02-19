@@ -9,6 +9,7 @@
    <div class="contents">
       <div class="layout">
       <h2 class="h2">회원정보</h2>
+      <jsp:include page="../nav.jsp"></jsp:include>
       	
 		<div class="register">
 			<form action="/user/memberUpdateView">

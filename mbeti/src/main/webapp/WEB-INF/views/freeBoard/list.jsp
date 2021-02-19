@@ -12,10 +12,33 @@
 				<form role="form" method="get">
 					
 					<!-- search  -->
+					
 					<div class="search">
+						<div class="category sbox col-xs-2 col-sm-2">
+			                <SELECT id="category" name="category" SIZE=1 class="category form-control">
+								<OPTION value=all>전체</OPTION>
+								<OPTION VALUE=INTJ>INTJ</OPTION>
+								<OPTION VALUE=INTP>INTP</OPTION>
+								<OPTION VALUE=ENTJ>ENTJ</OPTION>
+								<OPTION VALUE=ENTP>ENTP</OPTION>
+								<OPTION VALUE=INFJ>INFJ</OPTION>
+								<OPTION VALUE=INFP>INFP</OPTION>
+								<OPTION VALUE=ENFJ>ENFJ</OPTION>
+								<OPTION VALUE=ENFP>ENFP</OPTION>
+								<OPTION VALUE=ISTJ>ISTJ</OPTION>
+								<OPTION VALUE=ISFJ>ISFJ</OPTION>
+								<OPTION VALUE=ESTJ>ESTJ</OPTION>
+								<OPTION VALUE=ESFJ>ESFJ</OPTION>
+								<OPTION VALUE=ISTP>ISTP</OPTION>
+								<OPTION VALUE=ISFP>ISFP</OPTION>
+								<OPTION VALUE=ESTP>ESTP</OPTION>
+								<OPTION VALUE=ESFP>ESFP</OPTION>
+			                </SELECT>
+						</div>
+						
 						<div class="sbox col-xs-2 col-sm-2">
-							<select name="searchType" class="form-control">
-								<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+							<select name="searchType" id="searchType" class="form-control">
+								<option value="nl"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
 								<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 								<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 								<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
@@ -31,10 +54,12 @@
 						<script>
 							 $(function(){
 								 $('#searchBtn').click(function() {
-									 self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+									 self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $('#searchType').val()
+									 + "&category=" + $('#category').val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 								 });
 							 });   
 						</script>
+						
 					</div>
 					<!-- //search -->
 					
@@ -64,7 +89,7 @@
 								<td><c:out value="${fbList.bno}" /></td>
 								<td class="mbticate ${fbList.category}"><span><c:out value="${fbList.category}" /></span></td>
 								<td class="left">
-									<a href="/freeBoard/readView?bno=${fbList.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">									
+									<a href="/freeBoard/readView?bno=${fbList.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&category=${scri.category}&keyword=${scri.keyword}">									
 									<c:out value="${fbList.title}" />
 									<c:if test="${fbList.replycnt > 0}">
 									<span style="color: red;">(${fbList.replycnt})</span>

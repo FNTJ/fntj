@@ -66,8 +66,9 @@
 
 	<div class="contents">
 		<div class="layout">
-		<h2 class="h2">공지사항 글 수정</h2>			
-<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
+		<h2 class="h2">공지사항 글 수정</h2>	
+		<jsp:include page="../nav.jsp"></jsp:include>		
+		<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
 				<form name="updateForm" role="form" method="post" action="/board/update" enctype="multipart/form-data">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 

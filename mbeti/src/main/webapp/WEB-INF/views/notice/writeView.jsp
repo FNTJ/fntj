@@ -45,6 +45,7 @@
 	<div class="contents">
 		<div class="layout">
 		<h2 class="h2">공지사항 글작성</h2>
+		<jsp:include page="../nav.jsp"></jsp:include>
 	
 				<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
 				

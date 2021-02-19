@@ -23,7 +23,11 @@
 		UPDATE tbl_USER SET
 		mb = #{mb},
 		userPassword = #{userPassword},
-		userName = #{userName}
+		keyword1 = #{keyword1},
+		keyword2 = #{keyword2},
+		keyword3 = #{keyword3},
+		keyword4 = #{keyword4},
+		keyword5 = #{keyword5}
 		WHERE userID = #{userID}
 	</update>
 
