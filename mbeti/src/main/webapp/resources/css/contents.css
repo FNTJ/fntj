@@ -1,7 +1,9 @@
 @charset "utf-8";
 
-.form-group{position:relative;/* padding-left:200px;  */margin-bottom:20px;}
-.form-group label{/* position:absolute;left:0;top:7px;  */display:inline-block;vertical-align: middle;width: 17%;font-size: 17px;}
+.form-group{position:relative;margin-bottom:20px;}
+.form-group label{display:inline-block;vertical-align: middle;width: 17%;font-size: 17px;}
+.form-group.fa{padding-left:130px;}
+.form-group.fa label{position:absolute;left:0;top:7px;}
 .form-group select{border: 0;height: 40px;margin-right:10px;border-bottom: 2px solid #ddd;}
 .form-group select:focus{border: 0;height: 40px;border-bottom: 2px solid #000;}
 .form-group textarea{width:65%;min-height:150px;padding:10px;vertical-align:top;border:2px solid #ddd;}
@@ -49,10 +51,17 @@
 .register .keyword-box .keyword-tit span{display:block;font-size: 20px;}
 .register .keyword-box .keyword-tit .tit-name{font-weight: 800;font-size: 25px;color: #ff665b;display: inline-block;margin-right: 5px;}
 .register .keyword-box .keyword-cont .keyword-item{display:block;margin-bottom:5px; text-align: center;}
-.register .keyword-box .keyword-cont .keyword-item .keyword-img{display: block;width: 170px;height: 170px;margin: 20px auto;background: #ddd;border-radius: 50%;overflow: hidden;}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img{display: block;width: 230px;height: 230px;margin: 10px auto;overflow: hidden;}
 .register .keyword-box .keyword-cont .keyword-item .keyword-txt{font-size: 17px;}
 .register .keyword-box .keyword-cont .keyword-key:before{display:inline-block;content:'#';}
-.register .keyword-box .keyword-cont .keyword-item .keyword-img.k1{}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k1{background:url(/resources/images/content/keyimg_01.jpg);}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k2{background:url(/resources/images/content/keyimg_02.jpg);}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k3{background:url(/resources/images/content/keyimg_03.jpg);}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k4{background:url(/resources/images/content/keyimg_04.jpg);}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k5{background:url(/resources/images/content/keyimg_05.jpg);}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k6{background:url(/resources/images/content/keyimg_06.jpg);}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k7{background:url(/resources/images/content/keyimg_07.jpg);}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k8{background:url(/resources/images/content/keyimg_08.jpg);}
 
 
 /* board */

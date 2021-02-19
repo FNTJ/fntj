@@ -20,9 +20,11 @@
 					<div class="keyword-cont">
 						<div class="keyword-item">
 							<span class="keyword-img ${member.keyword3}"></span>
-							<span class="keyword-txt">${member.keyword1}</span>
+							<span class="keyword-txt">${member.keyword1}</span>							
 						</div>
 						<span class="keyword-key">${member.keyword2}</span>
+						<span class="keyword-key">${member.keyword4}</span>
+						<span class="keyword-key">${member.keyword5}</span>
 					</div>
 				</div>
 				
