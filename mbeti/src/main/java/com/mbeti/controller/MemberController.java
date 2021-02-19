@@ -79,6 +79,8 @@ public String postRegister(MemberVO vo) throws Exception {
 	return "redirect:/";
 }
 
+
+
 //로그인 POST
 @RequestMapping(value = "/user/login", method = RequestMethod.POST)
 public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
@@ -198,6 +200,8 @@ public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes 
 		return "/user/memberBoard";
 		
 	}
+	
+	
 	
 	
 	

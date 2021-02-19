@@ -14,9 +14,11 @@ input:-internal-autofill-selected{background:transparent !important;}
 .btn-danger, .btn-danger:hover, .btn-danger:focus{background:#739af0;}
 .btn-primary, .btn-primary:hover, .btn-primary:focus{border:2px solid #ff665b;background:#fff;color:#ff665b;}
 
-.center{text-align:center;}
-.right{text-align:right;}
-.left{text-align:left;}
+.center{text-align:center !important;}
+.right{text-align:right !important;}
+.left{text-align:left !important;}
+.floatl{float:left;}
+.floatr{float:right;}
 
 .layout{position:relative; max-width:1200px;margin:0 auto;}
 

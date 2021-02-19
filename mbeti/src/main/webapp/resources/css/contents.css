@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .form-group{position:relative;/* padding-left:200px;  */margin-bottom:20px;}
-.form-group label{/* position:absolute;left:0;top:7px;  */display:inline-block;vertical-align: middle;width: 15%;font-size: 17px;}
+.form-group label{/* position:absolute;left:0;top:7px;  */display:inline-block;vertical-align: middle;width: 17%;font-size: 17px;}
 .form-group select{border: 0;height: 40px;margin-right:10px;border-bottom: 2px solid #ddd;}
 .form-group select:focus{border: 0;height: 40px;border-bottom: 2px solid #000;}
 .form-group textarea{width:65%;min-height:150px;padding:10px;vertical-align:top;border:2px solid #ddd;}
@@ -10,7 +10,7 @@
 .form-group .form-control{display:inline-block;vertical-align: middle;width: 65%;}
 .form-control{height:40px;border:none;border-bottom:2px solid #dadada;background: transparent;box-shadow: none;border-radius: 0;transition:0.5;}
 .form-control:focus{border-color:none !important;border-bottom:2px solid #000;box-shadow:none;}
-.form-control::placeholder{font-family:'Noto Sans KR';color:#ddd;font-size:16px;font-weight:200;}
+.form-control::placeholder{font-family:'Noto Sans KR';color:#c3c3c3;font-size:16px;font-weight:200;}
 .formcontrol{display:inline-block; width:65%;}
 .form-btn{margin-top: 70px;padding-top: 30px;border-top: 2px solid #ddd;text-align: center;}
 .form-width{padding:0;}
@@ -35,9 +35,24 @@
 
 
 /* register */
-.register{max-width: 700px;margin:0 auto;padding-left: 150px;}
+.register{max-width: 900px;margin:0 auto;padding-left: 150px;}
 .register .form-group select{width: 65%;}
 .register #userBirthday{padding:0 10px;width:65%;border:1px solid #ddd;}
+.register .search-cont{margin:20px 0;}
+.register .search-cont .search-item{width:100%;text-align:center;}
+.register .search-cont .search-item .searchobj li{display:inline;}
+.register .search-cont .search-item input[type="radio"] + label{position:relative; width:23%;height:60px;padding:18px 5px;font-size:16px;}
+.register .search-cont .search-item input[type="radio"]:checked + label{padding-left: 30px;}
+.register .search-cont .search-item input[type="radio"]:checked + label:before{position:absolute;left: 14px;top: 16px;}
+.register .keyword-box{margin-bottom:30px;color:#000;text-align: center;}
+.register .keyword-box .keyword-tit{text-align: center;}
+.register .keyword-box .keyword-tit span{display:block;font-size: 20px;}
+.register .keyword-box .keyword-tit .tit-name{font-weight: 800;font-size: 25px;color: #ff665b;display: inline-block;margin-right: 5px;}
+.register .keyword-box .keyword-cont .keyword-item{display:block;margin-bottom:5px; text-align: center;}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img{display: block;width: 170px;height: 170px;margin: 20px auto;background: #ddd;border-radius: 50%;overflow: hidden;}
+.register .keyword-box .keyword-cont .keyword-item .keyword-txt{font-size: 17px;}
+.register .keyword-box .keyword-cont .keyword-key:before{display:inline-block;content:'#';}
+.register .keyword-box .keyword-cont .keyword-item .keyword-img.k1{}
 
 
 /* board */
@@ -91,9 +106,9 @@
 .search-cont .submitbox{width: 67%;margin-left: 29%;margin-top: 60px;}
 .search-cont .submitbox .btn{width:100%;min-height: 100px;font-size: 30px;border-radius: 20px;font-family:'Pacifico';}
 .search-cont .search-item input[type="radio"]{display:none;}
-.search-cont .search-item input[type="radio"] + label{display:inline-block;padding: 15px 20px;border-radius:50px;cursor:pointer;border:2px solid #ff665b;text-align: center;line-height: 1;margin-right: 10px;width: auto;}
+.search-cont .search-item input[type="radio"] + label{display:inline-block;padding: 15px 20px;border-radius:50px;cursor:pointer;border:2px solid #ff665b;text-align: center;line-height: 1;margin-right: 10px;width: auto;transition:0.3s;}
 .search-cont .search-item input[type="radio"]:checked + label{background:#ff665b;color:#fff;border-color: #fff;}
-.search-cont .search-item input[type="radio"]:checked + label:before{display:inline-block;content:"\ec85";font-family:'boxicons'!important;font-size: 25px;font-weight: 500;vertical-align: middle;margin-right: 5px;}
+.search-cont .search-item input[type="radio"]:checked + label:before{display:inline-block;content:"\ec85";font-family:'boxicons'!important;font-size: 25px;font-weight: 500;vertical-align: middle;margin-right: 5px;color:#fff;}
 
 
 /* about */

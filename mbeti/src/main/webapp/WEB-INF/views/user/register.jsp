@@ -212,103 +212,158 @@
          <div class="register">            
             
             <form action="/user/register" method="post">
-               <div class="form-group has-feedback">
+               <div class="form-group">
                   <label class="control-label" for="mb">MBTI</label>
-                  <SELECT id="mb" name="mb" SIZE=1>
-                       <OPTION VALUE=---->-------</OPTION>
-                       <OPTION VALUE=INTJ>INTJ</OPTION>
-                       <OPTION VALUE=INTP>INTP</OPTION>
-                       <OPTION VALUE=ENTJ>ENTJ</OPTION>
-                       <OPTION VALUE=ENTP>ENTP</OPTION>
-                       <OPTION VALUE=INFJ>INFJ</OPTION>
-                       <OPTION VALUE=INFP>INFP</OPTION>
-                       <OPTION VALUE=ENFJ>ENFJ</OPTION>
-                       <OPTION VALUE=ENFP>ENFP</OPTION>
-                       <OPTION VALUE=ISTJ>ISTJ</OPTION>
-                       <OPTION VALUE=ISFJ>ISFJ</OPTION>
-                       <OPTION VALUE=ESTJ>ESTJ</OPTION>
-                       <OPTION VALUE=ESFJ>ESFJ</OPTION>
-                       <OPTION VALUE=ISTP>ISTP</OPTION>
-                       <OPTION VALUE=ISFP>ISFP</OPTION>
-                       <OPTION VALUE=ESTP>ESTP</OPTION>
-                       <OPTION VALUE=ESFP>ESFP</OPTION>
-                   </SELECT>
+                  <select id="mb" name="mb" SIZE=1>
+                       <option value=---->MBTI를 선택하세요</option>
+                        <option value="INTJ">INTJ</option>
+			            <option value="INTP">INTP</option>
+			            <option value="ENTJ">ENTJ</option>
+			            <option value="ENTP">ENTP</option>
+			            <option value="INFJ">INFJ</option>
+			            <option value="INFP">INFP</option>
+			            <option value="ENFJ">ENFJ</option>
+			            <option value="ENFP">ENFP</option>
+			            <option value="ISTJ">ISTJ</option>
+			            <option value="ISFJ">ISFJ</option>
+			            <option value="ESTJ">ESTJ</option>
+			            <option value="ESFJ">ESFJ</option>
+			            <option value="ISTP">ISTP</option>
+			            <option value="ISFP">ISFP</option>
+			            <option value="ESTP">ESTP</option>
+			            <option value="ESFP">ESFP</option>	
+                   </select>
                </div>
-               <div class="form-group has-feedback">
+               <div class="form-group">
                   <label class="control-label" for="userID">아이디</label>
-                  <input class="form-control" type="text" id="userID" name="userID"  maxlength="30"/>
+                  <input class="form-control" type="text" id="userID" name="userID"  maxlength="30" placeholder="아이디를 입력하세요"/>
                   <button class="idChk btn btn-primary" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                </div>
-               <div class="form-group has-feedback">
+               <div class="form-group">
                   <label class="control-label" for="userPassword">비밀번호</label>
-                  <input class="form-control" type="password" id="userPassword" name="userPassword" maxlength="30"/>
+                  <input class="form-control" type="password" id="userPassword" name="userPassword" maxlength="30" placeholder="비밀번호를 입력하세요"/>
                </div>
-               <div class="form-group has-feedback">
+               <div class="form-group">
                   <label class="control-label" for="userPassword2">비밀번호확인</label>
                   <input class="form-control" type="password" id="userPassword2" name="userPassword2" maxlength="30"/>
                </div>
-               <div class="form-group has-feedback">
+               <div class="form-group">
                   <label class="control-label" for="userName">닉네임</label>
-                  <input class="form-control" type="text" id="userName" name="userName" maxlength="30"/>
+                  <input class="form-control" type="text" id="userName" name="userName" maxlength="30" placeholder="닉네임을 입력하세요"/>
                   <button class="nameChk btn btn-primary" type="button" id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
                </div>
-               <div class="form-group has-feedback">
+               <div class="form-group">
                   <label class="control-label" for="userEmail">이메일</label>
-                  <input class="form-control" type="text" id="userEmail" name="userEmail" maxlength="50"/>
-                  <span>ex)example@gmail.com</span>
+                  <input class="form-control" type="text" id="userEmail" name="userEmail" maxlength="50" placeholder="example@gmail.com"/>
                </div>
-               <div class="form-group has-feedback">
+               <div class="form-group">
                   <label class="control-label" for="userBirthday">생일</label>
                   <input type="date" id="userBirthday" name="userBirthday" />
                </div>
-               <div class="form-group has-feedback">
-                  <label class="control-label" for="keyword1">관심분야1</label>
-                  <input type="radio" id="keyword1" name="keyword1" value="선택안함" checked="checked">선택안함
-                  <input type="radio" id="keyword1" name="keyword1" value="사무">사무
-                  <input type="radio" id="keyword1" name="keyword1" value="경영" >경영
-                  <input type="radio" id="keyword1" name="keyword1" value="제조" >제조
-                  <input type="radio" id="keyword1" name="keyword1" value="IT">IT
-                  <input type="radio" id="keyword1" name="keyword1" value="회계">회계
-               </div>
-               <div class="form-group has-feedback">
-                  <label class="control-label" for="keyword2">관심분야2</label>
-                  <input type="radio" id="keyword2" name="keyword2" value="선택안함" checked="checked">선택안함
-                  <input type="radio" id="keyword2" name="keyword2" value="사무">사무
-                  <input type="radio" id="keyword2" name="keyword2" value="경영" >경영
-                  <input type="radio" id="keyword2" name="keyword2" value="제조" >제조
-                  <input type="radio" id="keyword2" name="keyword2" value="IT">IT
-                  <input type="radio" id="keyword2" name="keyword2" value="회계">회계
-               </div>
-               <div class="form-group has-feedback">
-                  <label class="control-label" for="keyword3">관심분야3</label>
-                  <input type="radio" id="keyword3" name="keyword3" value="선택안함" checked="checked">선택안함
-                  <input type="radio" id="keyword3" name="keyword3" value="사무">사무
-                  <input type="radio" id="keyword3" name="keyword3" value="경영" >경영
-                  <input type="radio" id="keyword3" name="keyword3" value="제조" >제조
-                  <input type="radio" id="keyword3" name="keyword3" value="IT">IT
-                  <input type="radio" id="keyword3" name="keyword3" value="회계">회계
-               </div>
-               <div class="form-group has-feedback">
-                  <label class="control-label" for="keyword4">관심분야4</label>
-                  <input type="radio" id="keyword4" name="keyword4" value="선택안함" checked="checked">선택안함
-                  <input type="radio" id="keyword4" name="keyword4" value="사무">사무
-                  <input type="radio" id="keyword4" name="keyword4" value="경영" >경영
-                  <input type="radio" id="keyword4" name="keyword4" value="제조" >제조
-                  <input type="radio" id="keyword4" name="keyword4" value="IT">IT
-                  <input type="radio" id="keyword4" name="keyword4" value="회계">회계
-               </div>
-               <div class="form-group has-feedback">
-                  <label class="control-label" for="keyword5">관심분야5</label>
-                  <input type="radio" id="keyword5" name="keyword5" value="선택안함" checked="checked">선택안함
-                  <input type="radio" id="keyword5" name="keyword5" value="사무">사무
-                  <input type="radio" id="keyword5" name="keyword5" value="경영" >경영
-                  <input type="radio" id="keyword5" name="keyword5" value="제조" >제조
-                  <input type="radio" id="keyword5" name="keyword5" value="IT">IT
-                  <input type="radio" id="keyword5" name="keyword5" value="회계">회계
-               </div>
+               <!-- <div class="form-group">
+              	   <label class="control-label" for="keyword1">키워드선택</label>
+	               <div class="search-cont">
+		              	<div class="search-item">	 		
+				 			<input type="radio" id="chk01" name="keyword1" class="keyword1" value="IT/기술/전문">
+				 				<label for="chk01">IT&middot;기술&middot;전문</label>
+							<input type="radio" id="chk02" name="keyword1" class="keyword1" value="경영/금융/관리">
+								<label for="chk02">경영&middot;금융&middot;관리</label>
+							<input type="radio" id="chk03" name="keyword1" class="keyword1" value="공공/사회/서비스">
+								<label for="chk03">공공&middot;사회&middot;서비스</label>
+							<input type="radio" id="chk04" name="keyword1" class="keyword1" value="학문/교육/인재">
+								<label for="chk04">학문&middot;교육&middot;인재</label>	
+							<input type="radio" id="chk05" name="keyword1" class="keyword1" value="언론/방송/미디어">
+								<label for="chk05">언론&middot;방송&middot;미디어</label>
+							<input type="radio" id="chk06" name="keyword1" class="keyword1" value="역사/관광/운송">
+								<label for="chk06">역사&middot;관광&middot;운송</label>
+							<input type="radio" id="chk07" name="keyword1" class="keyword1" value="생활/레저/식품">
+								<label for="chk07">생활&middot;레저&middot;식품</label>
+							<input type="radio" id="chk08" name="keyword1" class="keyword1" value="광고/홍보/시각">
+								<label for="chk08">광고&middot;홍보&middot;시각</label>
+			            </div>			            
+		            </div>
+		            <div class="form-group">
+		            	<label class="control-label" for="keyword2">키워드입력</label>
+		             	<input class="form-control" type="text" id="keyword2" name="keyword2" placeholder="추가하고싶은 키워드를 입력하세요"/>
+                 	</div>
+	           </div> -->
+	           
+	           <div class="form-group">
+              	   <label class="control-label" for="keyword1">키워드선택</label>
+	               <div class="search-cont">
+		              	<div class="search-item">	
+		              		<ul class="searchobj">
+		              			<li>
+		              				<input type="radio" id="chk01" name="keyword1" class="keyword1" value="IT/기술/전문">
+				 					<label for="chk01">IT&middot;기술&middot;전문</label>
+				 				</li>
+		              			<li>
+		              				<input type="radio" id="chk02" name="keyword1" class="keyword1" value="경영/금융/관리">
+									<label for="chk02">경영&middot;금융&middot;관리</label>
+								</li>
+		              			<li>
+		              				<input type="radio" id="chk03" name="keyword1" class="keyword1" value="공공/사회/서비스">
+									<label for="chk03">공공&middot;사회&middot;서비스</label>
+		              			</li>
+		              			<li>
+			              			<input type="radio" id="chk04" name="keyword1" class="keyword1" value="학문/교육/인재">
+									<label for="chk04">학문&middot;교육&middot;인재</label>	
+		              			</li>
+		              			<li>
+		              				<input type="radio" id="chk05" name="keyword1" class="keyword1" value="언론/방송/미디어">
+									<label for="chk05">언론&middot;방송&middot;미디어</label>
+		              			</li>
+		              			<li>
+		              				<input type="radio" id="chk06" name="keyword1" class="keyword1" value="역사/관광/운송">
+									<label for="chk06">역사&middot;관광&middot;운송</label>
+		              			</li>
+		              			<li>
+		              				<input type="radio" id="chk07" name="keyword1" class="keyword1" value="생활/레저/식품">
+									<label for="chk07">생활&middot;레저&middot;식품</label>
+		              			</li>
+		              			<li>
+		              				<input type="radio" id="chk08" name="keyword1" class="keyword1" value="광고/홍보/시각">
+									<label for="chk08">광고&middot;홍보&middot;시각</label>
+		              			</li>
+		              		</ul> 
+		              		<ul class="boxcount">
+		              			<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k1"></li>
+		              			<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k2"></li>
+		              			<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k3"></li>
+								<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k4"></li>
+								<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k5"></li>
+								<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k6"></li>
+								<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k7"></li>
+								<li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k8"></li>
+		              		</ul>
+			            </div>			            
+		            </div>
+		            <div class="form-group">
+		            	<label class="control-label" for="keyword2">키워드입력</label>
+		             	<input class="form-control" type="text" id="keyword2" name="keyword2" placeholder="추가하고싶은 키워드를 입력하세요"/>
+                 	</div>
+	           </div>
+	           
+	            <script>
+	            var obj = $(".search-item");
+	    		obj.ul = obj.find(" .searchobj");
+	    		obj.btn = obj.ul.find("input");
+		    	var count = $("[class*='box_count']");
+		    	
+	    		function fn_set_box(idx){
+	    			//count.removeClass("active").eq(idx).addClass("active");
+	    			var ctf = $(count.eq(idx).find("input"));
+	    			ctf.prop("checked",true);
+	    		}
+	    		obj.btn.on("click", function(){
+	    			var idx = obj.btn.parent().index($(this).parent());
+	    			fn_set_box(idx);
+	    		});
+				</script>
+	           
                <div class="form-group has-feedback form-btn">
-                  <button class="btn btn-success" type="submit" id="submit">회원가입</button>
                   <button class="cencle btn btn-danger" type="button">취소</button>
+                  <button class="btn btn-success" type="submit" id="submit">회원가입</button>                  
                </div>
             </form>
          </div>

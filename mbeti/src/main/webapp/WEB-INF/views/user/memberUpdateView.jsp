@@ -1,74 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
-	<head>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-		
-	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<jsp:include page="../header.jsp"></jsp:include>
-	</head>
+<jsp:include page="../header.jsp"></jsp:include>
 	
 	
-	
-	<script type="text/javascript">
-		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				location.href = "/";
-			})
-			
-			$("#diverge").on("click", function(){
-				location.href = "/user/memberDeleteView";
-			})
-		
-			$("#submit").on("click", function(){
-				if($("#userPassword").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#userPassword").focus();
-					return false;
-				}
-				if($("#userName").val()==""){
-					alert("성명을 입력해주세요.");
-					$("#userName").focus();
-					return false;
-				}
-			});
-			
-				
-			
+<script type="text/javascript">
+	$(document).ready(function(){
+		// 취소
+		$(".cencle").on("click", function(){
+			location.href = "/";
 		})
-	</script>
+		
+		$("#diverge").on("click", function(){
+			location.href = "/user/memberDeleteView";
+		})
 	
-		<div class="contents">
-			<%@include file="../nav.jsp" %>
-		<section id="container">
+		$("#submit").on("click", function(){
+			if($("#userPassword").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#userPassword").focus();
+				return false;
+			}
+			if($("#userName").val()==""){
+				alert("성명을 입력해주세요.");
+				$("#userName").focus();
+				return false;
+			}
+		});		
+	})
+</script>
+	
+ <!-- //contents  -->
+   <div class="contents">
+		<div class="layout">
+		<h2 class="h2">회원정보 수정</h2>
+      
 			<form action="/user/memberUpdate" method="post">
 				<div class="form-group has-feedback">
 						<label class="control-label" for="mb">MBTI</label>
-						<SELECT id="mb" name="mb" SIZE=1 >
-					        <OPTION value="${member.mb}" >변경안함</OPTION>
-					        <OPTION VALUE=INTJ>INTJ</OPTION>
-					        <OPTION VALUE=INTP>INTP</OPTION>
-					        <OPTION VALUE=ENTJ>ENTJ</OPTION>
-					        <OPTION VALUE=ENTP>ENTP</OPTION>
-					        <OPTION VALUE=INFJ>INFJ</OPTION>
-					        <OPTION VALUE=INFP>INFP</OPTION>
-					        <OPTION VALUE=ENFJ>ENFJ</OPTION>
-					        <OPTION VALUE=ENFP>ENFP</OPTION>
-					        <OPTION VALUE=ISTJ>ISTJ</OPTION>
-					        <OPTION VALUE=ISFJ>ISFJ</OPTION>
-					        <OPTION VALUE=ESTJ>ESTJ</OPTION>
-					        <OPTION VALUE=ESFJ>ESFJ</OPTION>
-					        <OPTION VALUE=ISTP>ISTP</OPTION>
-					        <OPTION VALUE=ISFP>ISFP</OPTION>
-					        <OPTION VALUE=ESTP>ESTP</OPTION>
-					        <OPTION VALUE=ESFP>ESFP</OPTION>
-			    		</SELECT>
+						<select id="mb" name="mb" SIZE=1 >
+					        <option value="${member.mb}">변경안함</option>
+					        <option value="INTJ">INTJ</option>
+			           		<option value="INTP">INTP</option>
+				            <option value="ENTJ">ENTJ</option>
+				            <option value="ENTP">ENTP</option>
+				            <option value="INFJ">INFJ</option>
+				            <option value="INFP">INFP</option>
+				            <option value="ENFJ">ENFJ</option>
+				            <option value="ENFP">ENFP</option>
+				            <option value="ISTJ">ISTJ</option>
+				            <option value="ISFJ">ISFJ</option>
+				            <option value="ESTJ">ESTJ</option>
+				            <option value="ESFJ">ESFJ</option>
+				            <option value="ISTP">ISTP</option>
+				            <option value="ISFP">ISFP</option>
+				            <option value="ESTP">ESTP</option>
+				            <option value="ESFP">ESFP</option>	
+			    		</select>
 					</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userID">아이디</label>
@@ -88,6 +76,8 @@
 					<button class="cencle btn btn-danger" type="button">취소</button>
 				</div>
 			</form>
-		</section>
-	</div>
-	
+
+		</div><!-- //layout  -->
+   </div><!-- //contents  -->
+
+<jsp:include page="../footer.jsp"></jsp:include>
