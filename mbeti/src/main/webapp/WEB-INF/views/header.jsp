@@ -30,7 +30,7 @@
 
 <div class="header">
 	<div class="top-left">
-		<a href="#n" class="mbti-btn">mbti</a>
+		<a href="https://www.16personalities.com/ko" target="_blank" title="새창열림" class="mbti-btn">mbti</a>
 	</div>
 	<div class="logo">
 		<h1><a href="/home" class="logo-btn">jambox</a></h1>
@@ -38,7 +38,7 @@
 	<div class="navbox">
 		<ul class="nav">
 			<li><a href="/about">About</a></li>
-			<li><a href="/search"><span>jam</span> search</a></li>
+			<li><a href="/match/list"><span>jam</span> search</a></li>
 			<li><a href="/notice/list">Notice</a></li>
 			<li><a href="/freeBoard/list">Community</a></li>
 		</ul>
@@ -74,7 +74,7 @@
 				</a>			
 				<ul class="nav">
 					<li><a href="/about">About</a></li>
-					<li><a href="/search"><span>jam</span> Search</a></li>
+					<li><a href="/match/list"><span>jam</span> Search</a></li>
 					<li><a href="/notice/list">Notice</a></li>
 					<li><a href="/freeBoard/list">Community</a></li>
 				</ul>

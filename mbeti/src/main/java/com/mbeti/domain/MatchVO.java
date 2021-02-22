@@ -31,6 +31,5 @@ public class MatchVO {
 	public void setJob(String job) {
 		this.job = job;
 	}
-
 	
 }

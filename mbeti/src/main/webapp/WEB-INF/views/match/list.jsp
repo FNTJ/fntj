@@ -70,18 +70,6 @@
 				 + "&sub=" + $('#sub').val();
          }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
  	});
          
 });
@@ -139,54 +127,41 @@
 							class="seaerch-txt">본인이 관심있어하는 직종의 키워드를 선택해주세요.</span>
 					</div>
 					<div class="search-item">
-						<div class="form-group col-sm-12">
+						<div class="form-group">
 
-							<div class="form-group col-sm-12">
-								<input type="radio" id="sub01" name="sub" value="기술"> 
-								<label	for="sub01">기술</label> 
+							<div class="form-group">
+							    <input type="radio" id="sub01" name="sub" value="기술"> 
+							    <label	for="sub01">IT&middot;기술&middot;전문</label>
 								
-								<input type="radio" id="sub02" name="sub" value="경영"> 
-								<label for="sub02">경영</label>
+							    <input type="radio" id="sub02" name="sub" value="경영"> 
+							    <label for="sub02">경영&middot;금융&middot;관리</label>
+							    	
+							    <input type="radio" id="sub03" name="sub" value="서비스"> 
+							    <label for="sub03">공공&middot;사회&middot;서비스</label> 
 								
-								<input type="radio" id="sub03" name="sub" value="서비스"> 
-								<label for="sub03">서비스</label> 
+							    <input type="radio" id="sub04" name="sub" value="교육"> 
+							    <label for="sub04">학문&middot;교육&middot;인재</label>
 								
-								<input type="radio" id="sub04" name="sub" value="교육"> 
-								<label for="sub04">교육</label>
+							    <input type="radio" id="sub05" name="sub" value="미디어"> 
+							    <label for="sub05">언론&middot;방송&middot;미디어</label>
 								
-								<input type="radio" id="sub05" name="sub" value="미디어"> 
-								<label for="sub05">미디어</label>
+							    <input type="radio" id="sub06" name="sub" value="관광"> 
+							    <label for="sub06">역사&middot;관광&middot;운송</label>
 								
-								<input type="radio" id="sub06" name="sub" value="관광"> 
-								<label for="sub06">관광</label>
+							    <input type="radio" id="sub07" name="sub" value="생활"> 
+							    <label for="sub07">생활&middot;레저&middot;식품</label>
 								
-								<input type="radio" id="sub07" name="sub" value="생활"> 
-								<label for="sub07">생활</label>
-								
-								<input type="radio" id="sub08" name="sub" value="광고"> 
-								<label for="sub08">광고</label>
+							    <input type="radio" id="sub08" name="sub" value="광고"> 
+							    <label for="sub08">광고&middot;홍보&middot;시각</label>
 							</div>
 
-
 							<input type="hidden" id="sub" name="sub"> 
-							<!-- <select name="sub" id="sub" class="form-control">
-								<OPTION selected>직종키워드</OPTION>
-								<OPTION VALUE=기술>기술</OPTION>
-								<OPTION VALUE=경영>경영</OPTION>
-								<OPTION VALUE=서비스>서비스</OPTION>
-								<OPTION VALUE=교육>교육</OPTION>
-								<OPTION VALUE=미디어>미디어</OPTION>
-								<OPTION VALUE=관광>관광</OPTION>
-								<OPTION VALUE=생활>생활</OPTION>
-								<OPTION VALUE=광고>광고</OPTION>
-							</select> -->
 						</div>
 					</div>
 				</div>
 				
 				<div class="submitbox">
-					<input id="searchBtn" type="submit" value="Let's jam!"
-						class="btn btn-success">
+					<input id="searchBtn" type="submit" value="Let's jam!" class="btn btn-success">
 				</div>
 				
 		</div>

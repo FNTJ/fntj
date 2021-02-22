@@ -135,6 +135,39 @@
 .search-cont .search-item input[type="radio"]:checked + label{background:#ff665b;color:#fff;border-color: #fff;}
 .search-cont .search-item input[type="radio"]:checked + label:before{display:inline-block;content:"\ec85";font-family:'boxicons'!important;font-size: 25px;font-weight: 500;vertical-align: middle;margin-right: 5px;color:#fff;}
 
+.search-result{}
+.search-result .h2{margin-bottom:0;}
+.search-result .mtbi-box{display:inline-block;padding:50px 80px;margin-bottom:50px;text-align:center;box-shadow: 0 0 20px rgb(0 0 0 / 8%);background:#fff;border-radius:30px;}
+.search-result .mtbi-box .mbti-img{display:block;width:230px;height:230px;margin:20px auto;}
+.search-result .mtbi-box .mbti-img.key1{background:url(/resources/images/content/keyimg_01.jpg);}
+.search-result .mtbi-box .mbti-img.key2{background:url(/resources/images/content/keyimg_02.jpg);}
+.search-result .mtbi-box .mbti-img.key3{background:url(/resources/images/content/keyimg_03.jpg);}
+.search-result .mtbi-box .mbti-img.key4{background:url(/resources/images/content/keyimg_04.jpg);}
+.search-result .mtbi-box .mbti-img.key5{background:url(/resources/images/content/keyimg_05.jpg);}
+.search-result .mtbi-box .mbti-img.key6{background:url(/resources/images/content/keyimg_06.jpg);}
+.search-result .mtbi-box .mbti-img.key7{background:url(/resources/images/content/keyimg_07.jpg);}
+.search-result .mtbi-box .mbti-img.key8{background:url(/resources/images/content/keyimg_08.jpg);}
+.search-result .mtbi-box .mbti-tit{font-size:18px;color:#000;}
+.search-result .mtbi-box .mbti-key{display:block;color:#ff665b;}
+.search-result .mtbi-box .job-box{display:block;margin:15px 0;}
+.search-result .mtbi-box .job-box span{display:block;font-size:20px;}
+.search-result .mtbi-box .job-box strong{position:relative; font-size:30px;font-weight:800;}
+.search-result .mtbi-box .job-box strong:before{display:inline-block;position:absolute;left:0;top: calc(50% - -3px);width:100%;height: 14px;background: #ffc1bd;content:'';z-index:-1;transform: sKewX(-39deg);}
+.search-result .snsbox{}
+.search-result .snsbox li{display:inline-block;}
+.search-result .job-info .nodata{display:block;}
+
+data{font-size:0;}
+jobs{margin: 20px 0;padding: 0 0 20px;cursor:pointer;font-size:0;display: block;position: relative;border-bottom: 1px dashed #b5b5b5;}
+jobs url{}
+jobs title{display: inline-block;font-size:16px;font-weight: 500;margin-bottom: 3px;}
+jobs upjong{display: block;font-size: 15px;color: #383838;position: absolute;right: 0;top: 20px;}
+jobs jcjong{display:inline-block;}
+jobs keyword{display: block;font-size: 15px;}
+jobs opendate{}
+jobs closedate{display:inline-block;position: absolute;right: 0;top: 0;font-size:13px;color:#848484;}
+jobs closedate:before{display:inline-block;margin-right:5px;content:'마감일 : ';}
+
 
 /* about */
 .about .cont-tit .title{display:block; font-family:'Pacifico';color:#000;}

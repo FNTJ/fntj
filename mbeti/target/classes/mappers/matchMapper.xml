@@ -5,31 +5,31 @@
 <mapper namespace="matchMapper">
 
 
-	<!-- 매칭 리스트 -->
-	<select id="jobList" resultType="com.mbeti.domain.MatchVO">
-		SELECT mb,mk,sub,job
-		  FROM tbl_match
-	</select>
-	
-	<!-- 직업 검색 쿼리 -->
-<!-- 	<select id="jobListPage" resultType="com.mbeti.domain.MatchVO" parameterType="com.mbeti.domain.MatchingCriteria">
-		SELECT  job
-		 FROM ( 
-		        SELECT job
-		         FROM tbl_match
-		         WHERE 1=1 AND mb = #{mb} AND mk = #{mk} AND sub = #{sub}
-		           ) MP
-		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
-	</select> -->
-	
-	<select id="jobListPage" resultType="com.mbeti.domain.MatchVO" parameterType="com.mbeti.domain.MatchingCriteria">
-	SELECT  mb,mk,sub,job
+   <!-- 매칭 리스트 -->
+   <select id="jobList" resultType="com.mbeti.domain.MatchVO">
+      SELECT mb,mk,sub,job
+        FROM tbl_match
+   </select>
+   
+   <!-- 직업 검색 쿼리 -->
+<!--    <select id="jobListPage" resultType="com.mbeti.domain.MatchVO" parameterType="com.mbeti.domain.MatchingCriteria">
+      SELECT  job
+       FROM ( 
+              SELECT job
+               FROM tbl_match
+               WHERE 1=1 AND mb = #{mb} AND mk = #{mk} AND sub = #{sub}
+                 ) MP
+      WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+   </select> -->
+   
+   <select id="jobListPage" resultType="com.mbeti.domain.MatchVO" parameterType="com.mbeti.domain.MatchingCriteria">
+   SELECT  mb,mk,sub,job
     FROM tbl_match
     WHERE 1=1 AND mb = #{mb} AND mk = #{mk} AND sub = #{sub}
-	</select>
-	
-	
-	
-	
-	
+   </select>
+   
+   
+   
+   
+   
 </mapper>

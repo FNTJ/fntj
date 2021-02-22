@@ -46,7 +46,7 @@
 			</div>
 			
 			<div class="cont03">
-				<a href="search" class="jamsearch-btn">나의 직업 잼하러 가기<span class="jamicon"></span></a>				
+				<a href="/match/list" class="jamsearch-btn">나의 직업 잼하러 가기<span class="jamicon"></span></a>				
 			</div>
 			
 		</div><!-- //layout  -->

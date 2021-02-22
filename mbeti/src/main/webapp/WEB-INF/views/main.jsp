@@ -14,7 +14,7 @@
 					<strong class="title-b"><span>직업</span>이 뭘까?</strong>
 					<span class="title-s"><span class="font-s">jam</span>검색으로 나의 성향과 알맞는 직업을 찾아보자!</span>
 					<div class="btn-box">
-						<a href="#n" class="btn-jam">나의 직업 잼하러 가기</a>
+						<a href="/match/list" class="btn-jam">나의 직업 잼하러 가기</a>
 					</div>
 				</div>				
 			</div>
