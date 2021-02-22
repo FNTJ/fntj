@@ -62,7 +62,23 @@
 .register .keyword-box .keyword-cont .keyword-item .keyword-img.k6{background:url(/resources/images/content/keyimg_06.jpg);}
 .register .keyword-box .keyword-cont .keyword-item .keyword-img.k7{background:url(/resources/images/content/keyimg_07.jpg);}
 .register .keyword-box .keyword-cont .keyword-item .keyword-img.k8{background:url(/resources/images/content/keyimg_08.jpg);}
-
+.register .register-step{margin-bottom:50px;}
+.register .register-step li{position:relative;display:inline-block;width:30%;margin-right:3%;color:#ddd;font-size:20px;text-align:center;}
+.register .register-step li:last-child{margin-right:0;}
+.register .register-step li:after{display:inline-block;position: relative;font-size: 25px;content:"\ec8f";font-family:'boxicons'!important;left: 18%;font-weight: 100;vertical-align: middle;}
+.register .register-step li:last-child:after{display:none;}
+.register .register-step li span{display:inline-block;vertical-align:middle;}
+.register .register-step li strong{display:inline-block;vertical-align:middle;font-weight: 600;}
+.register .register-step li.on{font-weight: 700;color:#000;}
+.register .scrollbox{width: 82%;height: auto;max-height: 150px;overflow-y: scroll;border: 2px solid #ddd;padding: 20px;}
+.regagree .form-group label{vertical-align:top;}
+.regagree .agreebox input{margin:0 0 0 20px;}
+.regagree .btn-success{height:auto;padding:20px 25px 20px 30px;font-size:18px;font-weight:600;}
+.regagree .btn-success .bx{margin-left:10px;}
+.regis-success{padding:30px;text-align:center;background:url(/resources/images/content/register_success.jpg)no-repeat center;}
+.regis-success .resu-tit{display:inline-block;padding:15px 0;background:#fff;}
+.regis-success span{display:block;margin:5px 0;font-size:17px;}
+.regis-success span em{font-family: 'Pacifico';font-size:20px;}
 
 /* board */
 .search{position: relative;text-align:right;padding:0 0 30px;}

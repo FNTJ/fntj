@@ -157,8 +157,6 @@
                }
                
                $('#userName').val(random);
-              
-              
          });
          
       });
@@ -209,7 +207,22 @@
       <div class="layout">
       <h2 class="h2">회원가입</h2>
       
-         <div class="register">            
+         <div class="register">   
+         
+         	<ul class="register-step">
+				<li>
+					<span>step 01</span>
+					<strong>약관동의</strong>
+				</li>
+				<li class="on">
+					<span>step 02</span>
+					<strong>정보입력</strong>
+				</li>
+				<li>
+					<span>step 03</span>
+					<strong>가입완료</strong>
+				</li>
+			</ul>         
             
             <form action="/user/register" method="post">
                <div class="form-group">
@@ -260,33 +273,6 @@
                   <label class="control-label" for="userBirthday">생일</label>
                   <input type="date" id="userBirthday" name="userBirthday" />
                </div>
-               <!-- <div class="form-group">
-              	   <label class="control-label" for="keyword1">키워드선택</label>
-	               <div class="search-cont">
-		              	<div class="search-item">	 		
-				 			<input type="radio" id="chk01" name="keyword1" class="keyword1" value="IT/기술/전문">
-				 				<label for="chk01">IT&middot;기술&middot;전문</label>
-							<input type="radio" id="chk02" name="keyword1" class="keyword1" value="경영/금융/관리">
-								<label for="chk02">경영&middot;금융&middot;관리</label>
-							<input type="radio" id="chk03" name="keyword1" class="keyword1" value="공공/사회/서비스">
-								<label for="chk03">공공&middot;사회&middot;서비스</label>
-							<input type="radio" id="chk04" name="keyword1" class="keyword1" value="학문/교육/인재">
-								<label for="chk04">학문&middot;교육&middot;인재</label>	
-							<input type="radio" id="chk05" name="keyword1" class="keyword1" value="언론/방송/미디어">
-								<label for="chk05">언론&middot;방송&middot;미디어</label>
-							<input type="radio" id="chk06" name="keyword1" class="keyword1" value="역사/관광/운송">
-								<label for="chk06">역사&middot;관광&middot;운송</label>
-							<input type="radio" id="chk07" name="keyword1" class="keyword1" value="생활/레저/식품">
-								<label for="chk07">생활&middot;레저&middot;식품</label>
-							<input type="radio" id="chk08" name="keyword1" class="keyword1" value="광고/홍보/시각">
-								<label for="chk08">광고&middot;홍보&middot;시각</label>
-			            </div>			            
-		            </div>
-		            <div class="form-group">
-		            	<label class="control-label" for="keyword2">키워드입력</label>
-		             	<input class="form-control" type="text" id="keyword2" name="keyword2" placeholder="추가하고싶은 키워드를 입력하세요"/>
-                 	</div>
-	           </div> -->
 	           
 	           <div class="form-group">
               	   <label class="control-label" for="keyword1">키워드선택</label>

@@ -42,6 +42,17 @@ public class MemberController {
 public void getRegister() throws Exception {
 	logger.info("get register");
 }
+//회원가입 agree 
+@RequestMapping(value = "/user/register_agree", method = RequestMethod.GET)
+public void getRegister_agree() throws Exception {
+	logger.info("get register_agree");
+}
+
+//회원가입 agree 
+@RequestMapping(value = "/user/register_success", method = RequestMethod.GET)
+public void getRegister_success() throws Exception {
+	logger.info("get register_success");
+}
 
 // 아이디 중복 체크
 @ResponseBody
@@ -76,7 +87,7 @@ public String postRegister(MemberVO vo) throws Exception {
 	} catch (Exception e) {
 		throw new RuntimeException();
 	}
-	return "redirect:/";
+	return "redirect:/user/register_success";
 }
 
 //로그인 POST

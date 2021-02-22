@@ -9,7 +9,7 @@
 			location.href="/user/logout";
 		});
 		$("#registerBtn").on("click", function(){
-			location.href="/user/register";
+			location.href="/user/register_agree";
 		});		
 		$("#memberUpdateBtn").on("click", function(){
 			location.href="/user/memberUpdateView";
