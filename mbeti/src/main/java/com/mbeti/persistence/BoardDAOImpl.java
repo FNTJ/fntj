@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FileVO;
 import com.mbeti.domain.SearchCriteria;
 
 
@@ -103,6 +104,12 @@ public class BoardDAOImpl implements BoardDAO {
 		paramMap.put("bno", bno); paramMap.put("amount", amount); 
 		sqlSession.update("boardMapper.updateReplyCnt",paramMap); 
 		}
+	
+	//파일목록조회
+	@Override
+	public List<FileVO> fileList() throws Exception {
+		return sqlSession.selectList("boardMapper.fileList");
+	}
 
 	
 	

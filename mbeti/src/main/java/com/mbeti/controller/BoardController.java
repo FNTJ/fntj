@@ -70,6 +70,8 @@ public class BoardController {
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
+		model.addAttribute("fileList",service.fileList());
+		
 		return "/notice/list";
 		
 	}

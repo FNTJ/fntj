@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mbeti.domain.BoardVO;
+import com.mbeti.domain.FileVO;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.persistence.BoardDAO;
 import com.mbeti.util.FileUtils;
@@ -105,6 +106,18 @@ public class BoardServiceImpl implements BoardService {
 			}
 		}
 	}
+
+	//파일 목록 조회
+	@Override
+	public List<FileVO> fileList() throws Exception {
+		return dao.fileList();
+	}
+	
+	
+
+	
+	
+	
 	
 
 }

@@ -56,8 +56,21 @@
 							<th>작성자</th>
 							<th>등록일</th>
 							<th>조회수</th>
+							<th>첨부파일</th>
 						</tr>
 					</thead>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+										
 					
 					<c:forEach items="${list}" var = "list">
 						<tr>
@@ -72,11 +85,44 @@
 							</td>
 							<td><c:out value="${list.writer}" /></td>
 							<td><fmt:formatDate value="${list.date}" pattern="yyyy-MM-dd HH:mm"/></td>
+
 							<td><c:out value="${list.hit}" /></td>
+							
+							
+							
+							
+							
+							
+							
+							<c:set var="doneLoop" value="false"/>
+							<c:forEach items="${fileList}" var = "fileList">
+								<c:if test="${not doneLoop}"> 
+									<c:if test="${fileList.bno == list.bno}">
+										<c:set var="doneLoop" value="true"/>
+										<td><img src="/resources/images/files.jpg"></td>
+										<c:set var="doneLoop" value="true"/>
+									</c:if>
+								</c:if>
+							</c:forEach>
+							
+							
+							
+							<c:set var="doneLoop" value="false"/>
+							<c:forEach items="${fileList}" var = "fileList" >
+								<c:if test="${not doneLoop}"> 
+									<c:if test="${fileList.bno != list.bno}">
+										<c:set var="doneLoop" value="true"/>
+										<td></td>
+										<c:set var="doneLoop" value="true"/>
+									</c:if>
+								</c:if>
+							</c:forEach>
+							
 						</tr>
 					</c:forEach>
 					
 				</table>
+				
 				
 				<div class="board-nav right">
 					<c:if test="${member != null}">						

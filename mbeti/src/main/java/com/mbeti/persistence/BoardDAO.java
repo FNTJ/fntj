@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FileVO;
 import com.mbeti.domain.SearchCriteria;
 
 public interface BoardDAO {
@@ -45,5 +46,7 @@ public interface BoardDAO {
 	//댓글수
 	void updateReplyCnt(Integer bno, int amount) throws Exception;
 
+	// 파일 목록 조회
+	public List<FileVO> fileList() throws Exception;
 	
 }

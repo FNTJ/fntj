@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mbeti.domain.BoardVO;
+import com.mbeti.domain.FileVO;
 import com.mbeti.domain.SearchCriteria;
 
 public interface BoardService {
@@ -36,7 +37,9 @@ public interface BoardService {
 	    
 	// 게시물 수정
 	public void update(BoardVO boardVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
-	            	
+	            
+	// 파일 목록 조회
+	public List<FileVO> fileList() throws Exception;
 		
 	
 }
