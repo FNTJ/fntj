@@ -19,11 +19,17 @@
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean> -->
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"> 
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"> 
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/MBETI?serverTimezone=UTC" /> 
         <property name="username" value="root"/> 
         <property name="password" value="root"/>
+    </bean> -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"> 
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
+        <property name="url" value="jdbc:mysql://192.168.0.77:3306/jambox?serverTimezone=UTC" /> 
+        <property name="username" value="fntj"/> 
+        <property name="password" value="fntj"/>
     </bean>
 
 	<!-- value는 값을 지정 ref는 이미 지정한 값을 가져오는 것 -->

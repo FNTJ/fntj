@@ -34,7 +34,7 @@
 						            <option value="ISFP">ISFP</option>
 						            <option value="ESTP">ESTP</option>
 						            <option value="ESFP">ESFP</option>		            
-					            </select>
+					            </select>z
 				            </div>
 				            <div class="form-group col-sm-6">			            			 		
 					            <select name="keyword" id="select_key" class="form-control">

@@ -45,7 +45,7 @@
 	</div>
 	<div class="top-right">
 		
-		<div class="login">			
+		<div class="login">
 			<c:if test="${member == null}">
 				<a href="/login" class="login-btn">
 					<i class='bx bx-user-circle' ></i>
@@ -53,6 +53,10 @@
 			</c:if>
 			
 			<c:if test="${member != null}">
+			<div class="unamebox">
+				<span><strong class="uname">${member.userName}</strong>님,</span>
+				<span>반갑습니다!</span>
+			</div>			
 			<a href="#n" class="dropdown-toggle login-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 				<i class='bx bx-user-circle' ></i>
 			</a>

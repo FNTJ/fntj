@@ -5,8 +5,50 @@
 
 <script type="text/javascript">
    
-      $(document).ready(function(){
-    
+      $(document).ready(function(){  	
+    	  var mtbitxt = $(".mtbi-txt"); 	  
+    	  
+    	  $("#mb").on("click", function(){
+    		  mtbitxt.addClass("on");
+    		  var mop = $(this).find("option:selected").val();
+    		  if(mop == "INTJ"){
+	   			    mtbitxt.text("용의주도한 전략가이시군요!");
+	   			}else if(mop == "INTP"){
+	   			    mtbitxt.text("아이디어가 넘치는! 논리적인 사색가이시군요!");
+	   			}else if(mop == "ENTJ"){
+	   			    mtbitxt.text("지도자의 꿈! 대담한 통솔자이시군요!");
+	   			}else if(mop == "ENTP"){
+	   			    mtbitxt.text("뜨거운 논쟁을 즐기는 변론가이시군요!");
+	   			}else if(mop == "INFJ"){
+	   			    mtbitxt.text("선의의 옹호자이시군요!");
+	   			}else if(mop == "INFP"){
+	   			    mtbitxt.text("열정적인 중재자인 당신, 잔다르크이시군요!");
+	   			}else if(mop == "ENFJ"){
+	   			    mtbitxt.text("언변능숙한 당신, 정의로운 사회운동가이시군요!");
+	   			}else if(mop == "ENFP"){
+	   			    mtbitxt.text("재기발랄한 활동가이시군요!");
+	   			}else if(mop == "ISTJ"){
+	   			    mtbitxt.text("깨끗한 청렴결백한 논리주의자이시군요!");
+	   			}else if(mop == "ISFJ"){
+	   			    mtbitxt.text("내안의 권력이 있는 당신, 용감한 수호자이시군요!");
+	   			}else if(mop == "ESTJ"){
+	   			    mtbitxt.text("사업자를 꿈꾸는 당신, 엄격한 관리자이시군요!");
+	   			}else if(mop == "ESFJ"){
+	   			    mtbitxt.text("친밀도 높은 당신, 사교적인 외교관이시군요!");
+	   			}else if(mop == "ISTP"){
+	   			    mtbitxt.text("만능 재주꾼이시군요!");
+	   			}else if(mop == "ISFP"){
+	   			    mtbitxt.text("호기심 많은 예술가이시군요!");
+	   			}else if(mop == "ESTP"){
+	   			    mtbitxt.text("활발한 당신, 모험을 즐기는 사업가이시군요!");
+	   			}else if(mop == "ESFP"){
+	   			    mtbitxt.text("사교성이 넘치는 당신, 자유로운 영혼의 연예인이시군요!");
+	   			}else{
+	   				mtbitxt.text("");
+	   				mtbitxt.removeClass("on");
+	   			}
+    	  }); //#mb click
+    	  
          $("#searchBtn").on("click", function(){
         	 
          	// 체크여부 확인
@@ -67,10 +109,18 @@
 				 self.location = "result" + '${pageMaker.makeQuery(1)}' 
 				 + "&mb=" + $('#mb').val()
 				 + "&mk=" + $('#mk').val() 
-				 + "&sub=" + $('#sub').val();
-         }
+				 + "&sub=" + $('#sub').val();				 
+        	 } 
             
- 	});
+ 		});//searchBtn click
+ 		
+ 		
+ 		$(".mbtibtn").on("mouseover mousefocus",function(){
+ 			$(this).text("클릭하여 검사하러가기!");
+ 		});
+ 		$(".mbtibtn").on("mouseleave",function(){
+ 			$(this).text("mbti를 모르시나요? 지금 당장 검사해보세요!");
+ 		});
          
 });
 </script>
@@ -80,32 +130,33 @@
 
 		<div class="search-cont">
 			<div class="searchRe"></div>
-				<div class="mbtibox">
+				<div class="mbtibox contbox">
 					<div class="search-txtbox">
 						<strong class="search-tit">MBTI 선택</strong> <span
 							class="seaerch-txt">본인의 MBTI를 선택 후 관심있는 키워드를 선택해 주세요.</span>
 					</div>
 					<div class="search-item">
 						<div class="form-group col-sm-4">
-							<SELECT id="mb" name="mb" SIZE=1 class="category form-control">
-								<OPTION selected>MBTI</OPTION>
-								<OPTION VALUE=INTJ>INTJ</OPTION>
-								<OPTION VALUE=INTP>INTP</OPTION>
-								<OPTION VALUE=ENTJ>ENTJ</OPTION>
-								<OPTION VALUE=ENTP>ENTP</OPTION>
-								<OPTION VALUE=INFJ>INFJ</OPTION>
-								<OPTION VALUE=INFP>INFP</OPTION>
-								<OPTION VALUE=ENFJ>ENFJ</OPTION>
-								<OPTION VALUE=ENFP>ENFP</OPTION>
-								<OPTION VALUE=ISTJ>ISTJ</OPTION>
-								<OPTION VALUE=ISFJ>ISFJ</OPTION>
-								<OPTION VALUE=ESTJ>ESTJ</OPTION>
-								<OPTION VALUE=ESFJ>ESFJ</OPTION>
-								<OPTION VALUE=ISTP>ISTP</OPTION>
-								<OPTION VALUE=ISFP>ISFP</OPTION>
-								<OPTION VALUE=ESTP>ESTP</OPTION>
-								<OPTION VALUE=ESFP>ESFP</OPTION>
-							</SELECT>
+							<select id="mb" name="mb" SIZE=1 class="category form-control">
+								<option value="MBTI">MBTI</option>
+					            <option value="INTJ">INTJ</option>
+					            <option value="INTP">INTP</option>
+					            <option value="ENTJ">ENTJ</option>
+					            <option value="ENTP">ENTP</option>
+					            <option value="INFJ">INFJ</option>
+					            <option value="INFP">INFP</option>
+					            <option value="ENFJ">ENFJ</option>
+					            <option value="ENFP">ENFP</option>
+					            <option value="ISTJ">ISTJ</option>
+					            <option value="ISFJ">ISFJ</option>
+					            <option value="ESTJ">ESTJ</option>
+					            <option value="ESFJ">ESFJ</option>
+					            <option value="ISTP">ISTP</option>
+					            <option value="ISFP">ISFP</option>
+					            <option value="ESTP">ESTP</option>
+					            <option value="ESFP">ESFP</option>	
+							</select>
+							<span class="mtbi-txt"></span>
 						</div>
 
 						<div class="form-group col-sm-6">
@@ -119,9 +170,12 @@
 						</div>
 						
 					</div>
+					<a href="https://www.16personalities.com/ko" target="_blank" title="새창열림" class="mbtibtn">
+					mbti를 모르시나요? 지금 당장 검사해보세요!
+					</a>
 				</div>
 				
-				<div class="keybox">
+				<div class="keybox contbox">
 					<div class="search-txtbox">
 						<strong class="search-tit">키워드 선택</strong> <span
 							class="seaerch-txt">본인이 관심있어하는 직종의 키워드를 선택해주세요.</span>

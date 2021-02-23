@@ -121,23 +121,32 @@
 
 /* search */
 .search-cont option{line-height:2;}
-.search-cont .mbtibox{margin-bottom:30px;}
-.search-cont .search-txtbox{display:inline-block;width:23%;margin-right:5%;}
+.search-cont .mbtibox{margin-bottom:20px;}
+.search-cont .search-txtbox{display:inline-block;width:23%;margin-right:5%;vertical-align: middle;}
 .search-cont .search-txtbox .search-tit{display:block;margin-bottom:5px;font-size:35px;letter-spacing:-1px;font-weight:800;}
 .search-cont .search-txtbox .seaerch-txt{display:block;font-size:15px;}
-.search-cont .search-item{display:inline-block;width:67%;}
-.search-cont .form-group{}
+.search-cont .search-item{position:relative; display:inline-block;width:67%;text-align:center;vertical-align: middle;}
+.search-cont .search-item .mtbi-txt{position:absolute;left:30px;bottom: -38px;font-size: 15px;width: 150%;text-align: left;color: #7b7b7b;}
+.search-cont .search-item .mtbi-txt.on:before{content: "\ec85";font-family: 'boxicons'!important;margin-right: 5px;font-size: 18px;top: 2px;position: relative;}
+.search-cont .mbtibtn{position:relative;display:inline-block;width:320px;padding:3px 0;text-align:center;margin-top:30px;color: #59aeaf;font-weight: 400;transition:0.5s;}
+.search-cont .mbtibtn:before{display:inline-block;width: 25px;height: 25px;margin-right: 7px;background:url(/resources/images/main/mbti_logo.png) center no-repeat;background-size:100%;vertical-align: middle;content:'';}
+.search-cont .mbtibtn:after{display:inline-block;position:absolute;left: -5%;top: -25%;width:0;height: 150%;background: #51aaab;content:'';z-index: -1;transition:0.5s;border-radius:35px;}
+.search-cont .mbtibtn:hover{color:#fff;}
+.search-cont .mbtibtn:hover:after{width:110%;}
+.search-cont .mbtibtn span{display:inline-block;}
+.search-cont .form-group{display: inline-block;float: none;}
 .search-cont .form-group select{height:50px;width:100%;font-size:18px;font-weight:700;color:#000;}
 .search-cont .submitbox{width: 67%;margin-left: 29%;margin-top: 60px;}
 .search-cont .submitbox .btn{width:100%;min-height: 100px;font-size: 30px;border-radius: 20px;font-family:'Pacifico';}
 .search-cont .search-item input[type="radio"]{display:none;}
-.search-cont .search-item input[type="radio"] + label{display:inline-block;padding: 15px 20px;border-radius:50px;cursor:pointer;border:2px solid #ff665b;text-align: center;line-height: 1;margin-right: 10px;width: auto;transition:0.3s;}
+.search-cont .search-item input[type="radio"] + label{display:inline-block;padding: 15px 20px;border-radius:50px;cursor:pointer;border:2px solid #ff665b;text-align: center;line-height: 1;margin:5px;width: auto;transition:0.3s;}
 .search-cont .search-item input[type="radio"]:checked + label{background:#ff665b;color:#fff;border-color: #fff;}
 .search-cont .search-item input[type="radio"]:checked + label:before{display:inline-block;content:"\ec85";font-family:'boxicons'!important;font-size: 25px;font-weight: 500;vertical-align: middle;margin-right: 5px;color:#fff;}
 
+
 .search-result{}
 .search-result .h2{margin-bottom:0;}
-.search-result .mtbi-box{display:inline-block;padding:50px 80px;margin-bottom:50px;text-align:center;box-shadow: 0 0 20px rgb(0 0 0 / 8%);background:#fff;border-radius:30px;}
+.search-result .mtbi-box{display:inline-block;padding:50px 80px;margin-bottom: 20px;text-align:center;box-shadow: 0 0 20px rgb(0 0 0 / 8%);background:#fff;border-radius:30px;}
 .search-result .mtbi-box .mbti-img{display:block;width:230px;height:230px;margin:20px auto;}
 .search-result .mtbi-box .mbti-img.key1{background:url(/resources/images/content/keyimg_01.jpg);}
 .search-result .mtbi-box .mbti-img.key2{background:url(/resources/images/content/keyimg_02.jpg);}
@@ -153,9 +162,18 @@
 .search-result .mtbi-box .job-box span{display:block;font-size:20px;}
 .search-result .mtbi-box .job-box strong{position:relative; font-size:30px;font-weight:800;}
 .search-result .mtbi-box .job-box strong:before{display:inline-block;position:absolute;left:0;top: calc(50% - -3px);width:100%;height: 14px;background: #ffc1bd;content:'';z-index:-1;transform: sKewX(-39deg);}
-.search-result .snsbox{}
-.search-result .snsbox li{display:inline-block;}
+.search-result .snsbox{text-align:center;margin-bottom: 20px;}
+.search-result .snsbox .snsList{display:inline-block;width: 100%;}
+.search-result .snsbox li{display:inline-block;margin: 0 4px;}
+.search-result .snsbox li a{display:inline-block;width: 35px;height: 35px;border-radius:50%;background: #838994;font-size: 0;vertical-align: middle;padding: 7px;text-align: center;}
+.search-result .snsbox li a .bx{font-size: 19px;color:#fff;vertical-align: middle;display: inline-block;}
+.search-result .infobox{margin-bottom: 80px;}
+.search-result .keyword-info .subbox{text-align: center;}
+.search-result .keyword-info .subbox .subkeyword{display: inline-block;margin: 30px 0 10px;font-size: 16px;color: #fff;background: #618ff1;border-radius: 5px;padding: 5px 11px 9px 11px;}
+.search-result .keyword-info .subbox .subcont{display: block;font-size: 20px;margin: 10px 0;}
+.search-result .keyword-info .subbox .subjob{display: block;font-size: 16px;color: #3e3e3e;max-width: 450px;margin: 10px auto;}
 .search-result .job-info .nodata{display:block;}
+.search-result .job-info a{color:#000;}
 
 data{font-size:0;}
 jobs{margin: 20px 0;padding: 0 0 20px;cursor:pointer;font-size:0;display: block;position: relative;border-bottom: 1px dashed #b5b5b5;}

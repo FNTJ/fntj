@@ -8,13 +8,12 @@
 		$("#logoutBtn").on("click", function(){
 			location.href="/user/logout";
 		});
-		$("#registerBtn").on("click", function(){
-			location.href="/user/register_agree";
-		});		
 		$("#memberUpdateBtn").on("click", function(){
 			location.href="/user/memberUpdateView";
 		});
-		
+		$("#registerBtn").on("click", function(){
+			location.href="/user/register_agree";
+		});		
 	});
 </script>
 	
@@ -41,7 +40,7 @@
 								</div>
 								<div class="formbox">
 									<button type="submit" class="loginbtn">로그인</button>
-								</div>
+								</div>								
 							</c:if>
 							<c:if test="${member != null }">
 								<div>
@@ -51,8 +50,11 @@
 								</div>
 							</c:if>
 							<c:if test="${msg == false}">
+								<script>
+									alert("error!");
+								</script>
 								<p>로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
-							</c:if>
+							</c:if>							
 						</form>
 					</div>
 					<div class="regis-item item">

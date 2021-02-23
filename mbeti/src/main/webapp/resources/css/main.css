@@ -5,6 +5,9 @@
 .header .top-left a{display:block;width:55px;height:55px;background:url(/resources/images/main/mbti_logo.png) center no-repeat;font-size:0;}
 .header .logo{left:auto;}
 .header .navbox{display:none;}
+.header .top-right .login .unamebox{display:inline-block;text-align: right;margin-right: 10px;}
+.header .top-right .login .unamebox span{display:block;color: #6d6d6d;}
+.header .top-right .login .unamebox span strong{color:#ff665b;}
 
 .main-wrap{height: 100%;position: relative;}
 .main-wrap:before{display:inline-block;position: absolute;right: -10%;top: calc(50% - 315px);width:1057px;height:572px;background:url(/resources/images/main/main_img02.png) center no-repeat;content:'';z-index: -1;}
