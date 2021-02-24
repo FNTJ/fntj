@@ -41,6 +41,7 @@
 			<li><a href="/match/list"><span>jam</span> search</a></li>
 			<li><a href="/notice/list">Notice</a></li>
 			<li><a href="/freeBoard/list">Community</a></li>
+			<li><a href="/contact">Contact</a></li>
 		</ul>
 	</div>
 	<div class="top-right">
@@ -72,15 +73,14 @@
 		</div>
 		<div class="menu">			
 			<a href="#n" class="menu-btn"><span></span></a>
-			<div class="menu-box">
-				<a href="#n" class="close-btn">
-					<i class='bx bx-x'></i>
-				</a>			
+			<a href="#n" class="close-btn"><i class='bx bx-x'></i></a>
+			<div class="menu-box">							
 				<ul class="nav">
 					<li><a href="/about">About</a></li>
 					<li><a href="/match/list"><span>jam</span> Search</a></li>
 					<li><a href="/notice/list">Notice</a></li>
 					<li><a href="/freeBoard/list">Community</a></li>
+					<li><a href="/contact">Contact</a></li>
 				</ul>
 				<div class="mypage">
 					<c:if test="${member == null}">
@@ -90,22 +90,54 @@
 						<a href="/user/memberProfile" class="mypage-btn"><i class='bx bx-user-circle' ></i>mypage</a>
 					</c:if>
 					
-				</div>				
+				</div>
+				<div class="wbg">
+					<ul class="wbg-item">
+						<li class="box_count"><span></span></li>
+						<li class="box_count"><span></span></li>
+						<li class="box_count"><span></span></li>
+						<li class="box_count"><span></span></li>
+						<li class="box_count"><span></span></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</div>
+		</div><!-- menu  -->
+		
+	</div><!-- toright  -->
 </div>
 	
 	
 <script>
 	$(document).ready(function() {
 		var menubtn = $(".menu .menu-btn");
-		var closebtn = $(".menu .menu-box .close-btn");
-		menubtn.on("click", function(){
-			$("body").toggleClass("on");
-		});
-		closebtn.on("click", function(){
-			$("body").toggleClass("on");
-		});		
+		var closebtn = $(".menu .close-btn");
+			menubtn.on("click", function(){
+				$("body").toggleClass("on");
+			});
+			closebtn.on("click", function(){
+				$("body").toggleClass("on");
+			});	
+		
+		var nava = $(".menu .menu-box .nav li a");
+			nava.on("mouseover", function(){
+				$("body").addClass("nava");
+			});
+			nava.on("mouseleave", function(){
+				$("body").removeClass("nava");
+			});	
+			
+		var obj = $(".menu-box");
+    		obj.ul = obj.find(" .nav");
+    		obj.btn = obj.ul.find("a");
+    	var count = $("[class*='box_count']");
+    	
+   		function fn_set_box(idx){
+   			count.removeClass("active").eq(idx).addClass("active");
+   			var ctf = $(count.eq(idx).find("span"));
+   		}
+   		obj.btn.on("mouseover", function(){
+   			var idx = obj.btn.parent().index($(this).parent());
+   			fn_set_box(idx);
+   		});
 	});	
 </script>

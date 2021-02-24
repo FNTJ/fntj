@@ -51,18 +51,21 @@
 		//댓글 수정 View 
 		var openPage;
 		
+		var xPos = (window.screen.width)/2 - 270;
+		var yPos = (window.screen.height)/2 - 300;
 		
-		$(".replyUpdateBtn").on("click", function(){
+		$(".replyUpdateBtn").on("click", function(){			
+			
 			window.name = "parent";
 			openPage = window.open ("/notice/replyUpdateView?bno=${read.bno}"
 							+ "&page=${scri.page}"
 							+ "&perPageNum=${scri.perPageNum}"
 							+ "&searchType=${scri.searchType}"
 							+ "&keyword=${scri.keyword}"
-							+ "&rno="+$(this).attr("data-rno"),"childForm", "width=570, height=350, resizable=no, scrollbars=no");
+							+ "&rno="+$(this).attr("data-rno"),"childForm", "width=570, height=350, left="+xPos+", top="+yPos+", status=no, menubar=no, toolbar=no, resizable=no");
 		});
 				
-	//댓글 삭제 View
+		//댓글 삭제 View
 		$(".replyDeleteBtn").on("click", function(){
 			window.name = "Delparent"; // 부모창 이름 설정
 			openPage = window.open( "/notice/replyDeleteView?bno=${read.bno}"
@@ -70,7 +73,7 @@
 				+ "&perPageNum=${scri.perPageNum}"
 				+ "&searchType=${scri.searchType}"
 				+ "&keyword=${scri.keyword}"
-				+ "&rno="+$(this).attr("data-rno"),"DelchildForm", "width=570, height=350, resizable=no, scrollbars=no");
+				+ "&rno="+$(this).attr("data-rno"),"DelchildForm", "width=570, height=350, left="+xPos+", top="+yPos+", status=no, menubar=no, toolbar=no, resizable=no");
 		});
 
 	})
@@ -103,7 +106,7 @@
 			
 			<div class="wdate"> <!-- 작성자/작성일자 -->
 				<span class="date"><i class='bx bx-calendar'></i><fmt:formatDate value="${read.date}" pattern="yyyy-MM-dd HH:mm" /></span>
-				<span class="writer"><i class='bx bx-pencil' ></i>${member.userName}</span>
+				<span class="writer"><i class='bx bx-pencil' ></i>${read.writer}</span>
 			</div> 
 		</div>
 		
@@ -152,35 +155,45 @@
 			</ul>
 			
 			<form name="replyForm" method="post" class="form-horizontal replyForm">
-			<input type="hidden" id="bno" name="bno" value="${read.bno}" />
-			<input type="hidden" id="page" name="page" value="${scri.page}"> 
-			<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
-			<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
-			<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
-		
-			<div class="form-group hidden">
-				<label for="writer" class="col-sm-2 control-label">댓글 작성자</label>
-				<c:if test="${member != null}">
-					<p>${member.userName}</p>
-					<input type="hidden" id="writer" name="writer" class="form-control" value="${member.userName}"/>
-				</c:if>
-				<c:if test="${member == null}">
-					<div class="col-sm-10">
-						<input type="text" id="writer" name="writer" class="form-control" />
-					</div>
-				</c:if>
-			</div>
+				<input type="hidden" id="bno" name="bno" value="${read.bno}" />
+				<input type="hidden" id="page" name="page" value="${scri.page}"> 
+				<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+				<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+				<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 			
-			<div class="reply-write">
-				<label for="content" class="col-sm-2 control-label">댓글 작성</label>
-				<div class="col-sm-7">
-					<input type="text" id="content" name="content" class="form-control"/>							
+				<div class="form-group hidden">
+					<label for="writer" class="col-sm-2 control-label">댓글 작성자</label>
+					<c:if test="${member != null}">
+						<p>${member.userName}</p>
+						<input type="hidden" id="writer" name="writer" class="form-control" value="${member.userName}"/>
+					</c:if>
+					<c:if test="${member == null}">
+						<div class="col-sm-10">
+							<input type="text" id="writer" name="writer" class="form-control" />
+						</div>
+					</c:if>
 				</div>
-				<div class="col-sm-1">
-					<button type="button" class="replyWriteBtn btn btn-sm btn-danger">작성</button>
+				
+				<div class="reply-write">
+					<label for="content" class="col-sm-2 control-label">댓글 작성</label>
+					<c:if test="${member == null}">
+						<div class="col-sm-4">
+							<span class="replylogin">로그인하시면 댓글을 작성할 수 있습니다.</span>					
+						</div>
+						<div class="col-sm-1">
+							<a href="/login" class="btn btn-success">로그인하기</a>
+						</div>
+					</c:if>
+					<c:if test="${member != null }">
+						<div class="col-sm-7">
+							<input type="text" id="content" name="content" class="form-control"/>							
+						</div>
+						<div class="col-sm-1">
+							<button type="button" class="replyWriteBtn btn btn-sm btn-danger">작성</button>
+						</div>
+					</c:if>				
 				</div>
-			</div>
-		</form>
+			</form>
 		</div>
 				
 				

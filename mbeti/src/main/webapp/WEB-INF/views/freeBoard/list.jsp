@@ -38,7 +38,7 @@
 						
 						<div class="sbox col-xs-2 col-sm-2">
 							<select name="searchType" id="searchType" class="form-control">
-								<option value="nl"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+								<option value="nl"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>선택하세요</option>
 								<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 								<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
 								<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
@@ -65,12 +65,13 @@
 					
 					<table class="table table-board table-hover">
 						<colgroup>
-							<col style="width:10%">
-							<col style="width:10%">
+							<col style="width:8%">
+							<col style="width:8%">
 							<col style="width:40%">
 							<col style="width:15%">
 							<col style="width:15%">
-							<col style="width:10%">
+    						<col style="width:8%">
+    						<col style="width:8%">
 						</colgroup>
 						
 						<thead>

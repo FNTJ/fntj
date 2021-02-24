@@ -87,11 +87,13 @@
 
 .table-board{text-align:center;}
 .table-board th{text-align:center;}
+.table-board td a{display:block;color:#000;}
 .table-board .mbticate span{display:inline-block;min-width:50px;padding:3px 8px;border-radius:5px;color:#fff;}
 .table-board .mbticate[class*="IN"] span{background:#5a8ce6;}
 .table-board .mbticate[class*="IS"] span{background:#48b14d;}
 .table-board .mbticate[class*="EN"] span{background:#f44336;}
 .table-board .mbticate[class*="ES"] span{background:#ff9800;}
+.table-board .bxs-save{font-size:18px;vertical-align:middle;color:#404040;}
 
 .paging-box{text-align:center;}
 .paging-box .pagination li.info a{background:#337abe;color:#fff;}
@@ -118,6 +120,12 @@
 #reply .btn-box{float:right;}
 #reply .replyForm{padding:10px;background:#fff;}
 #reply .reply-write{display:inline-block;width:100%;}
+#reply .reply-write .control-label{padding-top:15px;}
+#reply .reply-write .replylogin{display:inline-block;padding-top:15px;}
+
+.replyupvalue{display:flex;width:100%;height:100vh;jusct-content:center;align-items:center;}
+.replyupvalue form{width:100%;}
+
 
 /* search */
 .search-cont option{line-height:2;}
@@ -146,7 +154,16 @@
 
 .search-result{}
 .search-result .h2{margin-bottom:0;}
-.search-result .mtbi-box{display:inline-block;padding:50px 80px;margin-bottom: 20px;text-align:center;box-shadow: 0 0 20px rgb(0 0 0 / 8%);background:#fff;border-radius:30px;}
+.search-result .mtbi-box{animation: flip 0.2s ease-in 4;display:inline-block;padding:50px 80px;margin-bottom: 20px;text-align:center;box-shadow: 0 0 20px rgb(0 0 0 / 8%);background:#fff;border-radius:30px;}
+.search-result .mtbi-box .wbox{opacity:0;animation:opa 1s 1.3s linear alternate forwards;}
+@keyframes flip{
+    0%{transform:scaleX(1);}
+    100%{transform:scaleX(-1);}
+}
+@keyframes opa{
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
 .search-result .mtbi-box .mbti-img{display:block;width:230px;height:230px;margin:20px auto;}
 .search-result .mtbi-box .mbti-img.key1{background:url(/resources/images/content/keyimg_01.jpg);}
 .search-result .mtbi-box .mbti-img.key2{background:url(/resources/images/content/keyimg_02.jpg);}

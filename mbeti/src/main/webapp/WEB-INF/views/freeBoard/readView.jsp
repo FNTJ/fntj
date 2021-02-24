@@ -51,6 +51,10 @@
 		});
 		
 		//댓글 수정 View
+		
+		var xPos = (window.screen.width)/2 - 270;
+		var yPos = (window.screen.height)/2 - 300;
+		
 		$(".replyUpdateBtn").on("click", function(){
 			window.name = "parent";
 			openPage = window.open ("/freeBoard/replyUpdateView?bno=${fbRead.bno}"
@@ -59,7 +63,7 @@
 							+ "&searchType=${scri.searchType}"
 							+ "&category=${scri.category}"
 							+ "&keyword=${scri.keyword}"
-							+ "&rno="+$(this).attr("data-rno"),"childForm", "width=570, height=350, resizable=no, scrollbars=no");
+							+ "&rno="+$(this).attr("data-rno"),"childForm", "width=570, height=350, left="+xPos+", top="+yPos+", status=no, menubar=no, toolbar=no, resizable=no");
 		});
 				
 		//댓글 삭제 View
@@ -71,7 +75,7 @@
 				+ "&searchType=${scri.searchType}"
 				+ "&category=${scri.category}"
 				+ "&keyword=${scri.keyword}"
-				+ "&rno="+$(this).attr("data-rno"),"DelchildForm", "width=570, height=350, resizable=no, scrollbars=no");
+				+ "&rno="+$(this).attr("data-rno"),"DelchildForm", "width=570, height=350, left="+xPos+", top="+yPos+", status=no, menubar=no, toolbar=no, resizable=no");
 		});
 		
 	})
@@ -135,29 +139,28 @@
 				</c:if>					
 			</div>
 				
-				<!-- 댓글 -->
-				<div id="reply">
-					<ul class="replyList">
-						<c:forEach items="${replyList}" var="replyList">						
-						<li>
-							<div class="wdate"> <!-- 작성자/작성일자 -->
-								<span class="date"><i class='bx bx-calendar'></i><fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" /></span>
-								<span class="writer"><i class='bx bx-pencil' ></i>${replyList.writer}</span>
-								<!-- 본인이 작성한 댓글만 수정/삭제 가능 -->
-								<c:if test="${member.userName == replyList.writer}"> 
-									<div class="btn-box right">
-										<button type="button" class="replyUpdateBtn btn btn-sm btn-success" data-rno="${replyList.rno}">수정</button>
-										<button type="button" class="replyDeleteBtn btn btn-sm btn-primary" data-rno="${replyList.rno}">삭제</button>
-									</div>
-								</c:if>
-							</div>
-							<p>${replyList.content}</p>								
-						</li>
-						</c:forEach>   
-					</ul>
-				</div>
+			<!-- 댓글 -->
+			<div id="reply">
+				<ul class="replyList">
+					<c:forEach items="${replyList}" var="replyList">						
+					<li>
+						<div class="wdate"> <!-- 작성자/작성일자 -->
+							<span class="date"><i class='bx bx-calendar'></i><fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" /></span>
+							<span class="writer"><i class='bx bx-pencil' ></i>${replyList.writer}</span>
+							<!-- 본인이 작성한 댓글만 수정/삭제 가능 -->
+							<c:if test="${member.userName == replyList.writer}"> 
+								<div class="btn-box right">
+									<button type="button" class="replyUpdateBtn btn btn-sm btn-success" data-rno="${replyList.rno}">수정</button>
+									<button type="button" class="replyDeleteBtn btn btn-sm btn-primary" data-rno="${replyList.rno}">삭제</button>
+								</div>
+							</c:if>
+						</div>
+						<p>${replyList.content}</p>								
+					</li>
+					</c:forEach>   
+				</ul>
 				
-				<form name="replyForm" method="post" class="form-horizontal">
+				<form name="replyForm" method="post" class="form-horizontal replyForm">
 					<input type="hidden" id="bno" name="bno" value="${fbRead.bno}" />
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 
 					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
@@ -179,14 +182,26 @@
 					
 					<div class="reply-write">
 						<label for="content" class="col-sm-2 control-label">댓글 작성</label>
-						<div class="col-sm-7">
-							<input type="text" id="content" name="content" class="form-control"/>							
-						</div>
-						<div class="col-sm-1">
-							<button type="button" class="replyWriteBtn btn btn-sm btn-danger">작성</button>
-						</div>
+						<c:if test="${member == null}">
+							<div class="col-sm-4">
+								<span class="replylogin">로그인하시면 댓글을 작성할 수 있습니다.</span>					
+							</div>
+							<div class="col-sm-1">
+								<a href="/login" class="btn btn-success">로그인하기</a>
+							</div>
+						</c:if>
+						<c:if test="${member != null }">
+							<div class="col-sm-7">
+								<input type="text" id="content" name="content" class="form-control"/>							
+							</div>
+							<div class="col-sm-1">
+								<button type="button" class="replyWriteBtn btn btn-sm btn-danger">작성</button>
+							</div>
+						</c:if>
 					</div>
 				</form>
+				
+			</div>
 				
 				
 			

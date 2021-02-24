@@ -43,11 +43,11 @@
 				<table class="table table-board table-hover">
 					<colgroup>
 						<col style="width:10%">
-						<col style="width:40%">
-						<col style="width:10%">
-						<col style="width:20%">
-						<col style="width:10%">
-						<col style="width:10%">
+						<col style="width:45%">
+						<col style="width:15%">
+						<col style="width:15%">
+						<col style="width:8%">
+						<col style="width:8%">
 					</colgroup>
 					
 					<thead>

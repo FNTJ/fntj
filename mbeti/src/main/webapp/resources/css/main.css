@@ -2,7 +2,17 @@
 
 .header{text-align:center;}
 .header .top-left{position:absolute;left:4%;top: 0;display:inline-block;}
-.header .top-left a{display:block;width:55px;height:55px;background:url(/resources/images/main/mbti_logo.png) center no-repeat;font-size:0;}
+.header .top-left a{display:inline-block;font-size:0;vertical-align:middle;}
+.header .top-left a:before{display:inline-block;width:55px;height:55px;background:url(/resources/images/main/mbti_logo.png) center no-repeat;content:'';vertical-align:middle;}
+.header .top-left a:after{display:none;content:'MBTI 검사하러가기';font-size: 17px;vertical-align: middle;margin-left: 10px;color: #51aaab;font-weight: 600;}
+.header .top-left a:hover:before,
+.header .top-left a:focus:before{animation:rotate 0.7s linear 1;}
+.header .top-left a:hover:after,
+.header .top-left a:focus:after{display:inline-block;}
+@keyframes rotate{
+	0%{transform:rotate(0);}
+	100%{transform:rotate(360deg);}
+}
 .header .logo{left:auto;}
 .header .navbox{display:none;}
 .header .top-right .login .unamebox{display:inline-block;text-align: right;margin-right: 10px;}

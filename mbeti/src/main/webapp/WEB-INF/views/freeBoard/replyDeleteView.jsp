@@ -2,15 +2,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
-	<head>
+<head>
 	<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 	<title>게시판</title>
-	</head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/resources/css/common.css">
+	<link rel="stylesheet" href="/resources/css/contents.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title>댓글삭제</title>
+</head>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
@@ -22,44 +23,10 @@
 					   + "&searchType=${scri.searchType}"
 					   + "&category=${scri.category}"
 					   + "&keyword=${scri.keyword}";
-			})
-			
-		})
-		
+			});			
+		});		
 	</script>
-	<body>
-	
-		<div id="root">
-			<header>
-				<h1> 게시판</h1>
-			</header>
-			<hr />
-			 
-			<div>
-				<%@include file="../nav.jsp" %>
-			</div>
-			<hr />
-			
-			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/freeBoard/replyDelete">
-					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
-					<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
-					<input type="hidden" id="page" name="page" value="${scri.page}"> 
-					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
-					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
-					<input type="hidden" id="category" name="category" value="${scri.category}"> 
-					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
-						
-					<div>
-						<p>삭제 하시겠습니까?</p>
-						<button type="submit" class="delete_btn">확인</button>
-						<button type="button" class="cancel_btn">취소</button>
-					</div>
-				</form>
-			</section>
-			<hr />
-		</div>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		window.onload = function() {
 			$(".delete_btn").on("click", function() {
 				window.opener.name = "parent";
@@ -69,5 +36,31 @@
 			});
 		};
 	</script>
+	<body>
+	
+		<div class="layout">
+			<div class="replyupvalue">
+			
+				<form name="updateForm" role="form" method="post" action="/freeBoard/replyDelete">
+					<input type="hidden" name="bno" value="${replyDelete.bno}" readonly="readonly"/>
+					<input type="hidden" id="rno" name="rno" value="${replyDelete.rno}" />
+					<input type="hidden" id="page" name="page" value="${scri.page}"> 
+					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+					<input type="hidden" id="category" name="category" value="${scri.category}"> 
+					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
+						
+					<div class="form-group center">
+						<p>댓글을 삭제 하시겠습니까?</p>
+					</div>
+					<div class="form-group form-btn">	
+						<button type="button" class="cancel_btn btn btn-primary">취소</button>
+						<button type="submit" class="delete_btn btn btn-success">확인</button>						
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		
 	</body>
 </html>

@@ -83,6 +83,12 @@ public class HomeController {
 		return "login";
 	}
 	
+	//연주씨 05
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String contact() {
+		return "contact";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/search_source", method = RequestMethod.GET)
 	public String search_source() {

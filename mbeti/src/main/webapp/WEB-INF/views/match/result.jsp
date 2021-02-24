@@ -16,16 +16,18 @@
 					<c:if test="${jobList.job != null}">
 						<div class="center">
 							<div class="mtbi-box">
-								<span class="mbti-img" title="${jobList.sub}"></span>
-								<span class="mbti-tit"><c:out value="${jobList.mb}" /></span>
-								<span class="mbti-key"><c:out value="${jobList.mk}" /> / <c:out value="${jobList.sub}" /></span>
-								<div class="job-box">								
-									<span>
-										<c:if test="${member == null}">당신</c:if>
-										<c:if test="${member != null }">${member.userName}님</c:if>
-										에게 어울리는 직업은</span>
-									<strong>"<c:out value="${jobList.job}" />"</strong>
-									<span>입니다.</span>										
+								<div class="wbox">
+									<span class="mbti-img" title="${jobList.sub}"></span>
+									<span class="mbti-tit"><c:out value="${jobList.mb}" /></span>
+									<span class="mbti-key"><c:out value="${jobList.mk}" /> / <c:out value="${jobList.sub}" /></span>
+									<div class="job-box">								
+										<span>
+											<c:if test="${member == null}">당신</c:if>
+											<c:if test="${member != null }">${member.userName}님</c:if>
+											에게 어울리는 직업은</span>
+										<strong>"<c:out value="${jobList.job}" />"</strong>
+										<span>입니다.</span>										
+									</div>
 								</div>
 							</div>							
 						</div>
