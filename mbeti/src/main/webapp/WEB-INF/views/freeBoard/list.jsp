@@ -105,7 +105,7 @@
 								<c:set var="doneLoop" value="false"/>
 								<c:forEach items="${fileList}" var = "fileList">
 									<c:if test="${not doneLoop}"> 
-										<c:if test="${fileList.bno == fblist.bno}">
+										<c:if test="${fileList.bno == fbList.bno}">
 											<c:set var="doneLoop" value="true"/>
 											<i class='bx bxs-save' ></i>
 											<c:set var="doneLoop" value="true"/>
@@ -115,7 +115,7 @@
 								<c:set var="doneLoop" value="false"/>
 								<c:forEach items="${fileList}" var = "fileList" >
 									<c:if test="${not doneLoop}"> 
-										<c:if test="${fileList.bno != fblist.bno}">
+										<c:if test="${fileList.bno != fbList.bno}">
 											<c:set var="doneLoop" value="true"/>
 											
 											<c:set var="doneLoop" value="true"/>
