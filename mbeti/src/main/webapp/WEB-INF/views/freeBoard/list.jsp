@@ -81,6 +81,7 @@
 								<th>작성자</th>
 								<th>등록일</th>
 								<th>조회수</th>
+								<th>첨부파일</th>
 							</tr>
 						</thead>
 						
@@ -100,6 +101,28 @@
 								<td><c:out value="${fbList.writer}" /></td>
 								<td><fmt:formatDate value="${fbList.date}" pattern="yyyy-MM-dd HH:mm"/></td>
 								<td><c:out value="${fbList.hit}" /></td>
+								<td>
+								<c:set var="doneLoop" value="false"/>
+								<c:forEach items="${fileList}" var = "fileList">
+									<c:if test="${not doneLoop}"> 
+										<c:if test="${fileList.bno == fblist.bno}">
+											<c:set var="doneLoop" value="true"/>
+											<i class='bx bxs-save' ></i>
+											<c:set var="doneLoop" value="true"/>
+										</c:if>
+									</c:if>
+								</c:forEach>
+								<c:set var="doneLoop" value="false"/>
+								<c:forEach items="${fileList}" var = "fileList" >
+									<c:if test="${not doneLoop}"> 
+										<c:if test="${fileList.bno != fblist.bno}">
+											<c:set var="doneLoop" value="true"/>
+											
+											<c:set var="doneLoop" value="true"/>
+										</c:if>
+									</c:if>
+								</c:forEach>
+							</td>	
 							</tr>
 						</c:forEach>
 						

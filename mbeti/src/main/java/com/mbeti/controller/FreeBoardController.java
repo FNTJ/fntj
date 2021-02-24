@@ -76,6 +76,8 @@ public class FreeBoardController {
 			
 			model.addAttribute("pageMaker", pageMaker);
 			
+			model.addAttribute("fileList",fbservice.fileList());
+			
 			
 			return "/freeBoard/list";
 			

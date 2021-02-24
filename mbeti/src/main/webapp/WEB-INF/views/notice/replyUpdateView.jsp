@@ -21,11 +21,16 @@
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
 					   + "&keyword=${scri.keyword}";
+					   
+				opener.parent.window.location.reload();
+				window.close();
 			})
 			
 		})
 		
 	</script>
+	
+
 	<body>
 	
 		<div id="root">
@@ -66,5 +71,17 @@
 			</section>
 			<hr />
 		</div>
+	<script type="text/javascript">
+		window.onload = function() {
+			$(".update_btn").on("click", function() {
+				window.opener.name = "Delparent";
+				document.updateForm.target = "Delparent";
+				document.updateForm.submit(); // 폼 전송
+				window.close(); //창 닫기 
+			});
+		};
+	</script>
+
+
 	</body>
 </html>

@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FileVO;
 import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.persistence.FreeBoardDAO;
@@ -103,7 +104,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		}
 	}
 	
-	
+	//파일 목록 조회
+		@Override
+		public List<FileVO> fileList() throws Exception {
+			return fbdao.fileList();
+		}
 	
 	
 	

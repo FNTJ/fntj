@@ -21,6 +21,9 @@
 					   + "&perPageNum=${scri.perPageNum}"
 					   + "&searchType=${scri.searchType}"
 					   + "&keyword=${scri.keyword}";
+					   
+				opener.parent.window.location.reload();
+				window.close();
 			})
 			
 		})
@@ -57,5 +60,15 @@
 			</section>
 			<hr />
 		</div>
-	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			$(".delete_btn").on("click", function() {
+				window.opener.name = "parent";
+				document.updateForm.target = "parent"; //호출하고자하는 부모창의 이름
+				document.updateForm.submit(); // 폼 전송
+				self.close(); //창 닫기 
+			});
+		};
+	</script>
+</body>
 </html>

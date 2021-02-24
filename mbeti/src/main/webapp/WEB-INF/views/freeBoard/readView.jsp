@@ -52,24 +52,26 @@
 		
 		//댓글 수정 View
 		$(".replyUpdateBtn").on("click", function(){
-			location.href = "/freeBoard/replyUpdateView?bno=${fbRead.bno}"
+			window.name = "parent";
+			openPage = window.open ("/freeBoard/replyUpdateView?bno=${fbRead.bno}"
 							+ "&page=${scri.page}"
 							+ "&perPageNum=${scri.perPageNum}"
 							+ "&searchType=${scri.searchType}"
 							+ "&category=${scri.category}"
 							+ "&keyword=${scri.keyword}"
-							+ "&rno="+$(this).attr("data-rno");
+							+ "&rno="+$(this).attr("data-rno"),"childForm", "width=570, height=350, resizable=no, scrollbars=no");
 		});
 				
 		//댓글 삭제 View
 		$(".replyDeleteBtn").on("click", function(){
-			location.href = "/freeBoard/replyDeleteView?bno=${fbRead.bno}"
+			window.name = "Delparent"; // 부모창 이름 설정
+			openPage = window.open("/freeBoard/replyDeleteView?bno=${fbRead.bno}"
 				+ "&page=${scri.page}"
 				+ "&perPageNum=${scri.perPageNum}"
 				+ "&searchType=${scri.searchType}"
 				+ "&category=${scri.category}"
 				+ "&keyword=${scri.keyword}"
-				+ "&rno="+$(this).attr("data-rno");
+				+ "&rno="+$(this).attr("data-rno"),"DelchildForm", "width=570, height=350, resizable=no, scrollbars=no");
 		});
 		
 	})

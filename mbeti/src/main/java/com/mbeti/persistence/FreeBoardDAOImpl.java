@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FileVO;
 import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.SearchCriteria;
 
@@ -97,7 +98,11 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		sqlSession.update("freeBoardMapper.fbUpdateReplyCnt",paramMap); 
 		}
 	
-	
+	//파일목록조회
+	@Override
+	public List<FileVO> fileList() throws Exception {
+		return sqlSession.selectList("freeBoardMapper.fileList");
+	}
 	
 	
 	

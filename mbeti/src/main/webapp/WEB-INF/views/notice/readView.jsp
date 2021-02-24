@@ -49,23 +49,28 @@
 		});
 		
 		//댓글 수정 View 
+		var openPage;
+		
+		
 		$(".replyUpdateBtn").on("click", function(){
-			location.href = "/notice/replyUpdateView?bno=${read.bno}"
+			window.name = "parent";
+			openPage = window.open ("/notice/replyUpdateView?bno=${read.bno}"
 							+ "&page=${scri.page}"
 							+ "&perPageNum=${scri.perPageNum}"
 							+ "&searchType=${scri.searchType}"
 							+ "&keyword=${scri.keyword}"
-							+ "&rno="+$(this).attr("data-rno");
+							+ "&rno="+$(this).attr("data-rno"),"childForm", "width=570, height=350, resizable=no, scrollbars=no");
 		});
 				
 	//댓글 삭제 View
 		$(".replyDeleteBtn").on("click", function(){
-			location.href = "/notice/replyDeleteView?bno=${read.bno}"
+			window.name = "Delparent"; // 부모창 이름 설정
+			openPage = window.open( "/notice/replyDeleteView?bno=${read.bno}"
 				+ "&page=${scri.page}"
 				+ "&perPageNum=${scri.perPageNum}"
 				+ "&searchType=${scri.searchType}"
 				+ "&keyword=${scri.keyword}"
-				+ "&rno="+$(this).attr("data-rno");
+				+ "&rno="+$(this).attr("data-rno"),"DelchildForm", "width=570, height=350, resizable=no, scrollbars=no");
 		});
 
 	})

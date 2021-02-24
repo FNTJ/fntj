@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FileVO;
 import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.SearchCriteria;
 
@@ -38,6 +39,8 @@ public interface FreeBoardService {
 		 
 	// 게시물 수정
 	public void update(FreeBoardVO freeBoardVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
-		 
+	
+	// 파일 목록 조회
+	public List<FileVO> fileList() throws Exception;
 	
 }
