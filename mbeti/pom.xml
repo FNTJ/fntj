@@ -216,22 +216,25 @@
 		</dependency>
 		<!-- 트랜젝션 END -->
 		
-		<!-- 이메일 인증: https://mvnrepository.com/artifact/javax.mail/mail -->
+		<!-- 이메일 인증 기능 -->
 		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
-		    <version>${org.springframework-version}</version>
+		    <version>4.3.8.RELEASE</version>
 		</dependency>
 
-		
-		
+		<dependency>
+		    <groupId>org.springframework.integration</groupId>
+		    <artifactId>spring-integration-mail</artifactId>
+		    <version>4.3.8.RELEASE</version>
+		</dependency>
+		<!-- 이메일 인증 END -->
+
 	</dependencies>
 	<build>
 		<plugins>
