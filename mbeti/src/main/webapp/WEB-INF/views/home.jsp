@@ -22,6 +22,12 @@
 			<div class="main-img">
 				<img src="/resources/images/main/main_img01.png">	
 			</div>	
+		</div>
+		<div class="svgwrap">
+			<?xml version="1.0" encoding="utf-8"?>
+            <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 1000 600">
+            <path></path>
+            </svg>
 		</div>		
 	</div>
 

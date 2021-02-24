@@ -43,9 +43,10 @@
 				<table class="table table-board table-hover">
 					<colgroup>
 						<col style="width:10%">
-						<col style="width:50%">
+						<col style="width:40%">
 						<col style="width:10%">
 						<col style="width:20%">
+						<col style="width:10%">
 						<col style="width:10%">
 					</colgroup>
 					
@@ -62,19 +63,11 @@
 					
 					
 					
-					
-					
-					
-					
-					
-					
-					
-					
-										
-					
 					<c:forEach items="${list}" var = "list">
 						<tr>
-							<td><c:out value="${list.bno}" /></td>
+							<td>
+								<c:out value="${list.bno}" />
+							</td>
 							<td class="left">
 								<a href="/notice/readView?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">
 								<c:out value="${list.title}" />
@@ -85,39 +78,29 @@
 							</td>
 							<td><c:out value="${list.writer}" /></td>
 							<td><fmt:formatDate value="${list.date}" pattern="yyyy-MM-dd HH:mm"/></td>
-
 							<td><c:out value="${list.hit}" /></td>
-							
-							
-							
-							
-							
-							
-							
-							<c:set var="doneLoop" value="false"/>
-							<c:forEach items="${fileList}" var = "fileList">
-								<c:if test="${not doneLoop}"> 
-									<c:if test="${fileList.bno == list.bno}">
-										<c:set var="doneLoop" value="true"/>
-										<td><img src="/resources/images/files.jpg"></td>
-										<c:set var="doneLoop" value="true"/>
+							<td>
+								<c:set var="doneLoop" value="false"/>
+								<c:forEach items="${fileList}" var = "fileList">
+									<c:if test="${not doneLoop}"> 
+										<c:if test="${fileList.bno == list.bno}">
+											<c:set var="doneLoop" value="true"/>
+											<i class='bx bxs-save' ></i>
+											<c:set var="doneLoop" value="true"/>
+										</c:if>
 									</c:if>
-								</c:if>
-							</c:forEach>
-							
-							
-							
-							<c:set var="doneLoop" value="false"/>
-							<c:forEach items="${fileList}" var = "fileList" >
-								<c:if test="${not doneLoop}"> 
-									<c:if test="${fileList.bno != list.bno}">
-										<c:set var="doneLoop" value="true"/>
-										<td></td>
-										<c:set var="doneLoop" value="true"/>
+								</c:forEach>
+								<c:set var="doneLoop" value="false"/>
+								<c:forEach items="${fileList}" var = "fileList" >
+									<c:if test="${not doneLoop}"> 
+										<c:if test="${fileList.bno != list.bno}">
+											<c:set var="doneLoop" value="true"/>
+											
+											<c:set var="doneLoop" value="true"/>
+										</c:if>
 									</c:if>
-								</c:if>
-							</c:forEach>
-							
+								</c:forEach>
+							</td>							
 						</tr>
 					</c:forEach>
 					

@@ -13,6 +13,7 @@ input:-internal-autofill-selected{background:transparent !important;}
 .btn-success, .btn-success:hover, .btn-success:focus{background:#ff665b;}
 .btn-danger, .btn-danger:hover, .btn-danger:focus{background:#739af0;}
 .btn-primary, .btn-primary:hover, .btn-primary:focus{border:2px solid #ff665b;background:#fff;color:#ff665b;}
+.btnmr{margin-left:20px;}
 
 .center{text-align:center !important;}
 .right{text-align:right !important;}

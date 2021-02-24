@@ -247,11 +247,13 @@
 			            <option value="ESFP">ESFP</option>	
                    </select>
                </div>
+               
                <div class="form-group">
                   <label class="control-label" for="userID">아이디</label>
                   <input class="form-control" type="text" id="userID" name="userID"  maxlength="30" placeholder="* 아이디는 4~12자의 대소문자와 숫자로만 입력 가능합니다"/>
-                  <button class="idChk btn btn-primary" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+                  <button class="idChk btn btn-primary btnmr" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                </div>
+              
                <div class="form-group">
                   <label class="control-label" for="userPassword">비밀번호</label>
                   <input class="form-control" type="password" id="userPassword" name="userPassword" maxlength="30" placeholder="* 비밀번호는 8~16자의 문자를 입력해주세요"/>
@@ -263,12 +265,12 @@
                <div class="form-group">
                   <label class="control-label" for="userName">닉네임</label>
                   <input class="form-control" type="text" id="userName" name="userName" maxlength="30" placeholder="닉네임을 입력하세요"/>
-                  <button class="nameChk btn btn-primary" type="button" id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
+                  <button class="nameChk btn btn-primary btnmr" type="button" id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
                </div>
                <div class="form-group">
                   <label class="control-label" for="userEmail">이메일</label>
                   <input class="form-control" type="text" id="userEmail" name="userEmail" maxlength="50" placeholder="example@gmail.com"/>
-               </div>
+               </div>               
                <div class="form-group">
                   <label class="control-label" for="userBirthday">생일</label>
                   <input type="date" id="userBirthday" name="userBirthday" />
