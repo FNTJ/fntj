@@ -9,7 +9,7 @@
 .form-group textarea{width:65%;min-height:150px;padding:10px;vertical-align:top;border:2px solid #ddd;}
 .form-group #writer{border:none;}
 .form-group .textview{padding:20px 0; border-top:1px solid #ddd;} 
-.form-group .form-control{display:inline-block;vertical-align: middle;width: 65%;}
+.form-group .form-control{display:inline-block;vertical-align: middle;width: 63%;}
 .form-control{height:40px;border:none;border-bottom:2px solid #dadada;background: transparent;box-shadow: none;border-radius: 0;transition:0.5;}
 .form-control:focus{border-color:none !important;border-bottom:2px solid #000;box-shadow:none;}
 .form-control::placeholder{font-family:'Noto Sans KR';color:#c3c3c3;font-size:16px;font-weight:200;}
@@ -38,12 +38,27 @@
 
 /* register */
 .register{max-width: 900px;margin:0 auto;padding-left: 150px;}
-.register .form-group select{width: 65%;}
-.register #userBirthday{padding:0 10px;width:65%;border:1px solid #ddd;}
+.register .form-group select{width: 63%;}
+.register #userBirthday{padding:0 10px;width:63%;border:1px solid #ddd;}
+.register .mail_check_wrap{margin:10px 0 10px 17%;}
+.register .mail_input_box_warn{display:none;width:67%;margin-left:19%;}
+.register #mail_check_input_box_warn:before,
+.register .mail_input_box_warn:before{display:inline-block;content:"\e9a8";font-family:'boxicons';font-size: 17px;position: relative;top: 2px;margin-right: 5px;}
+.register #mail_check_input_box_warn.correct,
+.register .mail_input_box_warn.on{display:inline-block;color:#387dfb;}
+.register #mail_check_input_box_warn.incorrect,
+.register .mail_input_box_warn.not{display:inline-block;color:#ff4646;}
+.register #mail_check_input_box_warn.incorrect:before,
+.register .mail_input_box_warn.not:before{content:"\ea83";transform:rotate(180deg);}
+.register #mail_check_input_box_warn{display:none;margin-left:3%;}
+.register .mail_check_input_box{display:inline-block;width:50%;}
+.register .mail_check_input_box .mail_check_input{width:100%;}
+
 .register .search-cont{margin:20px 0;}
 .register .search-cont .search-item{width:100%;text-align:center;}
 .register .search-cont .search-item .searchobj li{display:inline;}
 .register .search-cont .search-item input[type="radio"] + label{position:relative; width:23%;height:60px;padding:18px 5px;font-size:16px;}
+.register .search-cont .search-item input[type="radio"] + label:hover{}
 .register .search-cont .search-item input[type="radio"]:checked + label{padding-left: 30px;}
 .register .search-cont .search-item input[type="radio"]:checked + label:before{position:absolute;left: 14px;top: 16px;}
 .register .keyword-box{margin-bottom:30px;color:#000;text-align: center;}
@@ -147,9 +162,11 @@
 .search-cont .submitbox{width: 67%;margin-left: 29%;margin-top: 60px;}
 .search-cont .submitbox .btn{width:100%;min-height: 100px;font-size: 30px;border-radius: 20px;font-family:'Pacifico';}
 .search-cont .search-item input[type="radio"]{display:none;}
-.search-cont .search-item input[type="radio"] + label{display:inline-block;padding: 15px 20px;border-radius:50px;cursor:pointer;border:2px solid #ff665b;text-align: center;line-height: 1;margin:5px;width: auto;transition:0.3s;}
+.search-cont .search-item input[type="radio"] + label{display:inline-block;padding: 17px 20px;border-radius:50px;cursor:pointer;border:2px solid #ff665b;text-align: center;line-height: 1;position: relative;margin:5px;width: auto;transition:0.3s;}
+.search-cont .search-item input[type="radio"] + label:hover,
 .search-cont .search-item input[type="radio"]:checked + label{background:#ff665b;color:#fff;border-color: #fff;}
-.search-cont .search-item input[type="radio"]:checked + label:before{display:inline-block;content:"\ec85";font-family:'boxicons'!important;font-size: 25px;font-weight: 500;vertical-align: middle;margin-right: 5px;color:#fff;}
+.search-cont .search-item input[type="radio"]:checked + label{padding-left: 44px;}
+.search-cont .search-item input[type="radio"]:checked + label:before{position:absolute;left: 14px;top: 13px;display:inline-block;content:"\ec85";font-family:'boxicons'!important;font-size: 25px;font-weight: 500;vertical-align: middle;margin-right: 5px;color:#fff;}
 
 
 .search-result{}
