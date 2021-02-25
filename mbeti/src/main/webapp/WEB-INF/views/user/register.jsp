@@ -202,15 +202,6 @@
  <!-- ======================================================= 이메일인증 css ======================================================================== --> 
 <style>
 /* 메일 영역 */
-
-
-
-.mail_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
 .mail_check_wrap{
 	margin-top: 20px;	
 }
@@ -348,6 +339,13 @@
 
 	var code = "";				//이메일전송 인증번호 저장위한 코드
 				
+	 
+	 /* 입력 이메일 형식 유효성 검사 */
+	 function mailFormCheck(email){
+	    var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	    return form.test(email);
+	}
+	 
 	/* 인증번호 이메일 전송 */
 	$(".mail_check_button").click(function(){
 		
