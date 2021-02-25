@@ -199,23 +199,12 @@
       })
    }
    </script>
-   
+ <!-- ======================================================= 이메일인증 css ======================================================================== --> 
 <style>
 /* 메일 영역 */
-.mail_wrap{
-	width: 100%;
-    margin-top: 20px;
-}
-.mail_name{
-	font-size: 25px;
-    font-weight: bold;
-}
-.mail_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
-	
-}
+
+
+
 .mail_input{
 	width:100%;
 	height:100%;
@@ -264,7 +253,7 @@
 }
 
 </style>
-
+<!-- ======================================================= 이메일인증 css ======================================================================== -->
    
    <!-- //contents  -->
    <div class="contents">
@@ -337,28 +326,9 @@
                </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				<div class="mail_wrap">
-					<div class="mail_name">이메일</div>
-					<div class="mail_input_box">
-						<input class="mail_input" name="memberMail">
-					</div>
+				<div class="form-group">
+					<label class="control-label" for="userEmail">이메일</label>
+					<input class="mail_input" id="userEmail" name="userEmail" maxlength="50" placeholder="example@gmail.com">
 					<span class="final_mail_ck">이메일을 입력해주세요.</span> <span
 						class="mail_input_box_warn"></span>
 					<div class="mail_check_wrap">
@@ -373,8 +343,7 @@
 					</div>
 				</div>
 
-
-
+<!-- ======================================================= 이메일인증 스크립트 ======================================================================== -->
 <script type="text/javascript">
 
 	var code = "";				//이메일전송 인증번호 저장위한 코드
@@ -387,7 +356,7 @@
 		var boxWrap = $(".mail_check_input_box");	// 인증번호 입력란 박스
 		var warnMsg = $(".mail_input_box_warn");	// 이메일 입력 경고글
 		
-		/* 이메일 형식 유효성 검사 *****이거 주석 풀면 에러남!*****/
+		/* 이메일 형식 유효성 검사 *****이거 주석 풀면 에러남*****/
 		/* if(mailFormCheck(email)){
 			warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.");
 			warnMsg.css("display", "inline-block");
@@ -431,32 +400,7 @@
 		
 	});
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- ======================================================= 이메일인증 스크립트 ======================================================================== -->
 
 				<div class="form-group">
                   <label class="control-label" for="userBirthday">생일</label>
