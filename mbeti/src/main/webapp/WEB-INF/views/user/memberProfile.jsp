@@ -52,8 +52,8 @@
 				</div>			
 				
 				<div class="form-group has-feedback form-btn right">
-					<button class="btn btn-primary floatl" onClick="location.href='/user/memberBoard'">내가 작성한 글</button>
-					<button class="cencle btn btn-danger" type="button">취소</button>					
+					<button class="btn btn-primary floatl" type="button" onClick="location.href='http://localhost:8080/user/memberBoard?page=1&perPageNum=10&searchType=w&category=all&keyword=${member.userName}'">내가 작성한 글</button>
+					<button class="cencle btn btn-danger" type="button"  onClick="location.href='../home'">취소</button>					
 					<button class="userEdit btn btn-success">회원정보변경</button>					
 				</div>
 			</form>

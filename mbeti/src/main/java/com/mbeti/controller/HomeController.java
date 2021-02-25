@@ -83,10 +83,10 @@ public class HomeController {
 		return "login";
 	}
 	
-	//연주씨 05
-	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public String contact() {
-		return "contact";
+	//공채달력
+	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	public String calendar() {
+		return "calendar";
 	}
 	
 	@ResponseBody

@@ -212,7 +212,7 @@ public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes 
       pageMaker.setTotalCount(fbservice.listCount(scri));
       
       model.addAttribute("pageMaker", pageMaker);
-      
+      model.addAttribute("fileList",fbservice.fileList());
       
       return "/user/memberBoard";
       
