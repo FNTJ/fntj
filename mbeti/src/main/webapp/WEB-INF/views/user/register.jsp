@@ -199,8 +199,61 @@
       })
    }
    </script>
-   
+ <!-- ======================================================= 이메일인증 css ======================================================================== --> 
+<style>
+/* 메일 영역 */
 
+
+
+.mail_input{
+	width:100%;
+	height:100%;
+	border:none;
+	font-size:28px;
+}
+.mail_check_wrap{
+	margin-top: 20px;	
+}
+.mail_check_input_box{
+	border: 1px solid black;
+    height: 31px;
+    padding: 10px 14px;
+    width: 61%;
+    float: left;
+}
+#mail_check_input_box_false{
+	background-color:#ebebe4;
+}
+#mail_check_input_box_true{
+	background-color:white;
+}
+.mail_check_input{
+	width:100%;
+	height:100%;
+	border:none;
+	font-size:28px;
+}
+.mail_check_button{
+    border: 1px solid black;
+    height: 51px;
+    width: 30%;
+    float: right;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    background-color: #ececf7;
+    cursor: pointer;
+}
+.correct{
+	color : green;
+}
+.incorrect{
+	color : red;
+}
+
+</style>
+<!-- ======================================================= 이메일인증 css ======================================================================== -->
    
    <!-- //contents  -->
    <div class="contents">
@@ -270,8 +323,86 @@
                <div class="form-group">
                   <label class="control-label" for="userEmail">이메일</label>
                   <input class="form-control" type="text" id="userEmail" name="userEmail" maxlength="50" placeholder="example@gmail.com"/>
-               </div>               
-               <div class="form-group">
+               </div>
+
+
+				<div class="form-group">
+					<label class="control-label" for="userEmail">이메일</label>
+					<input class="mail_input" id="userEmail" name="userEmail" maxlength="50" placeholder="example@gmail.com">
+					<span class="final_mail_ck">이메일을 입력해주세요.</span> <span
+						class="mail_input_box_warn"></span>
+					<div class="mail_check_wrap">
+						<div class="mail_check_input_box" id="mail_check_input_box_false">
+							<input class="mail_check_input" disabled="disabled">
+						</div>
+						<div class="mail_check_button">
+							<span>인증번호 전송</span>
+						</div>
+						<div class="clearfix"></div>
+						<span id="mail_check_input_box_warn"></span>
+					</div>
+				</div>
+
+<!-- ======================================================= 이메일인증 스크립트 ======================================================================== -->
+<script type="text/javascript">
+
+	var code = "";				//이메일전송 인증번호 저장위한 코드
+				
+	/* 인증번호 이메일 전송 */
+	$(".mail_check_button").click(function(){
+		
+		var email = $(".mail_input").val();			// 입력한 이메일
+		var cehckBox = $(".mail_check_input");		// 인증번호 입력란
+		var boxWrap = $(".mail_check_input_box");	// 인증번호 입력란 박스
+		var warnMsg = $(".mail_input_box_warn");	// 이메일 입력 경고글
+		
+		/* 이메일 형식 유효성 검사 *****이거 주석 풀면 에러남*****/
+		/* if(mailFormCheck(email)){
+			warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.");
+			warnMsg.css("display", "inline-block");
+		} else {
+			warnMsg.html("올바르지 못한 이메일 형식입니다.");
+			warnMsg.css("display", "inline-block");
+			return false;
+		}	 */
+		
+		$.ajax({
+			
+			type:"GET",
+			url:"/user/mailCheck?email=" + email,
+			success:function(data){
+				
+				//console.log("data : " + data);
+				cehckBox.attr("disabled",false);
+				boxWrap.attr("id", "mail_check_input_box_true");
+				code = data;
+				
+			}
+					
+		});
+		
+	});
+	/* 인증번호 비교 */
+	$(".mail_check_input").blur(function(){
+		
+		var inputCode = $(".mail_check_input").val();		// 입력코드	
+		var checkResult = $("#mail_check_input_box_warn");	// 비교 결과 	
+		
+		if(inputCode == code){							// 일치할 경우
+			checkResult.html("인증번호가 일치합니다.");
+			checkResult.attr("class", "correct");		
+			mailnumCheck = true;
+		} else {											// 일치하지 않을 경우
+			checkResult.html("인증번호를 다시 확인해주세요.");
+			checkResult.attr("class", "incorrect");
+			mailnumCheck = false;
+		}	
+		
+	});
+</script>
+<!-- ======================================================= 이메일인증 스크립트 ======================================================================== -->
+
+				<div class="form-group">
                   <label class="control-label" for="userBirthday">생일</label>
                   <input type="date" id="userBirthday" name="userBirthday" />
                </div>
