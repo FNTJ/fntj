@@ -5,7 +5,13 @@
 	
 	<!-- //contents  -->
 	<div class="contents">
-		<div class="layout about">
+		<div class="layout about"> 
+		
+		
+			<div class="cha-tit">
+				<strong>Member</strong>
+				<strong>Profile</strong>
+			</div>
 			
 			<!-- 태연  -->
 			<div class="cha-box">
@@ -107,6 +113,9 @@
 				pbox.on("mouseover", function(){
 					tbox.removeClass("on");
 					$(this).siblings(".talkbox").addClass("on");
+				});
+				pbox.on("mouseleave", function(){
+					tbox.removeClass("on");
 				});
 				
 			</script>
