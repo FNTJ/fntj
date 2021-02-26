@@ -56,9 +56,11 @@
 					</div>
 					<div class="form-group">
 						<label for="content">내용</label>
-						<textarea id="content" name="content" class="chkc ckeditor" placeholder="내용을 입력하세요." title="내용을 입력하세요." style="resize: none;"></textarea>
-						
+						<textarea id="content" name="content" class="chkc ckeditor" placeholder="내용을 입력하세요." title="내용을 입력하세요." style="resize: none;"></textarea>						
 					</div>
+					<script>
+						CKEDITOR.replace('content');
+					</script>
 					<div class="form-group">
 						<label for="writer">작성자</label>
 						<input type="text" id="writer" name="writer" class="chk" title="작성자를 입력하세요." value="${member.userName}" />
@@ -79,16 +81,4 @@
 	</div><!-- //contents  -->
 
 <jsp:include page="../footer.jsp"></jsp:include>
-<script type="text/javascript">
-						CKEDITOR.replace('content');
-						//CKEDITOR.instances.content.updateElement();
 						
-						/* $("form").on("submit", function(e){
-						    $('textarea.ckeditor').each(function () {
-						       var $textarea = $(this);
-						       $textarea.val(CKEDITOR.instances[$textarea.attr('name')].getData());
-						    });
-						}); */
-						 //CKEDITOR.instances.content.updateElement();
-						 //CKEDITOR.instances.content.getData();
-						</script>

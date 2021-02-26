@@ -47,7 +47,8 @@
 			<div class="layout">
 			<h2 class="h2">커뮤니티 글작성</h2>
 			<jsp:include page="../nav.jsp"></jsp:include>
-			
+				<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
+				
 				<form name="writeForm" method="post" action="/freeBoard/write" enctype="multipart/form-data">
 				
 					<div class="form-group">
@@ -80,8 +81,11 @@
 					</div>
 					<div class="form-group">
 						<label for="content">내용</label>
-						<textarea id="content" name="content" class="chk" placeholder="내용을 입력하세요." title="내용을 입력하세요." style="resize: none;"></textarea>
+						<textarea id="content" name="content" class="chkc ckeditor" placeholder="내용을 입력하세요." title="내용을 입력하세요." style="resize: none;"></textarea>
 					</div>
+					<script>
+						CKEDITOR.replace('content');
+					</script>
 					<div class="form-group">
 						<label for="writer">작성자</label>
 						<input type="text" id="writer" name="writer" class="chk" title="작성자를 입력하세요." value="${member.userName}" />

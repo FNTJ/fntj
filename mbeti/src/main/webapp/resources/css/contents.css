@@ -16,6 +16,8 @@
 .formcontrol{display:inline-block; width:65%;}
 .form-btn{margin-top: 70px;padding-top: 30px;border-top: 2px solid #ddd;text-align: center;}
 .form-width{padding:0;}
+.boardcontents li{list-style:unset;}
+.boardcontents em{font-style:italic;}
 
 /* login */
 .login-box{max-width:900px;margin:0 auto;}

@@ -6,9 +6,8 @@
 	<!-- //contents  -->
 	<div class="contents">
 		<div class="layout about">
-			contatct
 			
-			
+						
 			
 			
 		</div><!-- //layout  -->

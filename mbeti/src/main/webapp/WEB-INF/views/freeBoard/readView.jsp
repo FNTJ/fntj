@@ -127,7 +127,7 @@
 			</div>
 			
 			<div class="form-group form-width">
-				<div class="textview"><c:out value="${fbRead.content}" /></div>				
+				<div class="textview boardcontents" id="contents"><c:out value="${fbRead.content}" escapeXml="false" /></div>						
 			</div>
 			
 			<div class="form-group form-btn">

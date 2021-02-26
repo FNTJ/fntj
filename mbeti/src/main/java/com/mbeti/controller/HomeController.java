@@ -89,6 +89,12 @@ public class HomeController {
 		return "calendar";
 	}
 	
+	//contact
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String contact() {
+		return "contact";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/search_source", method = RequestMethod.GET)
 	public String search_source() {
