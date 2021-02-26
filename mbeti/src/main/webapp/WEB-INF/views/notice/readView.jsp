@@ -118,9 +118,9 @@
 				</c:forEach>
 			</div>				
 		</div>
-			
-		<div class="form-group form-width">
-			<div class="textview"><c:out value="${read.content}" /></div>				
+		<div class="form-group form-width"> 
+			<%-- <div class="textview" id="contents"><c:out value='${read.content.replaceAll("\\\<.*?\\\>","")}' /></div> --%>
+			<div class="textview boardcontents" id="contents"><c:out value="${read.content}" escapeXml="false" /></div>				
 		</div>
 							
 		<div class="form-group form-btn">

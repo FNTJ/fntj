@@ -13,21 +13,43 @@
       	
 		<div class="register">
 			<form action="/user/memberUpdateView">
-			
+				
 				<div class="keyword-box">
 					<div class="keyword-tit">
 						<span><strong class="tit-name">${member.userName}</strong>님</span>
 					</div>
 					<div class="keyword-cont">
 						<div class="keyword-item">
-							<span class="keyword-img ${member.keyword3}"></span>
-							<span class="keyword-txt">${member.keyword1}</span>							
+							<span class="keyword-img"></span>
+							<span class="keyword-txt" title="${member.keyword1}">${member.keyword1}</span>							
 						</div>
 						<span class="keyword-key">${member.keyword2}</span>
 						<span class="keyword-key">${member.keyword4}</span>
 						<span class="keyword-key">${member.keyword5}</span>
 					</div>
 				</div>
+				<script>
+					var keytxt = $(".keyword-txt").attr("title");
+					var keyimg = $(".keyword-img");
+					
+					if(keytxt == "IT/기술/전문"){
+						keyimg.addClass("k1");
+					}else if(keytxt == "경영/금융/관리"){
+						keyimg.addClass("k2");
+					}else if(keytxt == "공공/사회/서비스"){
+						keyimg.addClass("k3");
+					}else if(keytxt == "학문/교육/인재"){
+						keyimg.addClass("k4");
+					}else if(keytxt == "언론/방송/미디어"){
+						keyimg.addClass("k5");
+					}else if(keytxt == "역사/관광/운송"){
+						keyimg.addClass("k6");
+					}else if(keytxt == "생활/레저/식품"){
+						keyimg.addClass("k7");
+					}else{
+						keyimg.addClass("k8");
+					}
+				</script>
 				
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userID">MBTI</label>
