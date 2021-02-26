@@ -24,6 +24,9 @@
 					   + "&searchType=${scri.searchType}"
 					   + "&category=${scri.category}"
 					   + "&keyword=${scri.keyword}";
+					   
+				opener.parent.window.location.reload();
+				window.close();
 			});			
 		});		
 	</script>
