@@ -21,13 +21,130 @@
 				$("#userPassword").focus();
 				return false;
 			}
-			if($("#userName").val()==""){
-				alert("성명을 입력해주세요.");
-				$("#userName").focus();
-				return false;
+			//닉네임중복확인
+			if($("#userName").val() != ""){
+		     var nameChkVal = $("#nameChk").val();
+	            if(nameChkVal == "N"){
+	               alert("닉네임 중복확인 버튼을 눌러주세요.");
+	               return false;
+	            }else if(nameChkVal == "Y"){
+	               $("#regForm").submit();
+	            }
 			}
+			//비번-비번확인 일치여부
+            if($("#userPassword").val() != $("#userPassword2").val()){
+               alert("비밀번호가 일치하지 않습니다.");
+               $("#userPassword2").focus();
+               return false;
+            }
+			//비밀번호 정규식
+            var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
+            if (!pwPattern.test($("#userPassword").val())) {
+               alert("비밀번호는 8~16자의 문자를 입력해주세요.");
+               $("#userPassword").focus();
+                return false;//반환 할 곳 없이 if문 탈출
+            }
+         	//닉네임 정규식
+         	if($("#userName").val() == ""){
+         		$('#userName').val("${member.userName}");
+         	}
+         	if($("#userName").val() != ""){
+         		if("${member.userName}" != $("#userName").val()){
+	            var namePattern = /^[a-zA-Z가-힣0-9]{2,}$/;
+	             if (!namePattern.test($("#userName").val())) {
+	                alert("닉네임은 2글자 이상의 문자를 입력해주세요. (특수기호, 공백 사용 불가)");
+	                $("#userName").focus();
+	                 return false;//반환 할 곳 없이 if문 탈출
+	            	}
+         		}
+         	}
+             
+           //이메일 정규식
+           if($("#userEmail").val() != ""){
+           	if("${member.userEmail}" != $("#userEmail").val()){
+              var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
+                if (!emailPattern.test($("#userEmail").val())) {
+                   alert("이메일 양식을 확인해 주세요");
+                   $("#userEmail").focus();
+                    return false;//반환 할 곳 없이 if문 탈출
+                }
+           	}
+           }
+                
+           //닉네임 변경시 랜덤닉네임
+            if($("#userName").val() != ""){
+	           	if("${member.userName}" != $("#userName").val()){
+	              //랜덤 닉네임
+	                var myNic = new Array('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+	                /* document.write(randomItem(myNic), '<br />'); */
+	                
+	                
+	                 if($("#mb").val()=="INTJ"){    
+	                         myNic = new Array('전략', '전략적인', '전술적인', '철두철미한', '계산적인', '상상력이 풍부한', '결단력이있는', '올곧은', '냉소적인', '용의주도한');
+	                          } else if($("#mb").val()=="INTP"){    
+	                            myNic = new Array('독특한', '몽상가', '사색가', '아이디어가 뱅크', '잠재력이 있는', '논리적인' );
+	                          } else if($("#mb").val()=="ENTJ"){    
+	                            myNic = new Array('리더', '빠른 판단력의', '계획적인', '자아실현적인', '대담한', '통솔자');
+	                          } else if($("#mb").val()=="ENTP"){    
+	                            myNic = new Array('비판자', '입담 좋은', '솔직한', '자유분방한', '변론가', '논쟁가');
+	                          } else if($("#mb").val()=="INFJ"){    
+	                            myNic = new Array('강직한', '의지력이있는', '섬세한', '신념있는', '따듯한', '옹호자', '선의의');
+	                          } else if($("#mb").val()=="INFP"){    
+	                            myNic = new Array('긍적적인', '이상주의자', '침착한', '내성적인', '수줍은', '순수한', '양심적인', '창의적인', '친절한', '중재자', '열정적인');
+	                          } else if($("#mb").val()=="ENFJ"){    
+	                            myNic = new Array('열정적인', '리더', '이타주의', '정의로운', '사회운동가');
+	                          } else if($("#mb").val()=="ENFP"){    
+	                            myNic = new Array('분위기 메이커', '사교적인', '호기심이 많은', '에너지가 넘치는', '독립적인', '열정적인', '진취적인', '통찰력이 있는', '재기발랄한', '활동가');
+	                          } else if($("#mb").val()=="ISTJ"){    
+	                            myNic = new Array('실용적인', '헌신적인', '책임감이 있는', '현실적인', '논리주의자', '예리한', '자율적인', '청렴결백한');
+	                          } else if($("#mb").val()=="ISFJ"){    
+	                            myNic = new Array('내성적인', '안정적인', '세심한', '겸손한', '섬세한', '용감한', '수호자');
+	                          } else if($("#mb").val()=="ESTJ"){    
+	                            myNic = new Array('엄격한', '관리자', '정직한', '헌신적인', '위풍당당한', '단결력 있는', '공명정대한', '엄격한', '모범시민');
+	                          } else if($("#mb").val()=="ESFJ"){    
+	                            myNic = new Array('사교적인', '외교관', '예민한', '오지랖이 넓은');
+	                          } else if($("#mb").val()=="ISTP"){    
+	                            myNic = new Array('만능 재주꾼', '냉철한', '이성주의적인', '호기심쟁이', '즉흥적인', '공정한', '창의적인', '예측불허한');
+	                          } else if($("#mb").val()=="ISFP"){    
+	                            myNic = new Array('호기심이 많은', '예술가', '감각적인', '즉흥적인', '실험정신의', '자아성찰적인');
+	                          } else if($("#mb").val()=="ESTP"){    
+	                            myNic = new Array('모험을 즐기는', '사업가', '직설적인', '자발적인', '이성적인', '관찰력있는', '예리한', '행동력있는', '도덕적인');
+	                          } else if($("#mb").val()=="ESFP"){    
+	                            myNic = new Array('자유로운 영혼의', '연예인', '즉흥적인', '사교적인', '단순한', '미적감각이 있는', '독창적인', '관찰력있는');
+	                          }
+	
+	                var random = randomItem(myNic) + " " + $("#userName").val();
+	                /* document.write(random, '<br />'); */
+	                
+	                // 주어진 배열에서 요소 1개를 랜덤하게 골라 반환하는 함수
+	                function randomItem(a) {
+	                  return a[Math.floor(Math.random() * a.length)];
+	                }
+	                
+	                $('#userName').val(random);
+	           	} 
+            } 
 		});		
 	})
+</script>
+
+<script type="text/javascript">
+   function fn_nameChk(){
+      $.ajax({
+         url : "/user/nameChk",
+         type : "post",
+         dataType : "json",
+         data : {"userName" : $("#userName").val()},
+         success : function(data){
+            if(data == 1){
+               alert("중복된 닉네임입니다.");
+            }else if(data == 0){
+               $("#nameChk").attr("value", "Y");
+               alert("사용가능한 닉네임입니다.");
+            }
+         }
+      })
+   }
 </script>
 	
  <!-- //contents  -->
@@ -49,7 +166,7 @@
 					<div class="form-group has-feedback">
 							<label class="control-label" for="mb">MBTI</label>
 							<select id="mb" name="mb" SIZE=1 >
-						        <option value="${member.mb}">mbti 변경안함</option>
+						        <option value="${member.mb}">- ${member.mb} -</option>
 						        <option value="INTJ">INTJ</option>
 				           		<option value="INTP">INTP</option>
 					            <option value="ENTJ">ENTJ</option>
@@ -70,11 +187,25 @@
 						</div>
 					<div class="form-group has-feedback">
 						<label class="control-label" for="userID">아이디</label>
-						<input class="form-control" type="text" id="userID" name="userID" value="${member.userID}" readonly="readonly"/>
+						<span class="form-control" id="userID">${member.userID}</span>
+						<input class="form-control" type="hidden" id="userID" name="userID" value="${member.userID}" readonly="readonly"/>
 					</div>
 					<div class="form-group has-feedback">
-						<label class="control-label" for="userPassword">패스워드</label>
-						<input class="form-control" type="password" id="userPassword" name="userPassword" />
+						<label class="control-label" for="userPassword">비밀번호</label>
+						<input class="form-control" type="password" id="userPassword" name="userPassword" maxlength="30" placeholder="* 비밀번호는 8~16자의 문자를 입력해주세요" />
+					</div>
+					<div class="form-group">
+		                <label class="control-label" for="userPassword2">비밀번호확인</label>
+		                <input class="form-control" type="password" id="userPassword2" name="userPassword2" maxlength="30" placeholder="비밀번호를 확인해주세요"/>
+              		 </div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userName">닉네임</label>
+						<input class="form-control" type="text" id="userName" name="userName" maxlength="30"  placeholder="${member.userName}"/>
+						 <button class="nameChk btn btn-primary btnmr" type="button" id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="control-label" for="userEmail">이메일</label>
+						<input class="form-control" type="text" id="userEmail" name="userEmail"  maxlength="50" placeholder="${member.userEmail}"/>
 					</div>
 					<div class="form-group">
 	              	     <label class="control-label" for="keyword1">키워드선택</label>

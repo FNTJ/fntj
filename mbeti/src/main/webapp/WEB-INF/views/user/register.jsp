@@ -92,7 +92,7 @@
                   return false;//반환 할 곳 없이 if문 탈출
               }
               
-            //아이디 패스워드 값 데이터 정규식
+            //아이디 비밀번호 값 데이터 정규식
               var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
               if (!pwPattern.test($("#userPassword").val())) {
                  alert("비밀번호는 8~16자의 문자를 입력해주세요.");

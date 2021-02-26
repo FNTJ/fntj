@@ -22,7 +22,9 @@
 	<update id="memberUpdate">
 		UPDATE tbl_USER SET
 		mb = #{mb},
+		userName = #{userName},
 		userPassword = #{userPassword},
+		userEmail = #{userEmail},
 		keyword1 = #{keyword1},
 		keyword2 = #{keyword2},
 		keyword3 = #{keyword3},

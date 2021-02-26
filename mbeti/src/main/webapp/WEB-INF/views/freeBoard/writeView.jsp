@@ -51,8 +51,10 @@
 				<form name="writeForm" method="post" action="/freeBoard/write" enctype="multipart/form-data">
 				
 					<div class="form-group">
-						<label for="category">카테고리</label>
-						<select id="category" name="category" class="chk form-control" title="카테고리를 선택해주세요.">
+						<label for="category" for="category">카테고리</label>
+						<span class="form-control" id="category">${member.mb}</span>
+						<input class="form-control" type="hidden" id="category" name="category" value="${member.mb}" readonly="readonly"/>
+						<!-- <select id="category" name="category" class="chk form-control" title="카테고리를 선택해주세요.">
 				            <option value="">MBTI를 선택하세요</option>
 				            <option value="INTJ">INTJ</option>
 				            <option value="INTP">INTP</option>
@@ -70,7 +72,7 @@
 				            <option value="ISFP">ISFP</option>
 				            <option value="ESTP">ESTP</option>
 				            <option value="ESFP">ESFP</option>		            
-			            </select>
+			            </select> -->
 					</div>
 					<div class="form-group">
 						<label for="title">제목</label>
