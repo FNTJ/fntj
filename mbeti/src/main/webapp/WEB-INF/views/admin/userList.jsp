@@ -34,7 +34,9 @@
 					
 					<c:forEach items="${list}" var = "list">
 						<tr>
-							<td><c:out value="${list.userID}" /></td>
+							<td>
+								<a href="/admin/retrieve?userID=${list.userID}"><c:out value="${list.userID}" /></a>
+							</td>
 							<td><c:out value="${list.userName}" /></td>
 							<td><c:out value="${list.userEmail}" /></td>
 							<td><c:out value="${list.userBirthday}" /></td>
@@ -53,7 +55,6 @@
 				</table>
 			
 			<div class="form-group has-feedback form-btn right">
-					<button class="btn btn-primary floatl" type="button" onClick="location.href='/admin/userList">회원 조회</button>
 					<button class="cencle btn btn-danger" type="button"  onClick="location.href='/admin/index'">이전 페이지</button>					
 			</div>
 			
