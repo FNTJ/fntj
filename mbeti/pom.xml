@@ -240,8 +240,8 @@
           <version>4.3.8.RELEASE</version>
       </dependency>
       <!-- 이메일 인증 END -->
-
-      <!-- Security -->
+      
+   <!-- Security -->
       <dependency>
           <groupId>org.springframework.security</groupId>
           <artifactId>spring-security-core</artifactId>
@@ -259,7 +259,6 @@
           <artifactId>spring-security-config</artifactId>
           <version>5.0.8.RELEASE</version>
       </dependency>
-   
       
       <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
       <dependency>

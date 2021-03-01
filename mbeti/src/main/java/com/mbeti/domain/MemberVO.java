@@ -16,7 +16,14 @@ public class MemberVO {
 	private String keyword3;
 	private String keyword4;
 	private String keyword5;
+	private int enabled;
 
+	public int getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
 	public String getMb() {
 		return mb;
 	}

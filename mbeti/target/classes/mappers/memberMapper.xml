@@ -15,7 +15,7 @@
 	SELECT *
 	  FROM tbl_USER
 	 WHERE userID = #{userID}
-	   AND userPassword = #{userPassword}   
+	  <!--  AND userPassword = #{userPassword}    -->
 	</select>
 
 	<!-- 회원정보 수정 -->
@@ -37,7 +37,7 @@
 	<delete id="memberDelete">
 		DELETE FROM tbl_USER
 		WHERE userID = #{userID}
-		  AND userPassword = #{userPassword} 
+		<!-- AND userPassword = #{userPassword} -->
 	</delete>
 	
 	<!-- 패스워드 체크 -->

@@ -30,5 +30,12 @@
    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
    </context:component-scan>
    
+   <beans:bean id="AdminInterceptor" class="com.mbeti.interceptor.AdminInterceptor" />
+	<interceptors>
+	 <interceptor>
+	  <mapping path="/admin/**" />
+	  <beans:ref bean="AdminInterceptor" />
+	 </interceptor>
+	</interceptors>
    
 </beans:beans>

@@ -124,6 +124,27 @@
 	                $('#userName').val(random);
 	           	} 
             } 
+           
+            $.ajax({
+				url : "/user/passChk",
+				type : "POST",
+				dateType : "json",
+				data : $("#updateForm").serializeArray(),
+				success: function(data){
+					
+					if(data==true){
+						if(confirm("회원수정하시겠습니까?")){
+							$("#updateForm").submit();
+						}
+						
+					}else{
+						alert("패스워드가 틀렸습니다.");
+						return;
+						
+					}
+				}
+			})
+           
 		});		
 	})
 </script>
@@ -284,7 +305,6 @@
 						<button class="cencle btn btn-danger" type="button">취소</button>						
 						<button class="btn btn-primary" type="button" id="diverge">회원탈퇴</button>
 						<button class="btn btn-success" type="submit" id="submit">변경하기</button>
-						
 					</div>
 				</form>
 			</div>
