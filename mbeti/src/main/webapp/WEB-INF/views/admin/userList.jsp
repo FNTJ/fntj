@@ -1,8 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-	
 <jsp:include page="../header.jsp"></jsp:include>
+
+<script>
+         $(document).ready(function() {
+            
+            $(".selectDelete_btn").on("click", function() {
+               
+               var formObj = $("form[name='readForm']");
+               var confirm_val = confirm("선택한 회원정보를 삭제하시겠습니까?");
+               
+               if(confirm_val == true) {
+                  var checkArr = new Array();
+                  
+                  $("input[class='chBox']:checked").each(function() {
+                     
+                     checkArr.push($(this).attr("data-userList"));
+                  });
+                  
+                  $.ajax({
+                     url : "/admin/deleteUser",
+                     type : "POST",
+                     data : {chbox : checkArr},
+                     success : function(result) {               
+                        if(result == 1) {
+                           formObj.attr("action", "/admin/deleteUser");
+                           formObj.attr("method", "post");
+                           formObj.submit();
+                           location.href = "/admin/userList";
+                        } else {
+                           alert("회원정보 삭제 실패");
+                        }
+                     }
+                  });
+               }
+            })
+         })
+         
+      </script>
+
 	
 	<!-- //contents  -->
 	<div class="contents">
@@ -38,18 +75,36 @@
 				</div>
 				<!-- search//  -->
 				
+				<div class="allCheck"> 
+		            <input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">모두 선택</label>
+		               <script>
+		                  $("#allCheck").click(function() {
+		                     var chk = $("#allCheck").prop("checked");
+		                     if(chk) {
+		                        $(".chBox").prop("checked", true);
+		                     } else {
+		                        $(".chBox").prop("checked", false);
+		                     }
+		                  });
+		               </script>
+		         </div>
+				
+				
 				<table class="table table-board table-hover">
 					<colgroup>
-						<col style="width:20%">
-						<col style="width:20%">
-						<col style="width:20%">
+						<col style="width:10%">
+						<col style="width:19%">
+						<col style="width:19%">
+						<col style="width:19%">
+						<col style="width:10%">
+						<col style="width:10%">
 						<col style="width:13%">
-						<col style="width:13%">
-						<col style="width:14%">
 					</colgroup>
+
 					
 					<thead>
-						<tr>
+						<tr> 
+							<th>선택</th>         
 							<th>아이디</th>
 							<th>닉네임</th>
 							<th>이메일</th>
@@ -57,10 +112,20 @@
 							<th>회원가입일</th>
 							<th>회원구분</th>
 						</tr>
+
 					</thead>
 					
 					<c:forEach items="${list}" var = "list">
 						<tr>
+							<td>
+								<input type="checkbox" name="delList" class="chBox" data-userList="${list.userID}" />
+								<script>
+									$(".chBox").click(function() {
+									   $("#allCheck").prop("checked", false);
+									})
+								</script>
+							</td>
+						
 							<td>
 								<a href="/admin/retrieve?userID=${list.userID}"><c:out value="${list.userID}" /></a>
 							</td>
@@ -97,6 +162,10 @@
 				  </ul>
 				</div>
 			</form>
+			
+			<div class="delBtn">
+				<button class="cencle btn btn-dangers selectDelete_btn" type="button">선택한 회원정보 삭제</button>
+			</div>
 			
 			<div class="form-group has-feedback form-btn right">
 					<button class="cencle btn btn-danger" type="button"  onClick="location.href='/admin/index'">이전 페이지</button>					

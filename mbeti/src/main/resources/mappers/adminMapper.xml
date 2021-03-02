@@ -94,7 +94,12 @@
 		</if>
 	</sql>
 	
-	
+	<!-- 회원 삭제 -->
+	<delete id="deleteUser" parameterType="String">
+	    delete 
+	    from tbl_user
+	    where userID = #{userID}
+	</delete>
 	
 	
 	

@@ -1,5 +1,8 @@
 package com.mbeti.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -8,14 +11,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
 import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.PageMaker;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.service.AdminService;
+import com.mbeti.service.BoardService;
+import com.mbeti.service.ReplyService;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -27,7 +38,13 @@ public class AdminController {
    AdminService service;
    
    @Inject
-	BCryptPasswordEncoder pwdEncoder;
+   BCryptPasswordEncoder pwdEncoder;
+   
+	@Inject
+	BoardService nService;
+	
+	@Inject
+	ReplyService replyService;
    
    // 관리자페이지 홈
    @RequestMapping(value = "/admin/index", method = RequestMethod.GET)
@@ -93,13 +110,109 @@ public class AdminController {
 		
 		return "redirect:/admin/userList";
 	}
-  
+//////////////////////////////////////////////////////////////////////////////////////  
+	// 게시판 글 작성 화면
+		@RequestMapping(value = "/admin/writeView", method = RequestMethod.GET)
+		public void writeView() throws Exception{
+			logger.info("writeView");
+			
+		}
+		
+		
+		// 게시판 글 작성
+		@RequestMapping(value = "/admin/write", method = RequestMethod.POST)
+		public String write(BoardVO boardVO, MultipartHttpServletRequest mpRequest) throws Exception{
+			logger.info("write");
+			nService.write(boardVO, mpRequest);
+			
+			return "redirect:/notice/list";
+		}
+	
+		// 게시판 수정뷰
+		@RequestMapping(value = "/admin/updateView", method = RequestMethod.GET)
+		public String updateView(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model)
+				throws Exception {
+			logger.info("updateView");
+
+			model.addAttribute("update", nService.read(boardVO.getBno()));
+			model.addAttribute("scri", scri);
+
+			List<Map<String, Object>> fileList = nService.selectFileList(boardVO.getBno());
+			model.addAttribute("file", fileList);
+			return "/admin/updateView";
+		}
+
+		// 게시판 수정
+		@RequestMapping(value = "/admin/noticeUpdate", method = RequestMethod.POST)
+		public String update(BoardVO boardVO, 
+							 @ModelAttribute("scri") SearchCriteria scri, 
+							 RedirectAttributes rttr,
+							 @RequestParam(value="fileNoDel[]") String[] files,
+							 @RequestParam(value="fileNameDel[]") String[] fileNames,
+							 MultipartHttpServletRequest mpRequest) throws Exception {
+			logger.info("update");
+			nService.update(boardVO, files, fileNames, mpRequest);
+
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("keyword", scri.getKeyword());
+
+			return "redirect:/notice/list";
+		}
+
+		// 게시판 삭제
+		@RequestMapping(value = "/admin/noticeDelete", method = RequestMethod.POST)
+		public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+			logger.info("delete");
+			
+			nService.delete(boardVO.getBno());
+			
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("keyword", scri.getKeyword());
+			
+			return "redirect:/notice/list";
+		}
 	
 	
-	
-	
-	
-	
+		// 회원 선택삭제
+        @ResponseBody
+        @RequestMapping(value="/admin/deleteUser", method = RequestMethod.POST)
+        public String deleteUser(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, MemberVO memberVO) throws Exception {
+        
+			
+			
+			  logger.info("delete user");
+			  
+			  MemberVO member = (MemberVO)session.getAttribute("member"); 
+			  String userID = member.getUserID();
+			  
+			  logger.info(".................!");
+			  
+			  int result = 0; 
+			  int delUser = 0;
+			  
+			  if(member != null) {
+			  
+				  member.setUserID(userID);
+				  
+				  for(String i : chArr) { 
+					  delUser = Integer.parseInt(i);
+					  String temp = Integer.toString(delUser);
+					  member.setUserID(userID); 
+					  service.delete(memberVO.getUserID());
+				  
+				  } result = 1; 
+			  }
+			  
+			  	logger.info("delete");
+				service.delete(memberVO.getUserID());
+				
+        return "redirect:/admin/userList";
+        
+        }
 	
 	
 	

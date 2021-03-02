@@ -76,14 +76,7 @@
 								</c:if>
 								</a>
 							</td>
-							<td>
-								<c:if test="${list.writer == 'jambox'}">
-									<span class="jam"><c:out value="${list.writer}" /></span>
-								</c:if>
-								<c:if test="${list.writer != 'jambox'}">
-									<span><c:out value="${list.writer}" /></span>
-								</c:if>
-							</td>
+							<td><c:out value="${list.writer}" /></td>
 							<td><fmt:formatDate value="${list.date}" pattern="yyyy-MM-dd HH:mm"/></td>
 							<td><c:out value="${list.hit}" /></td>
 							<td>
@@ -115,8 +108,8 @@
 				
 				
 				<div class="board-nav right">
-					<c:if test="${member != null}">						
-						<a href="/notice/writeView" class="btn btn-success">글작성</a>
+					<c:if test="${member.enabled == 2}">						
+						<a href="/admin/writeView" class="btn btn-success">글작성</a>
 					</c:if>
 				</div>
 				
