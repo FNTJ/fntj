@@ -64,6 +64,9 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<ul class="dropdown-menu">
+						<c:if test="${member.getEnabled() == 2}">
+						<li><a href="/admin/index">관리자페이지</a></li>
+						</c:if>
 						<li><a href="/user/memberProfile">회원정보관리</a></li>
 						<li><a href="/user/logout">로그아웃</a></li>
 					</ul>

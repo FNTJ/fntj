@@ -195,7 +195,7 @@
 								<input type="text" id="content" name="content" class="form-control"/>							
 							</div>
 							<div class="col-sm-1">
-								<button type="button" class="replyWriteBtn btn btn-sm btn-danger">작성</button>
+								<button type="submit" class="replyWriteBtn btn btn-sm btn-danger">작성</button>
 							</div>
 						</c:if>
 					</div>

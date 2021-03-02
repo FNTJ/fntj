@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,6 +42,9 @@ public class MemberController {
    
    @Inject
    FreeBoardService fbservice;
+   
+   @Inject
+	BCryptPasswordEncoder pwdEncoder;
    
    @Autowired
    private JavaMailSender mailSender;	
@@ -84,10 +88,15 @@ public String postRegister(MemberVO vo) throws Exception {
    logger.info("post register");
    int result = service.idChk(vo);
    int result2 = service.nameChk(vo);
+   
    try {
       if(result == 1 || result2 == 1) {
          return "/user/register";
       }else if(result == 0 || result2 == 0) {
+    	 String inputPass = vo.getUserPassword(); 
+    	 String pwd = pwdEncoder.encode(inputPass);
+    	 vo.setUserPassword(pwd);
+    	 
          service.register(vo);
       }
       // 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
@@ -100,22 +109,27 @@ public String postRegister(MemberVO vo) throws Exception {
 
 //로그인 POST
 @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
-   logger.info("post login");
-   
-   HttpSession session = req.getSession();
-   MemberVO login = service.login(vo);
-   
-   if(login == null) {
-      session.setAttribute("member", null);
-      rttr.addFlashAttribute("msg", false);
-   }else {
-      session.setAttribute("member", login);
-   }
-   
-   return "redirect:/";
-}
+public String login(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
+	logger.info("post login");
 
+	session.getAttribute("member");
+	MemberVO login = service.login(vo);
+	boolean pwdMatch;
+	if(login != null) {
+		pwdMatch = pwdEncoder.matches(vo.getUserPassword(), login.getUserPassword());
+	} else {
+		pwdMatch = false;
+	}
+
+	if(login != null && pwdMatch == true) {
+		session.setAttribute("member", login);
+	} else {
+		session.setAttribute("member", null);
+		rttr.addFlashAttribute("msg", false);
+	}
+	
+	return "redirect:/login";
+}
 //로그인 GET
 @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
 public String logout(HttpSession session) throws Exception{
@@ -135,12 +149,21 @@ public String registerUpdateView() throws Exception{
 //회원정보수정
 @RequestMapping(value="/user/memberUpdate", method = RequestMethod.POST)
 public String registerUpdate(MemberVO vo, HttpSession session) throws Exception{
-   
-   service.memberUpdate(vo);
-   
-   session.invalidate();
-   
-   return "redirect:/";
+	MemberVO login = service.login(vo);
+	
+	String inputPass = vo.getUserPassword(); 
+	String pwd = pwdEncoder.encode(inputPass);
+	vo.setUserPassword(pwd);
+	
+	boolean pwdMatch = pwdEncoder.matches(vo.getUserPassword(), login.getUserPassword());
+	if(!pwdMatch) {
+		service.memberUpdate(vo);
+		login = service.login(vo);
+		session.setAttribute("member", login);
+		//session.invalidate();
+	}
+	
+	return "redirect:/user/memberProfile";
 }
 
 // 회원 탈퇴 get
@@ -153,14 +176,6 @@ public String memberDeleteView() throws Exception{
 @RequestMapping(value="/user/memberDelete", method = RequestMethod.POST)
 public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
    
-   MemberVO member = (MemberVO) session.getAttribute("member");
-   String sessionPass = member.getUserPassword();
-   String voPass = vo.getUserPassword();
-   
-   if(!(sessionPass.equals(voPass))) {
-      rttr.addFlashAttribute("msg", false);
-      return "redirect:/user/memberDeleteView";
-   }
    service.memberDelete(vo);
    session.invalidate();
    return "redirect:/";
@@ -169,10 +184,12 @@ public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes 
    // 패스워드 체크
    @ResponseBody
    @RequestMapping(value="/user/passChk", method = RequestMethod.POST)
-   public int passChk(MemberVO vo) throws Exception {
-      int result = service.passChk(vo);
-      return result;
-   }
+   public boolean passChk(MemberVO vo) throws Exception {
+
+		MemberVO login = service.login(vo);
+		boolean pwdChk = pwdEncoder.matches(vo.getUserPassword(), login.getUserPassword());
+		return pwdChk;
+	}
    
    
    // 회원프로필

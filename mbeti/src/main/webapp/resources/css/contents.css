@@ -32,7 +32,7 @@
 .login-box .item-box .login-item .formbox label{font-size:20px;margin-bottom:6px;}
 .login-box .item-box .login-item .formbox input{margin-bottom:15px;}
 .login-box .item-box .login-item .formbox .loginbtn{margin-top:15px;padding: 20px;width: 100%;background:#ff665b;color: #fff;font-size: 20px;font-weight: 500;}
-.login-box .item-box .regis-item{width: 47%;padding:50px 0;margin: 30px 0;text-align:center;background: #f9f9f9;}
+.login-box .item-box .regis-item{width: 47%;padding:80px 0;text-align:center;background: #f9f9f9;}
 .login-box .item-box .regis-item span{display:block;font-size:16px;}
 .login-box .item-box .regis-item span em{font-family:'Pacifico';font-size:20px;}
 .login-box .item-box .regis-item .regisbtn{display:block;width: 80%;margin-top:20px;padding: 17px;border: 2px solid #000;font-size:17px;font-weight:600;background: #fff;margin-left: 10%;}
@@ -96,6 +96,7 @@
 .regis-success .resu-tit{display:inline-block;padding:15px 0;background:#fff;}
 .regis-success span{display:block;margin:5px 0;font-size:17px;}
 .regis-success span em{font-family: 'Pacifico';font-size:20px;}
+.regis-success .resbtn{margin:20px 0;}
 
 /* board */
 .search{position: relative;text-align:right;padding:0 0 30px;}
@@ -258,8 +259,8 @@ jobs closedate:before{display:inline-block;margin-right:5px;content:'마감일 :
 .cha-box .probox .txtbox .name{font-family:'Pacifico';font-size: 28px;}
 .cha-box .probox .txtbox ul{margin:20px 0;}
 .cha-box .probox .txtbox ul li{position:relative; padding:3px 0 3px 23px;}
-.cha-box .probox .txtbox ul li:before{display:inline-block;position:absolute;left:0;top:1px;content:"\ee8b";font-family:'boxicons';font-size:18px;color:#74737f;}
-.cha-box .probox .txtbox ul li:nth-child(2):before{content:"\ea23";}
+.cha-box .probox .txtbox ul li:before{display:inline-block;position:absolute;left:0;top:1px;content:"\ea23";font-family:'boxicons';font-size:18px;color:#74737f;}
+.cha-box .probox .txtbox ul li:nth-child(2):before{content:"\ee8b";}
 .cha-box .probox .txtbox ul li:nth-child(3):before{content:"\e9cb";}
 
 .cha-box .probox .txtbox ul li a{color:#000;}
@@ -269,7 +270,7 @@ jobs closedate:before{display:inline-block;margin-right:5px;content:'마감일 :
 .cha-box .talkbox .txtbox .tit{display:block;font-family:'Pacifico';font-size: 20px;margin: 12px 0 5px;}
 .cha-box .talkbox .txtbox .txt{display:block;}
 
-
-
-
+/* admin */
+.admin-box img{width:250px;}
+.admin-box strong{display:block;margin:30px 0;font-size:18px;}
 
