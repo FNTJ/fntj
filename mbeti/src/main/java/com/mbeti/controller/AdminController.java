@@ -11,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mbeti.domain.Criteria;
 import com.mbeti.domain.MemberVO;
+import com.mbeti.domain.PageMaker;
+import com.mbeti.domain.SearchCriteria;
 import com.mbeti.service.AdminService;
 
 @Controller
@@ -34,10 +37,16 @@ public class AdminController {
    
    // 회원 리스트
    @RequestMapping(value = "/admin/userList", method = RequestMethod.GET)
-   public String userList(Model model) throws Exception{
+   public String userList(Model model, SearchCriteria scri) throws Exception{
 	    logger.info("list");
 		
-		model.addAttribute("list",service.list());
+		model.addAttribute("list",service.list(scri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCount(scri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 
 		return "/admin/userList";
    }
@@ -62,27 +71,36 @@ public class AdminController {
 			return "admin/userUpdate";
 		}
 		
-		// 회원정보 수정
-		@RequestMapping(value = "/admin/update", method = RequestMethod.POST)
-		public String update(MemberVO vo, HttpSession session) throws Exception{
-			logger.info("update");
-			
-			String inputPass = vo.getUserPassword(); 
-	    	String pwd = pwdEncoder.encode(inputPass);
-	    	vo.setUserPassword(pwd);
-			service.memberUpdate(vo);
-			
-			return "redirect:/admin/userList";
-		}
+	// 회원정보 수정
+	@RequestMapping(value = "/admin/update", method = RequestMethod.POST)
+	public String update(MemberVO vo, HttpSession session) throws Exception{
+		logger.info("update");
+		
+		String inputPass = vo.getUserPassword(); 
+    	String pwd = pwdEncoder.encode(inputPass);
+    	vo.setUserPassword(pwd);
+		service.memberUpdate(vo);
+		
+		return "redirect:/admin/userList";
+	}
 
-		// 회원 삭제
-		@RequestMapping(value = "/admin/delete", method = RequestMethod.POST)
-		public String delete(MemberVO memberVO) throws Exception{
-			logger.info("delete");
-			
-			service.delete(memberVO.getUserID());
-			
-			return "redirect:/admin/userList";
-		}
-   
+	// 회원 삭제
+	@RequestMapping(value = "/admin/delete", method = RequestMethod.POST)
+	public String delete(MemberVO memberVO) throws Exception{
+		logger.info("delete");
+		
+		service.delete(memberVO.getUserID());
+		
+		return "redirect:/admin/userList";
+	}
+  
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

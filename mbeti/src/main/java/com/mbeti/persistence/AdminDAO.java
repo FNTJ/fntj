@@ -2,13 +2,18 @@ package com.mbeti.persistence;
 
 import java.util.List;
 
+import com.mbeti.domain.Criteria;
 import com.mbeti.domain.MemberVO;
+import com.mbeti.domain.SearchCriteria;
 
 public interface AdminDAO {
 	
 	//회원 리스트
-	public List<MemberVO> list() throws Exception;
+	public List<MemberVO> list(SearchCriteria scri) throws Exception;
 
+	//회원 갯수
+	public int listCount(SearchCriteria scri) throws Exception;
+	
 	//회원 상세 조회
 	public MemberVO retrieve(String userID) throws Exception;
 		

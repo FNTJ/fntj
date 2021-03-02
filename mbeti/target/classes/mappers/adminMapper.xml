@@ -39,5 +39,83 @@
 		  FROM tbl_USER
 		 WHERE userID = #{userID}
 	</delete>
+	
+	<!-- 회원리스트 페이징 -->
+<!-- 		<select id="listPage" resultType="com.mbeti.domain.MemberVO" parameterType="com.mbeti.domain.Criteria">
+		SELECT *
+		FROM ( 
+			SELECT *, 
+				   ROW_NUMBER() OVER(ORDER BY regdate DESC) AS RNUM
+			 FROM tbl_USER 
+						   ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY regdate DESC
+	</select> -->
+	
+	<!-- 회원 갯수 -->
+<!-- 	<select id="listCount" resultType="int">
+	<![CDATA[
+		SELECT COUNT(enabled)
+		FROM tbl_USER
+		WHERE enabled > 0
+	]]>
+	</select> -->
+	
+	<!-- 회원검색 + 페이징 -->
+	<select id="listPage" resultType="com.mbeti.domain.MemberVO" parameterType="com.mbeti.domain.SearchCriteria">
+		SELECT  *
+		 FROM ( 
+		        SELECT *, 
+		               ROW_NUMBER() OVER(ORDER BY regdate DESC) AS RNUM
+		         FROM tbl_USER
+		         WHERE 1=1 
+		         	<include refid="search"></include>
+		                       ) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY regdate DESC
+	</select>
+	
+	<!-- 회원검색 + 갯수 -->
+		<select id="listCount" parameterType="com.mbeti.domain.SearchCriteria" resultType="int">
+			SELECT COUNT(enabled)
+			   FROM tbl_USER
+			   WHERE 1=1
+			<include refid="search"></include>	
+			   AND enabled > 0
+		</select>
+	
+	<!-- 회원검색 -->
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'i'.toString()">AND userID LIKE CONCAT ('%',#{keyword},'%')</if>
+			<if test="searchType == 'n'.toString()">AND userName LIKE CONCAT  ('%',#{keyword},'%')</if>
+			<if test="searchType == 'm'.toString()">AND userEmail LIKE CONCAT  ('%',#{keyword},'%')</if>
+			<if test="searchType == 'e'.toString()">AND enabled LIKE CONCAT  ('%',#{keyword},'%')</if>
+		</if>
+	</sql>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
    
 </mapper>

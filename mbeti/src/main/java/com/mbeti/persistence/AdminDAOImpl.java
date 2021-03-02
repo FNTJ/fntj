@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.mbeti.domain.Criteria;
 import com.mbeti.domain.MemberVO;
+import com.mbeti.domain.SearchCriteria;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO{
@@ -16,10 +18,16 @@ public class AdminDAOImpl implements AdminDAO{
 	
 	// 회원리스트
 	@Override
-	public List<MemberVO> list() throws Exception {
-		return sql.selectList("adminMapper.list");
+	public List<MemberVO> list(SearchCriteria scri) throws Exception {
+		return sql.selectList("adminMapper.listPage", scri);
 	}
 	
+	//회원 갯수
+	@Override
+	public int listCount(SearchCriteria scri) throws Exception {
+		return sql.selectOne("adminMapper.listCount", scri);
+	}
+		
 	//회원 상세 조회
 	@Override
 	public MemberVO retrieve(String userID) throws Exception {
