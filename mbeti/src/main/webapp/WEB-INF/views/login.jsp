@@ -13,7 +13,10 @@
 		});
 		$("#registerBtn").on("click", function(){
 			location.href="/user/register_agree";
-		});		
+		});	
+		$("#adminIndex").on("click", function(){
+			location.href="/admin/index";
+		});	
 	});
 </script>
 
@@ -55,11 +58,20 @@
 							<c:if test="${member != null }">
 								<div class="regis-success">
 									<div class="resu-tit">
+									<c:if test="${member.enabled == 2 }">
+										<span><strong>관리자 ${member.userName}</strong>님, 환영합니다.</span>
+										<div class="resbtn">	
+											<button id="logoutBtn" class="cencle btn btn-danger btn-sm" type="button">로그아웃</button>
+											<button id="adminIndex" class="btn btn-success btn-sm" type="button">관리자페이지</button>
+										</div>
+									</c:if>
+									<c:if test="${member.enabled == 1 }">
 										<span><strong>${member.userName}</strong>님, 환영합니다.</span>
 										<div class="resbtn">	
 											<button id="logoutBtn" class="cencle btn btn-danger btn-sm" type="button">로그아웃</button>
 											<button id="memberUpdateBtn" class="btn btn-success btn-sm" type="button">회원정보관리</button>
 										</div>
+									</c:if>
 									</div>
 								</div>
 							</c:if>
