@@ -3,6 +3,7 @@ package com.mbeti.persistence;
 import java.util.List;
 
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.SearchCriteria;
 
@@ -23,6 +24,12 @@ public interface AdminDAO {
 	// 회원 탈퇴
 	public void delete(String userID) throws Exception;
 	
+	// 자유게시판 글삭제
+	public void deleteFB(FreeBoardVO freeBoardVO) throws Exception;
+	
+	// 회원 삭제
+	public void deleteUser(String userID) throws Exception;
+		
 	
 	
 }

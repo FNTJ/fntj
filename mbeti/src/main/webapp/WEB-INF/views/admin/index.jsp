@@ -17,6 +17,7 @@
 			<div class="form-group has-feedback form-btn">				
 				<button class="cencle btn btn-danger" type="button"  onClick="location.href='../home'">돌아가기</button>
 				<button class="btn btn-success" type="button" onClick="location.href='/admin/userList'">회원관리</button>					
+				<button class="btn btn-success" type="button" onClick="location.href='/admin/fbList'">게시판관리</button>					
 			</div>
 			
 		</div><!-- //layout  -->

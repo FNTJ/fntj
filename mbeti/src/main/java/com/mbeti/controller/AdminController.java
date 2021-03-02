@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,11 +22,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.PageMaker;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.service.AdminService;
 import com.mbeti.service.BoardService;
+import com.mbeti.service.FreeBoardService;
 import com.mbeti.service.ReplyService;
 
 @Controller
@@ -45,6 +48,9 @@ public class AdminController {
 	
 	@Inject
 	ReplyService replyService;
+	
+	@Inject
+	FreeBoardService fbservice;
    
    // 관리자페이지 홈
    @RequestMapping(value = "/admin/index", method = RequestMethod.GET)
@@ -175,45 +181,71 @@ public class AdminController {
 			
 			return "redirect:/notice/list";
 		}
-	
-	
-		// 회원 선택삭제
-        @ResponseBody
-        @RequestMapping(value="/admin/deleteUser", method = RequestMethod.POST)
-        public String deleteUser(HttpSession session, @RequestParam(value = "chbox[]") List<String> chArr, MemberVO memberVO) throws Exception {
-        
+		
+		//자유게시판 리스트
+		@RequestMapping(value = "/admin/fbList", method = RequestMethod.GET)
+		public String list(Model model,@ModelAttribute("scri") SearchCriteria scri) throws Exception{
+			logger.info("fbList");
+			
+			model.addAttribute("fbList",fbservice.fbList(scri));
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(fbservice.listCount(scri));
+			
+			model.addAttribute("pageMaker", pageMaker);
+			
+			model.addAttribute("fileList",fbservice.fileList());
 			
 			
-			  logger.info("delete user");
-			  
-			  MemberVO member = (MemberVO)session.getAttribute("member"); 
-			  String userID = member.getUserID();
-			  
-			  logger.info(".................!");
-			  
-			  int result = 0; 
-			  int delUser = 0;
-			  
-			  if(member != null) {
-			  
-				  member.setUserID(userID);
-				  
-				  for(String i : chArr) { 
-					  delUser = Integer.parseInt(i);
-					  String temp = Integer.toString(delUser);
-					  member.setUserID(userID); 
-					  service.delete(memberVO.getUserID());
-				  
-				  } result = 1; 
-			  }
-			  
-			  	logger.info("delete");
-				service.delete(memberVO.getUserID());
-				
-        return "redirect:/admin/userList";
-        
-        }
+			return "/admin/fbList";
+			
+		}		
 	
+		//자유게시판 글삭제
+		// 카트 삭제
+		@ResponseBody
+		@RequestMapping(value = "/admin/deleteFB", method = RequestMethod.POST)
+		public int deleteFB(HttpSession session,
+		     @RequestParam(value = "chbox[]") List<String> chArr, FreeBoardVO freeBoardVO) throws Exception {
+		 logger.info("delete FB");
+		 
+		 MemberVO member = (MemberVO)session.getAttribute("member");
+		 
+		 int result = 0;
+		 int bno = 0;
+		 
+		 
+		 if(member != null) {
+		  
+		  for(String i : chArr) {   
+			  bno = Integer.parseInt(i);
+			  freeBoardVO.setBno(bno);
+			  service.deleteFB(freeBoardVO);
+		  }   
+		  result = 1;
+		 }  
+		 return result;  
+		}
+		
 	
+		//회원 삭제
+		@ResponseBody
+		@RequestMapping(value = "/admin/deleteUser", method = RequestMethod.POST)
+		public String deleteUser(HttpSession session, MemberVO memberVO) throws Exception{
+		 logger.info("deleteUser");
+		 
+		 MemberVO member = (MemberVO)session.getAttribute("member");
+		 String userId = memberVO.getUserID();
+		 
+		 String result = "0";
+		 
+		 
+		 memberVO.setUserID(userId);
+		  
+		   service.deleteUser(memberVO.getUserID());
+		  result = "1";
+		 return result;  
+		}
 	
 }

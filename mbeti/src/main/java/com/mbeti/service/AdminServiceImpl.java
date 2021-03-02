@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.persistence.AdminDAO;
@@ -45,6 +46,20 @@ public class AdminServiceImpl  implements AdminService {
 	public void delete(String userID) throws Exception {
 		dao.delete(userID);
 	}
+	
+	// 자유게시판 글삭제
+	@Override
+	public void deleteFB(FreeBoardVO freeBoardVO) throws Exception {
+		dao.deleteFB(freeBoardVO);
+	}
+	
+	//회원 삭제
+	@Override
+	public void deleteUser(String userID) throws Exception {
+		dao.deleteUser(userID);
+	}
+	
+	
 	
 	
 	
