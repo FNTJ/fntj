@@ -99,7 +99,14 @@
 									</a>
 								</td>
 							
-								<td><c:out value="${fbList.writer}" /></td>
+								<td>
+									<c:if test="${fbList.writer == 'jambox'}">
+										<span class="jam"><c:out value="${fbList.writer}" /></span>
+									</c:if>
+									<c:if test="${fbList.writer != 'jambox'}">
+										<span><c:out value="${fbList.writer}" /></span>
+									</c:if>
+								</td>
 								<td><fmt:formatDate value="${fbList.date}" pattern="yyyy-MM-dd HH:mm"/></td>
 								<td><c:out value="${fbList.hit}" /></td>
 								<td>

@@ -252,13 +252,15 @@ public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes 
 		/* 이메일 보내기 */
 		String setFrom = "fntjambox@gmail.com";
 		String toMail = email;
-		String title = "회원가입 인증 이메일 입니다."; // 메일제목
+		String title = "jambox 회원가입 인증 이메일 입니다."; // 메일제목
 		String content = 						// 메일내용
-				"홈페이지를 방문해주셔서 감사합니다." +
-				"<br><br>" + 
-				"인증 번호는 " + checkNum + "입니다." + 
+				"<div style='border:5px solid #ff665b;display:inline-block;padding:30px;text-align:center;font-family:noto sans;'>" +
+				"<strong style='display:block;font-size:16px;'>" + "jambox 홈페이지를 방문해주셔서 감사합니다." + "</strong>" +
 				"<br>" + 
-				"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";		
+				"인증 번호는 " + "<strong style='color:#ff665b;font-size:16px;'>" + checkNum + "</strong>" + "입니다." +				
+				"<br>" + 
+				"해당 인증번호를 인증번호 확인란에 기입하여 주세요." +
+				"</div>";		
 		
 
 		try {

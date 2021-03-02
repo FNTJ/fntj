@@ -6,7 +6,9 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.mbeti.domain.Criteria;
 import com.mbeti.domain.MemberVO;
+import com.mbeti.domain.SearchCriteria;
 import com.mbeti.persistence.AdminDAO;
 import com.mbeti.persistence.MemberDAO;
 
@@ -17,15 +19,18 @@ public class AdminServiceImpl  implements AdminService {
 	
 	//회원 리스트
 	@Override
-	public List<MemberVO> list() throws Exception {
-		
-		return dao.list();
+	public List<MemberVO> list(SearchCriteria scri) throws Exception {
+		return dao.list(scri);
+	}
+	//회원 갯수
+	@Override
+	public int listCount(SearchCriteria scri) throws Exception{
+		return dao.listCount(scri);
 	}
 
 	//회원 상세 조회
 	@Override
 	public MemberVO retrieve(String userID) throws Exception {
-
 		return dao.retrieve(userID);
 	}
 
