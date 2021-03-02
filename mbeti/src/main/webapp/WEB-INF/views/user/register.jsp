@@ -182,8 +182,15 @@
             if(data == 1){
                alert("중복된 아이디입니다.");
             }else if(data == 0){
-               $("#idChk").attr("value", "Y");
-               alert("사용가능한 아이디입니다.");
+            	var regul1 = /^[a-zA-Z0-9]{4,12}$/;
+                if (!regul1.test($("#userID").val())) {
+                   alert("아이디는 4~12자의 대소문자와 숫자로만 입력 가능합니다.");
+                   $("#userID").focus();
+                    return false;//반환 할 곳 없이 if문 탈출
+                } else {
+	               $("#idChk").attr("value", "Y");
+	               alert("사용가능한 아이디입니다.");
+                }
             }
          }
       })
@@ -199,8 +206,15 @@
             if(data == 1){
                alert("중복된 닉네임입니다.");
             }else if(data == 0){
-               $("#nameChk").attr("value", "Y");
-               alert("사용가능한 닉네임입니다.");
+            	var namePattern = /^[a-zA-Z가-힣0-9]{2,}$/;
+                if (!namePattern.test($("#userName").val())) {
+                   alert("닉네임은 2글자 이상의 문자를 입력해주세요. (특수기호, 공백 사용 불가)");
+                   $("#userName").focus();
+                    return false;//반환 할 곳 없이 if문 탈출
+                } else {
+	               $("#nameChk").attr("value", "Y");
+	               alert("사용가능한 닉네임입니다.");
+                }
             }
          }
       })
