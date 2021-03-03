@@ -27,8 +27,7 @@
     </bean> -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"> 
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/jambox?serverTimezone=Asia/Seoul" /> 
-        <!-- <property name="url" value="jdbc:mysql://192.168.0.77:3306/jambox?serverTimezone=Asia/Seoul" /> --> 
+        <property name="url" value="jdbc:mysql://192.168.0.77:3306/jambox?serverTimezone=Asia/Seoul" /> 
         <property name="username" value="fntj"/> 
         <property name="password" value="fntj"/>
     </bean>
