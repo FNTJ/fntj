@@ -139,7 +139,6 @@
 			   ROUND(fsize/1024,1) AS fsize
 		  FROM tbl_fbfile
 		 WHERE bno = #{bno}
-		   AND del = 'N'
 		   ORDER BY fno ASC
 	</select>
 	
