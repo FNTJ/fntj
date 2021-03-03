@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
-<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../../header.jsp"></jsp:include>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
@@ -27,7 +27,7 @@
 			if(fn_valiChk()){
 				return false;
 			}
-			formObj.attr("action", "/notice/update");
+			formObj.attr("action", "/admin/notice/noticeUpdate");
 			formObj.attr("method", "post");
 			formObj.submit();
 		})
@@ -67,9 +67,9 @@
 	<div class="contents">
 		<div class="layout">
 		<h2 class="h2">공지사항 글 수정</h2>	
-		<jsp:include page="../nav.jsp"></jsp:include>		
+		<jsp:include page="../../nav.jsp"></jsp:include>		
 		<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
-				<form name="updateForm" role="form" method="post" action="/board/update" enctype="multipart/form-data">
+				<form name="updateForm" role="form" method="post" action="/admin/notice/update" enctype="multipart/form-data">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 
 					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
@@ -126,4 +126,4 @@
 		</div><!-- //layout  -->
 	</div><!-- //contents  -->
 
-<jsp:include page="../footer.jsp"></jsp:include>
+<jsp:include page="../../footer.jsp"></jsp:include>

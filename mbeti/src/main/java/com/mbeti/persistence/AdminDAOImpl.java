@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.SearchCriteria;
 
@@ -46,6 +47,21 @@ public class AdminDAOImpl implements AdminDAO{
 	public void delete(String userID) throws Exception {
 		sql.delete("adminMapper.memberDelete", userID);
 	}
+	
+	// 자유게시판 글삭제
+	@Override
+	public void deleteFB(FreeBoardVO freeBoardVO) throws Exception {
+		sql.delete("adminMapper.deleteFB", freeBoardVO);
+		
+	}
+
+	//회원 삭제
+	@Override
+	public void deleteUser(String userID) throws Exception {
+		sql.delete("adminMapper.deleteUser", userID);
+	}
+
+	
 	
 	
 	

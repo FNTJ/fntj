@@ -94,7 +94,19 @@
 		</if>
 	</sql>
 	
+	<!-- 게시물 삭제 쿼리 -->
+	<delete id="deleteFB" parameterType="int">
+		DELETE 
+		FROM tbl_freeboard
+		WHERE bno = #{bno}
+	</delete>
 	
+	<!-- 회원 삭제 -->
+	<delete id="deleteUser" parameterType="String">
+		DELETE 
+		FROM tbl_USER
+		WHERE userID = #{userID} AND enabled = #{enabled}
+	</delete>
 	
 	
 	

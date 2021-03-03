@@ -131,7 +131,7 @@
 			#{fsize}
 		)
     </insert>
-<!-- ============================================================= -->
+
 	<!-- 첨부파일 조회 -->
 	<select id="selectFileList" parameterType="int" resultType="hashMap">
 		SELECT fno,
@@ -152,11 +152,11 @@
 		WHERE fno = #{fno}
 	</select>
 	
-	<!-- 첨부파일 수정 -->
+	<!-- 첨부파일 삭제 -->
 	<update id="updateFile" parameterType="hashMap">
-    	UPDATE tbl_file SET
-    	del = 'Y'
-    	WHERE fno = #{fno}
+    	DELETE 
+		FROM tbl_file
+		WHERE fno = #{fno}
     </update>
     
 	<!-- 게시판 조회수 -->

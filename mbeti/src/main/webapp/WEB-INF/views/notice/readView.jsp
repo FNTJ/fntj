@@ -10,7 +10,7 @@
 		
 		// 수정 
 		$(".update_btn").on("click", function(){
-			formObj.attr("action", "/notice/updateView");
+			formObj.attr("action", "/admin/notice/updateView");
 			formObj.attr("method", "get");
 			formObj.submit();				
 		})
@@ -21,7 +21,7 @@
 			var deleteYN = confirm("삭제하시겠습니가?");
 			if(deleteYN == true){
 				
-			formObj.attr("action", "/notice/delete");
+			formObj.attr("action", "/admin/notice/noticeDelete");
 			formObj.attr("method", "post");
 			formObj.submit();
 				

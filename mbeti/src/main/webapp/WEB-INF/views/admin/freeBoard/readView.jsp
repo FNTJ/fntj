@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
-<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../../header.jsp"></jsp:include>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -10,7 +10,7 @@
 		
 		// 수정 
 		$(".update_btn").on("click", function(){
-			formObj.attr("action", "/freeBoard/updateView");
+			formObj.attr("action", "/admin/freeBoard/updateView");
 			formObj.attr("method", "get");
 			formObj.submit();				
 		})
@@ -21,7 +21,7 @@
 			var deleteYN = confirm("삭제하시겠습니가?");
 			if(deleteYN == true){
 				
-			formObj.attr("action", "/freeBoard/delete");
+			formObj.attr("action", "/admin/freeBoard/delete");
 			formObj.attr("method", "post");
 			formObj.submit();
 			
@@ -31,14 +31,14 @@
 		// 취소
 		$(".list_btn").on("click", function(){
 			
-			location.href = "/freeBoard/list";
+			location.href = "/admin/freeBoard/list";
 		})
 		
 		// 목록
 		$(".list_btn").on("click", function(){
 		
 		location.href = 
-		"/freeBoard/list?page=${scri.page}"
+		"/admin/freeBoard/list?page=${scri.page}"
 		+"&perPageNum=${scri.perPageNum}"
 		+"&searchType=${scri.searchType}&category=${scri.category}&keyword=${scri.keyword}";
 		})
@@ -46,7 +46,7 @@
 		// 댓글 작성
 		$(".replyWriteBtn").on("click", function(){
 			  var formObj = $("form[name='replyForm']");
-			  formObj.attr("action", "/freeBoard/replyWrite");
+			  formObj.attr("action", "/admin/freeBoard/replyWrite");
 			  formObj.submit();
 		});
 		
@@ -57,7 +57,7 @@
 		
 		$(".replyUpdateBtn").on("click", function(){
 			window.name = "parent";
-			openPage = window.open ("/freeBoard/replyUpdateView?bno=${fbRead.bno}"
+			openPage = window.open ("/admin/freeBoard/replyUpdateView?bno=${fbRead.bno}"
 							+ "&page=${scri.page}"
 							+ "&perPageNum=${scri.perPageNum}"
 							+ "&searchType=${scri.searchType}"
@@ -69,7 +69,7 @@
 		//댓글 삭제 View
 		$(".replyDeleteBtn").on("click", function(){
 			window.name = "Delparent"; // 부모창 이름 설정
-			openPage = window.open("/freeBoard/replyDeleteView?bno=${fbRead.bno}"
+			openPage = window.open("/admin/freeBoard/replyDeleteView?bno=${fbRead.bno}"
 				+ "&page=${scri.page}"
 				+ "&perPageNum=${scri.perPageNum}"
 				+ "&searchType=${scri.searchType}"
@@ -106,7 +106,7 @@
 			
 			<div class="board-tit">
 				<h2 class="h2">${fbRead.title}</h2> <!-- 제목 -->
-				<jsp:include page="../nav.jsp"></jsp:include>
+				<jsp:include page="../../nav.jsp"></jsp:include>
 				
 				<div class="category">
 					<span class="${fbRead.category}">${fbRead.category}</span>
@@ -132,11 +132,8 @@
 			
 			<div class="form-group form-btn">
 				<button type="button" class="list_btn btn btn-danger">목록</button>
-				<!-- 본인이 작성한 글 또는 관리자만 수정/삭제 가능 -->
-				<c:if test="${member.userName == fbRead.writer  || member.enabled == 2}"> 
 					<button type="button" class="update_btn btn btn-success">수정</button>
 					<button type="button" class="delete_btn btn btn-primary">삭제</button>
-				</c:if>					
 			</div>
 				
 			<!-- 댓글 -->
@@ -147,13 +144,10 @@
 						<div class="wdate"> <!-- 작성자/작성일자 -->
 							<span class="date"><i class='bx bx-calendar'></i><fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" /></span>
 							<span class="writer"><i class='bx bx-pencil' ></i>${replyList.writer}</span>
-							<!-- 본인이 작성한 댓글 또는 관리자만 수정/삭제 가능 -->
-							<c:if test="${member.userName == replyList.writer || member.enabled == 2}"> 
 								<div class="btn-box right">
 									<button type="button" class="replyUpdateBtn btn btn-sm btn-success" data-rno="${replyList.rno}">수정</button>
 									<button type="button" class="replyDeleteBtn btn btn-sm btn-primary" data-rno="${replyList.rno}">삭제</button>
 								</div>
-							</c:if>
 						</div>
 						<p>${replyList.content}</p>								
 					</li>
@@ -182,14 +176,6 @@
 					
 					<div class="reply-write">
 						<label for="content" class="col-sm-2 control-label">댓글 작성</label>
-						<c:if test="${member == null}">
-							<div class="col-sm-4">
-								<span class="replylogin">로그인하시면 댓글을 작성할 수 있습니다.</span>					
-							</div>
-							<div class="col-sm-1">
-								<a href="/login" class="btn btn-success">로그인하기</a>
-							</div>
-						</c:if>
 						<c:if test="${member != null }">
 							<div class="col-sm-7">
 								<input type="text" id="content" name="content" class="form-control"/>							
@@ -208,4 +194,4 @@
 		</div><!-- //layout  -->
 	</div><!-- //contents  -->
 
-<jsp:include page="../footer.jsp"></jsp:include>
+<jsp:include page="../../footer.jsp"></jsp:include>

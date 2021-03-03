@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
-<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../../header.jsp"></jsp:include>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -11,7 +11,7 @@
 			if(fn_valiChk()){
 				return false;
 			}
-			formObj.attr("action", "/notice/write");
+			formObj.attr("action", "/admin/notice/write");
 			formObj.attr("method", "post");
 			formObj.submit();
 		});
@@ -45,11 +45,11 @@
 	<div class="contents">
 		<div class="layout">
 		<h2 class="h2">공지사항 글작성</h2>
-		<jsp:include page="../nav.jsp"></jsp:include>
+		<jsp:include page="../../nav.jsp"></jsp:include>
 	
 				<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
 				
-				<form name="writeForm" method="post" action="/notice/write" enctype="multipart/form-data" onsubmit="return FormSubmit(this);">
+				<form name="writeForm" method="post" action="/admin/notice/write" enctype="multipart/form-data" onsubmit="return FormSubmit(this);">
 					<div class="form-group">
 						<label for="title">제목</label>
 						<input type="text" id="title" name="title" class="chk form-control" placeholder="제목을 입력하세요." title="제목을 입력하세요."/>
@@ -80,5 +80,5 @@
 		</div><!-- //layout  -->
 	</div><!-- //contents  -->
 
-<jsp:include page="../footer.jsp"></jsp:include>
+<jsp:include page="../../footer.jsp"></jsp:include>
 						

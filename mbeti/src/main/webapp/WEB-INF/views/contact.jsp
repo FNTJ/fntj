@@ -38,7 +38,7 @@
 							<span class="imgtxt">ENTJ</span>
 						</div>
 						<div class="txtbox">
-							<strong class="name">Kem Tae Yeon</strong>
+							<strong class="name">Kim Tae Yeon</strong>
 							<ul>
 								<li>
 									<a href="mailto:baenamoo9@gmail.com">baenamoo9@gmail.com</a>
