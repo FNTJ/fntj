@@ -46,7 +46,7 @@
 		// 댓글 작성
 		$(".replyWriteBtn").on("click", function(){
 			  var formObj = $("form[name='replyForm']");
-			  formObj.attr("action", "/freeBoard/replyWrite");
+			  formObj.attr("action", "/admin/freeBoard/replyWrite");
 			  formObj.submit();
 		});
 		
@@ -57,7 +57,7 @@
 		
 		$(".replyUpdateBtn").on("click", function(){
 			window.name = "parent";
-			openPage = window.open ("/freeBoard/replyUpdateView?bno=${fbRead.bno}"
+			openPage = window.open ("/admin/freeBoard/replyUpdateView?bno=${fbRead.bno}"
 							+ "&page=${scri.page}"
 							+ "&perPageNum=${scri.perPageNum}"
 							+ "&searchType=${scri.searchType}"
@@ -69,7 +69,7 @@
 		//댓글 삭제 View
 		$(".replyDeleteBtn").on("click", function(){
 			window.name = "Delparent"; // 부모창 이름 설정
-			openPage = window.open("/freeBoard/replyDeleteView?bno=${fbRead.bno}"
+			openPage = window.open("/admin/freeBoard/replyDeleteView?bno=${fbRead.bno}"
 				+ "&page=${scri.page}"
 				+ "&perPageNum=${scri.perPageNum}"
 				+ "&searchType=${scri.searchType}"

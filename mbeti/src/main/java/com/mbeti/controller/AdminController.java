@@ -26,6 +26,7 @@ import com.mbeti.domain.FreeBoardReplyVO;
 import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.PageMaker;
+import com.mbeti.domain.ReplyVO;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.service.AdminService;
 import com.mbeti.service.BoardService;
@@ -56,7 +57,7 @@ public class AdminController {
 	
 	@Inject
 	FreeBoardReplyService freeBoardReplyService;
-   
+	
    // 관리자페이지 홈
    @RequestMapping(value = "/admin/index", method = RequestMethod.GET)
    public String admintest() {
@@ -323,6 +324,80 @@ public class AdminController {
 				rttr.addAttribute("keyword", scri.getKeyword());
 				
 				return "redirect:/admin/freeBoard/list";
+		}
+		
+		// 자유게시판 댓글 작성
+		@RequestMapping(value="/admin/freeBoard/replyWrite", method = RequestMethod.POST)
+		public String replyWrite(FreeBoardReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+			logger.info("reply Write");
+			
+			freeBoardReplyService.writeReply(vo);
+			
+			rttr.addAttribute("bno", vo.getBno());
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("category", scri.getCategory());
+			rttr.addAttribute("keyword", scri.getKeyword());
+			
+			return "redirect:/admin/freeBoard/readView";
+		}
+		
+		//자유게시판 댓글 수정 GET
+		@RequestMapping(value="/admin/freeBoard/replyUpdateView", method = RequestMethod.GET)
+		public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+			logger.info("reply Write");
+			
+			model.addAttribute("replyUpdate", freeBoardReplyService.selectReply(vo.getRno()));
+			model.addAttribute("scri", scri);
+			
+			return "/admin/freeBoard/replyUpdateView";
+		}
+		
+		//자유게시판 댓글 수정 POST
+		@RequestMapping(value="/admin/freeBoard/replyUpdate", method = RequestMethod.POST)
+		public String replyUpdate(FreeBoardReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
+		
+		freeBoardReplyService.updateReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("category", scri.getCategory());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		return "redirect:/admin/freeBoard/readView";
+		}
+		
+		//자유게시판 댓글 삭제 GET
+		@RequestMapping(value="/admin/freeBoard/replyDeleteView", method = RequestMethod.GET)
+		public String replyDeleteView(FreeBoardReplyVO vo, SearchCriteria scri, Model model) throws Exception {
+			logger.info("reply Write");
+			
+			model.addAttribute("replyDelete", freeBoardReplyService.selectReply(vo.getRno()));
+			model.addAttribute("scri", scri);
+			
+		
+			return "/admin/freeBoard/replyDeleteView";
+		}
+		
+		//자유게시판 댓글 삭제
+		@RequestMapping(value="/admin/freeBoard/replyDelete", method = RequestMethod.POST)
+		public String replyDelete(FreeBoardReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		logger.info("reply Write");
+		
+		freeBoardReplyService.deleteReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("category", scri.getCategory());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		return "redirect:/admin/freeBoard/readView";
 		}
 		
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
