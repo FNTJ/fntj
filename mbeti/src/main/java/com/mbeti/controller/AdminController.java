@@ -84,13 +84,13 @@ public class AdminController {
    }
  
    // 회원정보 상세 조회
-	@RequestMapping(value = "/admin/retrieve", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/userRetrieve", method = RequestMethod.GET)
 	public String retrieve(MemberVO memberVO, Model model) throws Exception{
 		logger.info("retrieve");
 		
 		model.addAttribute("retrieve", service.retrieve(memberVO.getUserID()));
 		
-		return "/admin/retrieve";
+		return "/admin/userRetrieve";
 	}
 
 	// 회원정보 수정뷰

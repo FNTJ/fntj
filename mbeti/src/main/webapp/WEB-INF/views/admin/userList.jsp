@@ -90,7 +90,7 @@
 							  	</div>
 							</td>
 							<td>
-								<a href="/admin/retrieve?userID=${list.userID}"><c:out value="${list.userID}" /></a>
+								<a href="/admin/userRetrieve?userID=${list.userID}"><c:out value="${list.userID}" /></a>
 							</td>
 							<td><c:out value="${list.userName}" /></td>
 							<td><c:out value="${list.userEmail}" /></td>
