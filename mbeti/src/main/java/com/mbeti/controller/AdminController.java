@@ -22,17 +22,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mbeti.domain.BoardVO;
 import com.mbeti.domain.Criteria;
+import com.mbeti.domain.FreeBoardReplyVO;
 import com.mbeti.domain.FreeBoardVO;
 import com.mbeti.domain.MemberVO;
 import com.mbeti.domain.PageMaker;
 import com.mbeti.domain.SearchCriteria;
 import com.mbeti.service.AdminService;
 import com.mbeti.service.BoardService;
+import com.mbeti.service.FreeBoardReplyService;
 import com.mbeti.service.FreeBoardService;
 import com.mbeti.service.ReplyService;
 
 @Controller
-@RequestMapping("/admin/*")
+@RequestMapping("/admin/**/**")
 public class AdminController {
 
    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
@@ -51,6 +53,9 @@ public class AdminController {
 	
 	@Inject
 	FreeBoardService fbservice;
+	
+	@Inject
+	FreeBoardReplyService freeBoardReplyService;
    
    // 관리자페이지 홈
    @RequestMapping(value = "/admin/index", method = RequestMethod.GET)
@@ -58,6 +63,9 @@ public class AdminController {
       return "/admin/index";
    }
    
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+// 회원관리  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
    // 회원 리스트
    @RequestMapping(value = "/admin/userList", method = RequestMethod.GET)
    public String userList(Model model, SearchCriteria scri) throws Exception{
@@ -116,9 +124,11 @@ public class AdminController {
 		
 		return "redirect:/admin/userList";
 	}
-//////////////////////////////////////////////////////////////////////////////////////  
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+// 공지사항 관리
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 	// 게시판 글 작성 화면
-		@RequestMapping(value = "/admin/writeView", method = RequestMethod.GET)
+		@RequestMapping(value = "/admin/notice/writeView", method = RequestMethod.GET)
 		public void writeView() throws Exception{
 			logger.info("writeView");
 			
@@ -126,7 +136,7 @@ public class AdminController {
 		
 		
 		// 게시판 글 작성
-		@RequestMapping(value = "/admin/write", method = RequestMethod.POST)
+		@RequestMapping(value = "/admin/notice/write", method = RequestMethod.POST)
 		public String write(BoardVO boardVO, MultipartHttpServletRequest mpRequest) throws Exception{
 			logger.info("write");
 			nService.write(boardVO, mpRequest);
@@ -135,7 +145,7 @@ public class AdminController {
 		}
 	
 		// 게시판 수정뷰
-		@RequestMapping(value = "/admin/updateView", method = RequestMethod.GET)
+		@RequestMapping(value = "/admin/notice/updateView", method = RequestMethod.GET)
 		public String updateView(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model)
 				throws Exception {
 			logger.info("updateView");
@@ -145,11 +155,11 @@ public class AdminController {
 
 			List<Map<String, Object>> fileList = nService.selectFileList(boardVO.getBno());
 			model.addAttribute("file", fileList);
-			return "/admin/updateView";
+			return "/admin/notice/updateView";
 		}
 
 		// 게시판 수정
-		@RequestMapping(value = "/admin/noticeUpdate", method = RequestMethod.POST)
+		@RequestMapping(value = "/admin/notice/noticeUpdate", method = RequestMethod.POST)
 		public String update(BoardVO boardVO, 
 							 @ModelAttribute("scri") SearchCriteria scri, 
 							 RedirectAttributes rttr,
@@ -168,7 +178,7 @@ public class AdminController {
 		}
 
 		// 게시판 삭제
-		@RequestMapping(value = "/admin/noticeDelete", method = RequestMethod.POST)
+		@RequestMapping(value = "/admin/notice/noticeDelete", method = RequestMethod.POST)
 		public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 			logger.info("delete");
 			
@@ -181,9 +191,30 @@ public class AdminController {
 			
 			return "redirect:/notice/list";
 		}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+//// 자유게시판 관리
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+		
+		// 자유게시판 글 작성 화면
+		@RequestMapping(value = "/admin/freeBoard/writeView", method = RequestMethod.GET)
+		public void fbWriteView() throws Exception{
+			logger.info("writeView");
+			
+		}
+			
+		// 자유게시판 글 작성
+		@RequestMapping(value = "/admin/freeBoard/write", method = RequestMethod.POST)
+		public String fbWrite(FreeBoardVO freeBoardVO, MultipartHttpServletRequest mpRequest) throws Exception{
+			logger.info("write");
+			
+			fbservice.write(freeBoardVO, mpRequest);
+			
+			return "redirect:/admin/freeBoard/list";
+			
+		}
 		
 		//자유게시판 리스트
-		@RequestMapping(value = "/admin/fbList", method = RequestMethod.GET)
+		@RequestMapping(value = "/admin/freeBoard/list", method = RequestMethod.GET)
 		public String list(Model model,@ModelAttribute("scri") SearchCriteria scri) throws Exception{
 			logger.info("fbList");
 			
@@ -198,14 +229,13 @@ public class AdminController {
 			model.addAttribute("fileList",fbservice.fileList());
 			
 			
-			return "/admin/fbList";
+			return "/admin/freeBoard/list";
 			
 		}		
 	
 		//자유게시판 글삭제
-		// 카트 삭제
 		@ResponseBody
-		@RequestMapping(value = "/admin/deleteFB", method = RequestMethod.POST)
+		@RequestMapping(value = "/admin/freeBoard/deleteFB", method = RequestMethod.POST)
 		public int deleteFB(HttpSession session,
 		     @RequestParam(value = "chbox[]") List<String> chArr, FreeBoardVO freeBoardVO) throws Exception {
 		 logger.info("delete FB");
@@ -228,7 +258,75 @@ public class AdminController {
 		 return result;  
 		}
 		
-	
+		// 자유게시판 조회
+		@RequestMapping(value = "/admin/freeBoard/readView", method = RequestMethod.GET)
+		public String read(FreeBoardVO freeBoardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+			logger.info("fbRead");
+			
+			model.addAttribute("fbRead", fbservice.read(freeBoardVO.getBno()));
+			model.addAttribute("scri", scri);
+			
+			List<FreeBoardReplyVO> replyList = freeBoardReplyService.readReply(freeBoardVO.getBno());
+			model.addAttribute("replyList", replyList);
+
+			List<Map<String, Object>> fileList = fbservice.selectFileList(freeBoardVO.getBno());
+			model.addAttribute("file", fileList);
+			
+			return "/admin/freeBoard/readView";
+		}
+		
+		// 자유게시판 수정뷰
+		@RequestMapping(value = "/admin/freeBoard/updateView", method = RequestMethod.GET)
+		public String updateView(FreeBoardVO freeBoardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+			logger.info("updateView");
+			
+			model.addAttribute("fbUpdate", fbservice.read(freeBoardVO.getBno()));
+			model.addAttribute("scri", scri);
+
+			List<Map<String, Object>> fileList = fbservice.selectFileList(freeBoardVO.getBno());
+			model.addAttribute("file", fileList);
+			return "/admin/freeBoard/updateView";
+		}
+		
+		// 자유게시판 수정
+		@RequestMapping(value = "/admin/freeBoard/update", method = RequestMethod.POST)
+		public String update(FreeBoardVO freeBoardVO, 
+					 @ModelAttribute("scri") SearchCriteria scri, 
+					 RedirectAttributes rttr,
+					 @RequestParam(value="fileNoDel[]") String[] files,
+					 @RequestParam(value="fileNameDel[]") String[] fileNames,
+					 MultipartHttpServletRequest mpRequest) throws Exception {
+			
+				logger.info("fbUpdate");
+				fbservice.update(freeBoardVO, files, fileNames, mpRequest);
+				
+				rttr.addAttribute("page", scri.getPage());
+				rttr.addAttribute("perPageNum", scri.getPerPageNum());
+				rttr.addAttribute("searchType", scri.getSearchType());
+				rttr.addAttribute("category", scri.getCategory());
+				rttr.addAttribute("keyword", scri.getKeyword());
+				
+				return "redirect:/admin/freeBoard/list";
+		}
+
+		// 자유게시판 삭제
+		@RequestMapping(value = "/admin/freeBoard/delete", method = RequestMethod.POST)
+		public String delete(FreeBoardVO freeBoardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+				logger.info("fbDelete");
+				
+				fbservice.delete(freeBoardVO.getBno());
+				
+				rttr.addAttribute("page", scri.getPage());
+				rttr.addAttribute("perPageNum", scri.getPerPageNum());
+				rttr.addAttribute("searchType", scri.getSearchType());
+				rttr.addAttribute("category", scri.getCategory());
+				rttr.addAttribute("keyword", scri.getKeyword());
+				
+				return "redirect:/admin/freeBoard/list";
+		}
+		
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 		//회원 삭제
 		@ResponseBody
 		@RequestMapping(value = "/admin/deleteUser", method = RequestMethod.POST)

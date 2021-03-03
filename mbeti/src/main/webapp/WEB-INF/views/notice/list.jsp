@@ -109,7 +109,7 @@
 				
 				<div class="board-nav right">
 					<c:if test="${member.enabled == 2}">						
-						<a href="/admin/writeView" class="btn btn-success">글작성</a>
+						<a href="/admin/notice/writeView" class="btn btn-success">글작성</a>
 					</c:if>
 				</div>
 				
