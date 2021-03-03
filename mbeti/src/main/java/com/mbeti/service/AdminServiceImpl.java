@@ -55,8 +55,8 @@ public class AdminServiceImpl  implements AdminService {
 	
 	//회원 삭제
 	@Override
-	public void deleteUser(String userID) throws Exception {
-		dao.deleteUser(userID);
+	public void deleteUser(MemberVO memberVO) throws Exception {
+		dao.deleteUser(memberVO);
 	}
 	
 	

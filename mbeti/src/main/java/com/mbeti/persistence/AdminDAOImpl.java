@@ -57,8 +57,8 @@ public class AdminDAOImpl implements AdminDAO{
 
 	//회원 삭제
 	@Override
-	public void deleteUser(String userID) throws Exception {
-		sql.delete("adminMapper.deleteUser", userID);
+	public void deleteUser(MemberVO memberVO) throws Exception {
+		sql.delete("adminMapper.deleteUser", memberVO);
 	}
 
 	

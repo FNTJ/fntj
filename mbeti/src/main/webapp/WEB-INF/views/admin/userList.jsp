@@ -81,7 +81,7 @@
 						<tr>
 							<td>
 								<div class="checkBox">
-							   		<input type="checkbox" name="chBox" class="chBox" data-cartNum="${list.userID}" />
+							   		<input type="checkbox" name="chBox" class="chBox" data-userNum="${list.userNum}" />
 									<script>
 										$(".chBox").click(function(){
 										$("#allCheck").prop("checked", false);
@@ -127,7 +127,7 @@
 			</form>
 			
 			<div class="delBtn">
-				<button type="button" class="selectDelete_btn">선택 삭제</button> 
+				<button type="button" class="selectDelete_btn btn btn-basic">선택 삭제</button> 
 				<script>
 					$(".selectDelete_btn").click(function(){
 						var confirm_val = confirm("정말 삭제하시겠습니까?");
@@ -136,7 +136,7 @@
 							var checkArr = new Array();
 							  
 							$("input[class='chBox']:checked").each(function(){
-								checkArr.push($(this).attr("data-cartNum"));
+								checkArr.push($(this).attr("data-userNum"));
 							});
 							   
 							$.ajax({

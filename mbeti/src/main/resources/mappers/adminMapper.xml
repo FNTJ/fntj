@@ -102,10 +102,10 @@
 	</delete>
 	
 	<!-- 회원 삭제 -->
-	<delete id="deleteUser" parameterType="String">
+	<delete id="deleteUser" parameterType="int">
 		DELETE 
 		FROM tbl_USER
-		WHERE userID = #{userID} AND enabled = #{enabled}
+		WHERE userNum = #{userNum}
 	</delete>
 	
 	
