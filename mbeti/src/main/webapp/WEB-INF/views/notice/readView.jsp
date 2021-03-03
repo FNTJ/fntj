@@ -127,10 +127,8 @@
 			<!-- 본인이 작성한 글만 수정/삭제 가능 -->
 			<button type="button" class="list_btn btn btn-danger">목록</button>
 			<!-- 본인이 작성한 글만 수정/삭제 가능 -->
-			<c:if test="${member.userName == read.writer}"> 
 				<button type="button" class="update_btn btn btn-success">수정</button>
 				<button type="button" class="delete_btn btn btn-primary">삭제</button>
-			</c:if>
 		</div>
 				
 		<!-- 댓글 -->
