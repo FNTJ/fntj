@@ -132,8 +132,8 @@
 			
 			<div class="form-group form-btn">
 				<button type="button" class="list_btn btn btn-danger">목록</button>
-				<!-- 본인이 작성한 글만 수정/삭제 가능 -->
-				<c:if test="${member.userName == fbRead.writer}"> 
+				<!-- 본인이 작성한 글 또는 관리자만 수정/삭제 가능 -->
+				<c:if test="${member.userName == fbRead.writer  || member.enabled == 2}"> 
 					<button type="button" class="update_btn btn btn-success">수정</button>
 					<button type="button" class="delete_btn btn btn-primary">삭제</button>
 				</c:if>					
@@ -147,8 +147,8 @@
 						<div class="wdate"> <!-- 작성자/작성일자 -->
 							<span class="date"><i class='bx bx-calendar'></i><fmt:formatDate value="${replyList.regdate}" pattern="yyyy-MM-dd" /></span>
 							<span class="writer"><i class='bx bx-pencil' ></i>${replyList.writer}</span>
-							<!-- 본인이 작성한 댓글만 수정/삭제 가능 -->
-							<c:if test="${member.userName == replyList.writer}"> 
+							<!-- 본인이 작성한 댓글 또는 관리자만 수정/삭제 가능 -->
+							<c:if test="${member.userName == replyList.writer || member.enabled == 2}"> 
 								<div class="btn-box right">
 									<button type="button" class="replyUpdateBtn btn btn-sm btn-success" data-rno="${replyList.rno}">수정</button>
 									<button type="button" class="replyDeleteBtn btn btn-sm btn-primary" data-rno="${replyList.rno}">삭제</button>

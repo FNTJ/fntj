@@ -10,7 +10,6 @@ public class FileVO {
 	private String stored_fname;
 	private int fsize;
 	private Date regdate;
-	private String del;
 	
 	public int getFno() {
 		return fno;
@@ -48,13 +47,6 @@ public class FileVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public String getDel() {
-		return del;
-	}
-	public void setDel(String del) {
-		this.del = del;
-	}
-	
 	
 	
 }

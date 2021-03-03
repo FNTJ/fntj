@@ -152,11 +152,11 @@
 		WHERE fno = #{fno}
 	</select>
 	
-	<!-- 첨부파일 수정 -->
+	<!-- 첨부파일 삭제 -->
 	<update id="fbUpdateFile" parameterType="hashMap">
-    	UPDATE tbl_fbfile SET
-    	del = 'Y'
-    	WHERE fno = #{fno}
+		DELETE 
+		FROM tbl_fbfile
+		WHERE fno = #{fno}
     </update>
 	
 	<!-- 게시판 조회수 -->
