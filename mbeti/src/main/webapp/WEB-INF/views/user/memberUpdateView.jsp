@@ -31,6 +31,14 @@
 	               $("#regForm").submit();
 	            }
 			}
+			//기본닉네임
+			if($("#userName").val()==""){
+				$('#userName').val("${member.userName}");
+			}
+			//기본이메일
+			if($("#userEmail").val()==""){
+				$('#userEmail').val("${member.userEmail}");
+			}
 			//비번-비번확인 일치여부
             if($("#userPassword").val() != $("#userPassword2").val()){
                alert("비밀번호가 일치하지 않습니다.");
@@ -219,7 +227,7 @@
 						<input class="form-control" type="hidden" id="userID" name="userID" value="${member.userID}" readonly="readonly"/>
 					</div>
 					<div class="form-group has-feedback">
-						<label class="control-label" for="userPassword">새로운 비밀번호</label>
+						<label class="control-label" for="userPassword">신규 비밀번호</label>
 						<input class="form-control" type="password" id="userPassword" name="userPassword" maxlength="30" placeholder="* 비밀번호는 8~16자의 문자를 입력해주세요" />
 					</div>
 					<div class="form-group">
