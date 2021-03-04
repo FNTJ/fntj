@@ -164,7 +164,7 @@
 					</table>
 					
 					<div class="delBtn">
-						<button type="button" class="selectDelete_btn btn btn-basic">선택 삭제</button> 
+						<button type="button" class="selectDelete_btn btn btn-basic">삭제</button> 
 						<script>
 							$(".selectDelete_btn").click(function(){
 								var confirm_val = confirm("정말 삭제하시겠습니까?");

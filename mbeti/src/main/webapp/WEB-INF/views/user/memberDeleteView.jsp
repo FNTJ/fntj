@@ -9,7 +9,7 @@
 			location.href = "/";					    
 		});
 	
-		$("#submit").on("click", function(){
+ 		$("#submit").on("click", function(){
 			if($("#userPassword").val()==""){
 				alert("비밀번호를 입력해주세요.");
 				$("#userPassword").focus();
@@ -31,8 +31,31 @@
 					}
 				}
 			})			
-		});
-	});
+		}); 
+		
+		// 삭제
+
+	/* $("#submit").on("click", function() {
+
+			if ($("#userPassword").val() == "") {
+				alert("비밀번호를 입력해 주세요");
+				false;
+			} else if ("${member.userPassword}" == $("#userPassword").val()) {
+				var deleteYN = confirm("해당 회원틀 탈퇴시키겠습니까?");
+				if (deleteYN == true) {
+					{
+						formObj.attr("action", "/user/memberDelete");
+						formObj.attr("method", "post");
+						formObj.submit();
+					}
+				}
+			} else {
+				alert("비밀번호를 다시 확인해주세요.");
+				false;
+			}
+		})*/
+
+	}); 
 </script>
 
 	<!-- //contents  -->
