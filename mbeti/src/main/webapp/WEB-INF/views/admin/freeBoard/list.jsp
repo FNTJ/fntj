@@ -164,7 +164,7 @@
 					</table>
 					
 					<div class="delBtn">
-						<button type="button" class="selectDelete_btn">선택 삭제</button> 
+						<button type="button" class="selectDelete_btn btn btn-basic">삭제</button> 
 						<script>
 							$(".selectDelete_btn").click(function(){
 								var confirm_val = confirm("정말 삭제하시겠습니까?");
@@ -194,9 +194,8 @@
 					</div>
 					
 					<div class="board-nav right">
-						<c:if test="${member != null}">
-							<a href="/admin/freeBoard/writeView" class="btn btn-success">글작성</a>
-						</c:if>
+						<button class="cencle btn btn-danger" type="button"  onClick="location.href='/admin/index'">이전 페이지</button>
+						<a href="/admin/freeBoard/writeView" class="btn btn-success">글작성</a>
 					</div>
 					
 					<div class="paging-box">

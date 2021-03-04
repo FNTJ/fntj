@@ -9,7 +9,7 @@
 			location.href = "/";					    
 		});
 	
-		$("#submit").on("click", function(){
+ 		$("#submit").on("click", function(){
 			if($("#userPassword").val()==""){
 				alert("비밀번호를 입력해주세요.");
 				$("#userPassword").focus();
@@ -31,8 +31,31 @@
 					}
 				}
 			})			
-		});
-	});
+		}); 
+		
+		// 삭제
+
+	/* $("#submit").on("click", function() {
+
+			if ($("#userPassword").val() == "") {
+				alert("비밀번호를 입력해 주세요");
+				false;
+			} else if ("${member.userPassword}" == $("#userPassword").val()) {
+				var deleteYN = confirm("해당 회원틀 탈퇴시키겠습니까?");
+				if (deleteYN == true) {
+					{
+						formObj.attr("action", "/user/memberDelete");
+						formObj.attr("method", "post");
+						formObj.submit();
+					}
+				}
+			} else {
+				alert("비밀번호를 다시 확인해주세요.");
+				false;
+			}
+		})*/
+
+	}); 
 </script>
 
 	<!-- //contents  -->
@@ -44,15 +67,15 @@
 			<form action="/user/memberDelete" method="post" id="delForm">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userID">아이디</label>
-					<input class="form-control" type="text" id="userID" name="userID" value="${member.userID}" readonly="readonly"/>
+					<span class="form-control" id="userID">${member.userID}</span>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPassword">패스워드</label>
 					<input class="form-control" type="password" id="userPassword" name="userPassword" />
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userName">성명</label>
-					<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
+					<label class="control-label" for="userName">닉네임</label>
+					<span class="form-control" id="userName">${member.userName}</span>
 				</div>
 			</form>
 			<div class="form-group has-feedback form-btn">

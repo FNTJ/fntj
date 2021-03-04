@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class MemberVO {
 	
+	private int userNum;
 	private String mb;
 	private String userName;
 	private String userID;
@@ -97,6 +98,14 @@ public class MemberVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
+	public int getUserNum() {
+		return userNum;
+	}
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+	
 	@Override
 	public String toString() {
 		return "MemberVO [mb=" + mb + 

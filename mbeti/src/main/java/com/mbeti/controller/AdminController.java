@@ -405,20 +405,29 @@ public class AdminController {
 		//회원 삭제
 		@ResponseBody
 		@RequestMapping(value = "/admin/deleteUser", method = RequestMethod.POST)
-		public String deleteUser(HttpSession session, MemberVO memberVO) throws Exception{
-		 logger.info("deleteUser");
+		public int deleteUser(HttpSession session,
+			     @RequestParam(value = "chbox[]") List<String> chArr, MemberVO memberVO) throws Exception {
+		 logger.info("delete user");
 		 
 		 MemberVO member = (MemberVO)session.getAttribute("member");
-		 String userId = memberVO.getUserID();
 		 
-		 String result = "0";
+		 int result = 0;
+		 int userNum = 0;
 		 
-		 
-		 memberVO.setUserID(userId);
+		 if(member != null) {
 		  
-		   service.deleteUser(memberVO.getUserID());
-		  result = "1";
+		  for(String i : chArr) {   
+		   userNum = Integer.parseInt(i);
+		   memberVO.setUserNum(userNum);
+		   service.deleteUser(memberVO);
+		  }   
+		  result = 1;
+		 }  
 		 return result;  
 		}
+		
+		
+		 
+		
 	
 }

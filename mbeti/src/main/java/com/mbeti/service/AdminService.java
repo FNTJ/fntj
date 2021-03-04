@@ -28,6 +28,6 @@ public interface AdminService {
 	public void deleteFB(FreeBoardVO freeBoardVO) throws Exception;
 	
 	// 회원 삭제
-	public void deleteUser(String userID) throws Exception;
+	public void deleteUser(MemberVO memberVO) throws Exception;
 		
 }

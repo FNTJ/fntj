@@ -18,7 +18,7 @@
 			// 삭제
 			$(".delete_btn").on("click", function(){
 				
-				var deleteYN = confirm("해당 회원틀 탈퇴시키겠습니가?");
+				var deleteYN = confirm("해당 회원틀 탈퇴시키겠습니까?");
 				if(deleteYN == true){
 					
 				formObj.attr("action", "/admin/delete");
