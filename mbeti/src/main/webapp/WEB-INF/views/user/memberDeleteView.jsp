@@ -44,15 +44,15 @@
 			<form action="/user/memberDelete" method="post" id="delForm">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userID">아이디</label>
-					<input class="form-control" type="text" id="userID" name="userID" value="${member.userID}" readonly="readonly"/>
+					<span class="form-control" id="userID">${member.userID}</span>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userPassword">패스워드</label>
 					<input class="form-control" type="password" id="userPassword" name="userPassword" />
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userName">성명</label>
-					<input class="form-control" type="text" id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
+					<label class="control-label" for="userName">닉네임</label>
+					<span class="form-control" id="userName">${member.userName}</span>
 				</div>
 			</form>
 			<div class="form-group has-feedback form-btn">
