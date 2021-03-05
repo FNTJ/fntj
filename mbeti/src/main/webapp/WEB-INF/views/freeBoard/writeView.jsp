@@ -97,7 +97,7 @@
 						</div>						
 					</div>
 					<div class="form-group form-btn">
-						<a href="/freeBosard/list" class="btn btn-danger">목록</a>
+						<a href="/freeBoard/list" class="btn btn-danger">목록</a>
 						<button class="btn btn-success write_btn" type="submit">작성</button>
 					</div>
 					

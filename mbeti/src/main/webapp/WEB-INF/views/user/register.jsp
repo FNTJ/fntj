@@ -83,6 +83,13 @@
                $("#mail_check_input").focus();
                return false;
            }
+          
+          // 이메일인증입력창 Null일 경우
+           if(inputCode == ""){
+               alert("인증번호를 입력해 주세요.");
+               $("#mail_check_input").focus();
+               return false;
+           }
          
             //아이디 패스워드 값 데이터 정규식
               var regul1 = /^[a-zA-Z0-9]{4,12}$/;
