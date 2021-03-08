@@ -83,13 +83,6 @@
                $("#mail_check_input").focus();
                return false;
            }
-          
-          // 이메일인증입력창 Null일 경우
-           if(inputCode == ""){
-               alert("인증번호를 입력해 주세요.");
-               $("#mail_check_input").focus();
-               return false;
-           }
          
             //아이디 패스워드 값 데이터 정규식
               var regul1 = /^[a-zA-Z0-9]{4,12}$/;
@@ -189,14 +182,14 @@
             if(data == 1){
                alert("중복된 아이디입니다.");
             }else if(data == 0){
-            	var regul1 = /^[a-zA-Z0-9]{4,12}$/;
+               var regul1 = /^[a-zA-Z0-9]{4,12}$/;
                 if (!regul1.test($("#userID").val())) {
                    alert("아이디는 4~12자의 대소문자와 숫자로만 입력 가능합니다.");
                    $("#userID").focus();
                     return false;//반환 할 곳 없이 if문 탈출
                 } else {
-	               $("#idChk").attr("value", "Y");
-	               alert("사용가능한 아이디입니다.");
+                  $("#idChk").attr("value", "Y");
+                  alert("사용가능한 아이디입니다.");
                 }
             }
          }
@@ -213,14 +206,14 @@
             if(data == 1){
                alert("중복된 닉네임입니다.");
             }else if(data == 0){
-            	var namePattern = /^[a-zA-Z가-힣0-9]{2,}$/;
+               var namePattern = /^[a-zA-Z가-힣0-9]{2,}$/;
                 if (!namePattern.test($("#userName").val())) {
                    alert("닉네임은 2글자 이상의 문자를 입력해주세요. (특수기호, 공백 사용 불가)");
                    $("#userName").focus();
                     return false;//반환 할 곳 없이 if문 탈출
                 } else {
-	               $("#nameChk").attr("value", "Y");
-	               alert("사용가능한 닉네임입니다.");
+                  $("#nameChk").attr("value", "Y");
+                  alert("사용가능한 닉네임입니다.");
                 }
             }
          }
@@ -235,20 +228,20 @@
       
          <div class="register">   
          
-        	<ul class="register-step">
-	            <li>
-	               <span>step 01</span>
-	               <strong>약관동의</strong>
-	            </li>
-	            <li class="on">
-	               <span>step 02</span>
-	               <strong>정보입력</strong>
-	            </li>
-	            <li>
-	               <span>step 03</span>
-	               <strong>가입완료</strong>
-	            </li>
-	        </ul>         
+           <ul class="register-step">
+               <li>
+                  <span>step 01</span>
+                  <strong>약관동의</strong>
+               </li>
+               <li class="on">
+                  <span>step 02</span>
+                  <strong>정보입력</strong>
+               </li>
+               <li>
+                  <span>step 03</span>
+                  <strong>가입완료</strong>
+               </li>
+           </ul>         
             
             <form action="/user/register" method="post">
             
@@ -295,90 +288,90 @@
                   <button class="nameChk btn btn-primary btnmr" type="button" id="nameChk" onclick="fn_nameChk();" value="N">중복확인</button>
                </div>
 
-          	   <div class="form-group">
-	               <label class="control-label" for="userEmail">이메일</label>
-	               <input class="mail_input form-control" id="userEmail" name="userEmail" maxlength="50" placeholder="이메일을 입력하세요 (example@gmail.com)">
-	               <button class="mail_check_button btn btn-primary btnmr" type="button">인증번호 전송</button>
-	               <span class="mail_input_box_warn"></span> <!-- 이메일전송메세지  -->
-	               <div class="mail_check_wrap">
-	                  <div class="mail_check_input_box" id="mail_check_input_box_false">
-	                     <input class="mail_check_input form-control" id="mail_check_input" name="mail_check_input" disabled="disabled" placeholder="인증번호를 입력해주세요.">
-	                     <input type="hidden" class="mail_check_output" id="mail_check_output" name="mail_check_output" disabled="disabled">
-	                  </div>
-	                  <span id="mail_check_input_box_warn"></span> <!-- 인증번호 확인메세지  -->
-	               </div>
+                <div class="form-group">
+                  <label class="control-label" for="userEmail">이메일</label>
+                  <input class="mail_input form-control" id="userEmail" name="userEmail" maxlength="50" placeholder="이메일을 입력하세요 (example@gmail.com)">
+                  <button class="mail_check_button btn btn-primary btnmr" type="button">인증번호 전송</button>
+                  <span class="mail_input_box_warn"></span> <!-- 이메일전송메세지  -->
+                  <div class="mail_check_wrap">
+                     <div class="mail_check_input_box" id="mail_check_input_box_false">
+                        <input class="mail_check_input form-control" id="mail_check_input" name="mail_check_input" disabled="disabled" placeholder="인증번호를 입력해주세요.">
+                        <input type="hidden" class="mail_check_output" id="mail_check_output" name="mail_check_output" disabled="disabled">
+                     </div>
+                     <span id="mail_check_input_box_warn"></span> <!-- 인증번호 확인메세지  -->
+                  </div>
                </div>
 
-	            <div class="form-group">
-	               <label class="control-label" for="userBirthday">생일</label>
-	               <input type="date" id="userBirthday" name="userBirthday" />
-	            </div>
+               <div class="form-group">
+                  <label class="control-label" for="userBirthday">생일</label>
+                  <input type="date" id="userBirthday" name="userBirthday" />
+               </div>
               
-	            <div class="form-group">
-	                  <label class="control-label" for="keyword1">키워드선택</label>
-	                <div class="search-cont">
-	                     <div class="search-item">   
-	                        <ul class="searchobj">
-	                           <li>
-	                              <input type="radio" id="chk01" name="keyword1" class="keyword1" value="IT/기술/전문">
-	                          <label for="chk01">IT&middot;기술&middot;전문</label>
-	                       </li>
-	                           <li>
-	                              <input type="radio" id="chk02" name="keyword1" class="keyword1" value="경영/금융/관리">
-	                         <label for="chk02">경영&middot;금융&middot;관리</label>
-	                      </li>
-	                           <li>
-	                              <input type="radio" id="chk03" name="keyword1" class="keyword1" value="공공/사회/서비스">
-	                         <label for="chk03">공공&middot;사회&middot;서비스</label>
-	                           </li>
-	                           <li>
-	                              <input type="radio" id="chk04" name="keyword1" class="keyword1" value="학문/교육/인재">
-	                         <label for="chk04">학문&middot;교육&middot;인재</label>   
-	                           </li>
-	                           <li>
-	                              <input type="radio" id="chk05" name="keyword1" class="keyword1" value="언론/방송/미디어">
-	                         <label for="chk05">언론&middot;방송&middot;미디어</label>
-	                           </li>
-	                           <li>
-	                              <input type="radio" id="chk06" name="keyword1" class="keyword1" value="역사/관광/운송">
-	                         <label for="chk06">역사&middot;관광&middot;운송</label>
-	                           </li>
-	                           <li>
-	                              <input type="radio" id="chk07" name="keyword1" class="keyword1" value="생활/레저/식품">
-	                         <label for="chk07">생활&middot;레저&middot;식품</label>
-	                           </li>
-	                           <li>
-	                              <input type="radio" id="chk08" name="keyword1" class="keyword1" value="광고/홍보/시각">
-	                         <label for="chk08">광고&middot;홍보&middot;시각</label>
-	                           </li>
-	                        </ul> 
-	                        <ul class="boxcount">
-	                           <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k1"></li>
-	                           <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k2"></li>
-	                           <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k3"></li>
-	                      <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k4"></li>
-	                      <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k5"></li>
-	                      <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k6"></li>
-	                      <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k7"></li>
-	                      <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k8"></li>
-	                        </ul>
-	                   </div>                     
-	                </div>
-	                <div class="form-group fa">
-	                   <label class="control-label" for="keyword2">키워드입력</label>
-	                    <input class="form-control" type="text" id="keyword2" name="keyword2" placeholder="추가하고싶은 키워드를 입력하세요"/>
-	                    <input class="form-control" type="text" id="keyword4" name="keyword4" placeholder="추가하고싶은 키워드를 입력하세요"/>
-	                    <input class="form-control" type="text" id="keyword5" name="keyword5" placeholder="추가하고싶은 키워드를 입력하세요"/>
-	                  </div>
-	            </div>
+               <div class="form-group">
+                     <label class="control-label" for="keyword1">키워드선택</label>
+                   <div class="search-cont">
+                        <div class="search-item">   
+                           <ul class="searchobj">
+                              <li>
+                                 <input type="radio" id="chk01" name="keyword1" class="keyword1" value="IT/기술/전문">
+                             <label for="chk01">IT&middot;기술&middot;전문</label>
+                          </li>
+                              <li>
+                                 <input type="radio" id="chk02" name="keyword1" class="keyword1" value="경영/금융/관리">
+                            <label for="chk02">경영&middot;금융&middot;관리</label>
+                         </li>
+                              <li>
+                                 <input type="radio" id="chk03" name="keyword1" class="keyword1" value="공공/사회/서비스">
+                            <label for="chk03">공공&middot;사회&middot;서비스</label>
+                              </li>
+                              <li>
+                                 <input type="radio" id="chk04" name="keyword1" class="keyword1" value="학문/교육/인재">
+                            <label for="chk04">학문&middot;교육&middot;인재</label>   
+                              </li>
+                              <li>
+                                 <input type="radio" id="chk05" name="keyword1" class="keyword1" value="언론/방송/미디어">
+                            <label for="chk05">언론&middot;방송&middot;미디어</label>
+                              </li>
+                              <li>
+                                 <input type="radio" id="chk06" name="keyword1" class="keyword1" value="역사/관광/운송">
+                            <label for="chk06">역사&middot;관광&middot;운송</label>
+                              </li>
+                              <li>
+                                 <input type="radio" id="chk07" name="keyword1" class="keyword1" value="생활/레저/식품">
+                            <label for="chk07">생활&middot;레저&middot;식품</label>
+                              </li>
+                              <li>
+                                 <input type="radio" id="chk08" name="keyword1" class="keyword1" value="광고/홍보/시각">
+                            <label for="chk08">광고&middot;홍보&middot;시각</label>
+                              </li>
+                           </ul> 
+                           <ul class="boxcount">
+                              <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k1"></li>
+                              <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k2"></li>
+                              <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k3"></li>
+                         <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k4"></li>
+                         <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k5"></li>
+                         <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k6"></li>
+                         <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k7"></li>
+                         <li class="box_count"><input type="radio" name="keyword3" class="keyword3" value="k8"></li>
+                           </ul>
+                      </div>                     
+                   </div>
+                   <div class="form-group fa">
+                      <label class="control-label" for="keyword2">키워드입력</label>
+                       <input class="form-control" type="text" id="keyword2" name="keyword2" placeholder="추가하고싶은 키워드를 입력하세요"/>
+                       <input class="form-control" type="text" id="keyword4" name="keyword4" placeholder="추가하고싶은 키워드를 입력하세요"/>
+                       <input class="form-control" type="text" id="keyword5" name="keyword5" placeholder="추가하고싶은 키워드를 입력하세요"/>
+                     </div>
+               </div>
               
                
               
-	            <div class="form-group has-feedback form-btn">
-	               <button class="cencle btn btn-danger" type="button">취소</button>
-	               <button class="btn btn-success" type="submit" id="submit">회원가입</button>                  
-	            </div>
-	            
+               <div class="form-group has-feedback form-btn">
+                  <button class="cencle btn btn-danger" type="button">취소</button>
+                  <button class="btn btn-success" type="submit" id="submit">회원가입</button>                  
+               </div>
+               
             </form>
          </div>
       
@@ -401,63 +394,63 @@
         </script>
         
         <!-- 이메일인증스크립트  --> 
-		<script>		
-		   var code = "";//이메일전송 인증번호 저장위한 코드		            
-		    
-		   /* 입력 이메일 형식 유효성 검사 */
-		   function mailFormCheck(email){
-		       var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-		       return form.test(email);
-		   }
-		    
-		   /* 인증번호 이메일 전송 */
-		   $(".mail_check_button").click(function(){
-		      
-		      var email = $(".mail_input").val();         // 입력한 이메일
-		      var checkBox = $(".mail_check_input");      // 인증번호 입력란
-		      var boxWrap = $(".mail_check_input_box");   // 인증번호 입력란 박스
-		      var warnMsg = $(".mail_input_box_warn");   // 이메일 입력 경고글
-		      
-		      /* 이메일 형식 유효성 검사 */
-		      if(mailFormCheck(email)){
-		         warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.").removeClass("not").addClass("on");
-		      } else {
-		         warnMsg.html("올바르지 못한 이메일 형식입니다.").removeClass("on").addClass("not");
-		         return false;
-		      }
-		      
-		      $.ajax({		         
-		         type:"GET",
-		         url:"/user/mailCheck?email=" + email,
-		         success:function(data){		   
-		            checkBox.attr("disabled",false);
-		            boxWrap.attr("id", "mail_check_input_box_true");
-		            code = data;
-		            $('#mail_check_output').val(code);		            
-		         }		               
-		      });		      
-		   });		   
-		         
-		   /* 인증번호 비교 */
-		   $(".mail_check_input").blur(function(){
-		      
-		      var inputCode = $(".mail_check_input").val();      // 입력코드   
-		      var checkResult = $("#mail_check_input_box_warn");   // 비교 결과    
-		      
-		      if(inputCode == code){                     // 일치할 경우
-		         checkResult.html("인증번호가 일치합니다.");
-		         checkResult.attr("class", "correct");      
-		         mailnumCheck = true;
-		      } else {                                 // 일치하지 않을 경우
-		         checkResult.html("인증번호를 다시 확인해주세요.");
-		         checkResult.attr("class", "incorrect");
-		         mailnumCheck = false;
-		      }		      
-		      
-		   });
-		   
-		</script>
-		
+      <script>      
+         var code = "";//이메일전송 인증번호 저장위한 코드                  
+          
+         /* 입력 이메일 형식 유효성 검사 */
+         function mailFormCheck(email){
+             var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+             return form.test(email);
+         }
+          
+         /* 인증번호 이메일 전송 */
+         $(".mail_check_button").click(function(){
+            
+            var email = $(".mail_input").val();         // 입력한 이메일
+            var checkBox = $(".mail_check_input");      // 인증번호 입력란
+            var boxWrap = $(".mail_check_input_box");   // 인증번호 입력란 박스
+            var warnMsg = $(".mail_input_box_warn");   // 이메일 입력 경고글
+            
+            /* 이메일 형식 유효성 검사 */
+            if(mailFormCheck(email)){
+               warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.").removeClass("not").addClass("on");
+            } else {
+               warnMsg.html("올바르지 못한 이메일 형식입니다.").removeClass("on").addClass("not");
+               return false;
+            }
+            
+            $.ajax({               
+               type:"GET",
+               url:"/user/mailCheck?email=" + email,
+               success:function(data){         
+                  checkBox.attr("disabled",false);
+                  boxWrap.attr("id", "mail_check_input_box_true");
+                  code = data;
+                  $('#mail_check_output').val(code);                  
+               }                     
+            });            
+         });         
+               
+         /* 인증번호 비교 */
+         $(".mail_check_input").blur(function(){
+            
+            var inputCode = $(".mail_check_input").val();      // 입력코드   
+            var checkResult = $("#mail_check_input_box_warn");   // 비교 결과    
+            
+            if(inputCode == code){                     // 일치할 경우
+               checkResult.html("인증번호가 일치합니다.");
+               checkResult.attr("class", "correct");      
+               mailnumCheck = true;
+            } else {                                 // 일치하지 않을 경우
+               checkResult.html("인증번호를 다시 확인해주세요.");
+               checkResult.attr("class", "incorrect");
+               mailnumCheck = false;
+            }            
+            
+         });
+         
+      </script>
+      
       </div><!-- //layout  -->
    </div><!-- //contents  -->
 
