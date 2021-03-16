@@ -4,9 +4,11 @@
     
     
     
+    
 ## Jambox - 나의 직업을 Jam하다
 - 청년 취업 이슈 관련, 취준생에게 채용정보를 제공
 - 20~30대 관심사인 MBTI (성격유형검사)와 관심분야 결합하여 진로 추천   
+    
     
     
     
@@ -17,6 +19,7 @@
     
     
     
+    
 ## 개발환경
 - SDK : JDK/JRE 1.8
 - DB : MySQL 9.0
@@ -24,6 +27,7 @@
 - Server: Apache Tomcat9.0, servlet&JSP
 - lib : JSTL, Lombok, Bootstrap, ckeditor
 - 형상관리 : Github, SQL yog community   
+    
     
     
     
